@@ -100,6 +100,7 @@ def cmd_ask(settings, args) -> int:
         " ".join(args.question),
         api_key=os.environ.get("OPENROUTER_API_KEY"),
         model=args.model or os.environ.get("OPENROUTER_MODEL") or None,
+        max_tokens=int(os.environ.get("OPENROUTER_MAX_TOKENS") or 0) or None,
     )
     print(res["answer"])
     print(f"\n[model: {res['model']} · context: {res['context_source']}]")

@@ -17,6 +17,7 @@ from terramind.config import MissingInputError, Settings
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "openai/gpt-4o"
+DEFAULT_MAX_TOKENS = 700  # answers are a few sentences; also keeps the credit reservation small
 REPO_URL = "https://github.com/AkramovFozil/terramind-ai"
 
 SYSTEM_PROMPT = """You are the explainer of TerraMind AI, a NASA Space Apps 2026 project that compares the
@@ -140,7 +141,7 @@ def _redact(text: str, secret: str | None) -> str:
 
 
 def ask(settings: Settings, question: str, api_key: str | None, model: str | None = None,
-        session=None, timeout: float = 90.0) -> dict:
+        session=None, timeout: float = 90.0, max_tokens: int | None = None) -> dict:
     """Ask the explainer. Returns {answer, model, unverified_numbers, context_source}."""
     if not question.strip():
         raise MissingInputError("Empty question.")
@@ -154,6 +155,7 @@ def ask(settings: Settings, question: str, api_key: str | None, model: str | Non
     payload = {
         "model": model,
         "temperature": 0.2,
+        "max_tokens": int(max_tokens or DEFAULT_MAX_TOKENS),
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "system", "content": "CONTEXT:\n" + json.dumps(context, ensure_ascii=False)},
@@ -173,7 +175,11 @@ def ask(settings: Settings, question: str, api_key: str | None, model: str | Non
         raise MissingInputError(f"OpenRouter request failed: {_redact(str(exc), api_key)}") from None
     if resp.status_code != 200:
         body = (resp.text or "")[:400]
-        raise MissingInputError(f"OpenRouter returned HTTP {resp.status_code}: {_redact(body, api_key)}")
+        hint = ""
+        if resp.status_code == 402:
+            hint = (" — not enough OpenRouter credits. Add credits, lower OPENROUTER_MAX_TOKENS, "
+                    "or use a cheaper model, e.g. OPENROUTER_MODEL=openai/gpt-4o-mini in .env.")
+        raise MissingInputError(f"OpenRouter returned HTTP {resp.status_code}{hint}\n{_redact(body, api_key)}")
     try:
         answer = resp.json()["choices"][0]["message"]["content"].strip()
     except (ValueError, KeyError, IndexError, TypeError):

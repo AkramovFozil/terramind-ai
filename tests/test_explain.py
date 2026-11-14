@@ -62,6 +62,13 @@ def test_ask_sends_context_and_checks_answer(with_results):
     assert sent["headers"]["Authorization"] == f"Bearer {FAKE_KEY}"
     assert "CONTEXT" in sent["json"]["messages"][1]["content"]
     assert sent["json"]["messages"][-1] == {"role": "user", "content": "Why?"}
+    assert 0 < sent["json"]["max_tokens"] <= 2000  # never ask for the model maximum (HTTP 402 on small balances)
+
+
+def test_payment_error_gives_a_hint(with_results):
+    session = FakeSession(FakeResponse(402, text="This request requires more credits"))
+    with pytest.raises(MissingInputError, match="gpt-4o-mini"):
+        ask(with_results, "Why?", FAKE_KEY, session=session)
 
 
 def test_missing_key(with_results):
