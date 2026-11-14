@@ -148,3 +148,40 @@ def histograms(path: Path, comparison: dict, target, candidate) -> Path:
     fig.savefig(path, facecolor=SURFACE, bbox_inches="tight")
     plt.close(fig)
     return path
+
+
+# Sequential blue ramp (light -> dark), fixed 0..1 scale so colors mean the same in every run.
+SEQ_BLUE = ["#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7", "#3987e5",
+            "#2a78d6", "#256abf", "#1c5cab", "#184f95", "#104281", "#0d366b"]
+
+
+def matrix_figure(path: Path, refs, earth, cells: dict, weight_set: str) -> Path:
+    """Heatmap: rows = Earth sites, columns = Mars references, cell = overall score (0..1)."""
+    from matplotlib.colors import LinearSegmentedColormap
+
+    cmap = LinearSegmentedColormap.from_list("seq_blue", SEQ_BLUE)
+    data = np.array([[cells[f"{r.id}__{s.id}"]["overall"][weight_set] for r in refs] for s in earth])
+    fig, ax = plt.subplots(figsize=(2.4 + 2.6 * len(refs), 1.6 + 0.75 * len(earth)), dpi=120, facecolor=SURFACE)
+    ax.imshow(data, cmap=cmap, vmin=0, vmax=1, aspect="auto")
+    for i in range(len(earth)):
+        for j in range(len(refs)):
+            v = data[i, j]
+            ax.text(j, i, f"{v:.2f}", ha="center", va="center", fontsize=12,
+                    color="white" if v >= 0.55 else INK)
+    ax.set_xticks(range(len(refs)), [r.name for r in refs], fontsize=8, color=INK)
+    ax.set_yticks(range(len(earth)), [f"{s.name}\n({s.role})" for s in earth], fontsize=8, color=INK)
+    ax.xaxis.tick_top()
+    ax.tick_params(length=0)
+    for side in ax.spines.values():
+        side.set_visible(False)
+    ax.set_xticks(np.arange(-0.5, len(refs)), minor=True)
+    ax.set_yticks(np.arange(-0.5, len(earth)), minor=True)
+    ax.grid(which="minor", color=SURFACE, linewidth=3)
+    ax.tick_params(which="minor", length=0)
+    fig.text(0.01, 0.01, f"Overall similarity, weight set {weight_set} (0 = no overlap, 1 = identical). Every approved site is shown.",
+             fontsize=7.5, color=MUTED, ha="left", va="bottom")
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(path, facecolor=SURFACE)
+    plt.close(fig)
+    return path

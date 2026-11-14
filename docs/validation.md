@@ -4,7 +4,7 @@ How we check that TerraMind measures something real, and what we have checked so
 
 ## 1. Unit tests (done)
 
-`pytest` runs 35 tests on synthetic data, with no downloads:
+`pytest` runs 37 tests on synthetic data, with no downloads:
 
 | Area | Check |
 |---|---|
@@ -23,10 +23,11 @@ How we check that TerraMind measures something real, and what we have checked so
 | Inputs | missing MOLA file and missing API key give exact instructions; the API key never appears in errors; SRTM is cached |
 | Gate | score refuses unapproved sites; refuses after a center change; approve refuses until prepared again |
 | End to end | synthetic MOLA (Mars Equirectangular) + synthetic SRTM (EPSG:4326) → prepare → approve → score writes all files |
+| Matrix | refuses while any enabled site is unapproved; with ≥ 3 Earth sites reports every cell and the A-vs-B Spearman rank stability |
 
 The tests found one real bug while being written: Horn's slope does not use the centre cell, so a nodata pixel surrounded by valid ones got a slope value. Fixed: a nodata centre is now always nodata.
 
-## 2. Validation sites (Phase 2, planned)
+## 2. Validation sites (Phase 2, in progress)
 
 Known Mars analogs are scored against Gale with exactly the same settings, so the Ustyurt score can be read on the same scale:
 

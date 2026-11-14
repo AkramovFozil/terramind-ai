@@ -60,6 +60,12 @@ python -m terramind approve --site ustyurt
 python -m terramind score --target gale --candidate ustyurt
 ```
 
+To compare every Mars reference with every Earth site at once (all enabled sites must be approved first):
+
+```bash
+python -m terramind matrix          # writes results/matrix/matrix.json, matrix.csv, matrix.png
+```
+
 `score` refuses to run until both sites are approved, and refuses again if a site’s center, window, grid, CRS or dataset changes after approval. Results go to `results/gale__ustyurt/`: `metrics.json`, `comparison.csv`, `histograms.png`.
 
 A missing input or key stops with exact instructions and a non-zero exit code. The pipeline never writes made-up output.
@@ -77,6 +83,7 @@ A missing input or key stops with exact instructions and a non-zero exit code. T
 | Site | Body | Role | Center |
 |---|---|---|---|
 | Gale Crater floor (Aeolis Palus) | Mars | Reference | 4.49° S, 137.42° E |
+| Meridiani Planum (Opportunity landing site) | Mars | Reference | 1.95° S, 354.47° E |
 | Ustyurt Plateau | Earth | Candidate | 43.65° N, 56.18° E |
 | Kyzylkum Desert | Earth | Candidate | to be chosen |
 | Yungay, Atacama | Earth | Validation (known Mars analog) | 24.08° S, 69.92° W |
@@ -119,7 +126,9 @@ docs/         PHASE1.md (technical task), methodology, data sources, validation
 | Concept, slides, UI design, technical spec | Done (before the hackathon) |
 | Config + Mars/Earth CRS module | Done (before the hackathon) |
 | DEM pipeline, metrics, similarity, review gate, CLI, tests | Done (hackathon, day 1) — run on real data next |
-| Validation sites (Yungay, MDRS), Kyzylkum | Planned (hackathon) |
+| First real result: Gale vs Ustyurt = 0.12 | Done (hackathon, day 1) |
+| Matrix: Gale + Meridiani × Ustyurt, Yungay, MDRS | In progress (hackathon, day 1) |
+| Kyzylkum | Planned (hackathon) |
 | Web app + AI explanation | Planned (hackathon) |
 
 ## Work done before the hackathon

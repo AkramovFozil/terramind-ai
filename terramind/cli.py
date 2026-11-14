@@ -74,6 +74,24 @@ def cmd_score(settings, args) -> int:
     return 0
 
 
+def cmd_matrix(settings, args) -> int:
+    from terramind.pipeline import matrix
+
+    res = matrix(settings)
+    refs = [r["id"] for r in res["references"]]
+    ws = next(iter(settings.weights))
+    print(f"{'earth site':<12} {'role':<11} " + " ".join(f"{r:>10}" for r in refs) + f"   (overall, weights {ws})")
+    for s in res["earth_sites"]:
+        row = [res["cells"][f"{r}__{s['id']}"]["overall"][ws] for r in refs]
+        print(f"{s['id']:<12} {s['role']:<11} " + " ".join(f"{v:>10.3f}" for v in row))
+    for ref, st in res["rank_stability"].items():
+        rho = st["spearman_rho"]
+        print(f"rank stability A vs B for {ref}: " + ("n/a (" + st["reason"] + ")" if rho is None else f"Spearman rho = {rho:.2f}"))
+    for path in res["files"]:
+        print(f"  wrote {path}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="terramind", description="TerraMind AI — Earth/Mars DEM terrain matching (Phase 1)")
     p.add_argument("--root", help="project root (default: $TERRAMIND_ROOT or current directory)")
@@ -89,6 +107,7 @@ def build_parser() -> argparse.ArgumentParser:
     ss.add_argument("--target", required=True)
     ss.add_argument("--candidate", required=True)
     ss.set_defaults(func=cmd_score)
+    sub.add_parser("matrix", help="score every approved Mars reference against every approved Earth site").set_defaults(func=cmd_matrix)
     return p
 
 

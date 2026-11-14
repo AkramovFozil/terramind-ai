@@ -24,6 +24,20 @@ sites:
       - data/raw/mars/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif
       - data/raw/mars/gale_mola_463m.tif
 
+  meridiani:
+    name: Meridiani Planum (Opportunity landing site)
+    body: mars
+    role: reference
+    lat: -1.9462    # Eagle crater, where Opportunity landed (1.9462 S, 354.4734 E)
+    lon: -5.5266    # = 354.4734 E in the -180..180 convention of the MOLA mosaic
+    enabled: true
+    dataset: MOLA_MEGDR_463m
+    note: >-
+      Added 2026-11-14 as a second Mars reference: one of the flattest landing
+      plains on Mars. Declared before any Meridiani score was computed.
+    dem_paths:
+      - data/raw/mars/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif
+
   ustyurt:
     name: Ustyurt Plateau
     body: earth
@@ -53,7 +67,7 @@ sites:
     role: validation
     lat: -24.0848
     lon: -69.9151
-    enabled: false   # Phase 2
+    enabled: true    # Phase 2: known Mars analog, scored with the same settings
     dataset: SRTMGL1
 
   mdrs:
@@ -62,5 +76,5 @@ sites:
     role: validation
     lat: 38.4062
     lon: -110.7894
-    enabled: false   # Phase 2
+    enabled: true    # Phase 2: known Mars analog, scored with the same settings
     dataset: SRTMGL1
