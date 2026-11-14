@@ -52,12 +52,12 @@ def test_full_flow(project, synthetic_mola, synthetic_srtm):
     for r in m["per_metric"].values():
         assert 0.0 <= r["score"] <= 1.0
     assert m["rank_stability"]["spearman_rho"] is None
-    assert any("MOLA" in c for c in m["caveats"]) and any("PROVISIONAL" in c for c in m["caveats"])
+    assert any("MOLA" in c for c in m["caveats"])
     assert res["overall"]["A"]["score"] == m["overall"]["A"]["score"]
 
     # Moving the center after approval blocks scoring.
     cfg = project / "config" / "sites.yaml"
-    cfg.write_text(cfg.read_text(encoding="utf-8").replace("lon: 56.1280", "lon: 56.2000"), encoding="utf-8")
+    cfg.write_text(cfg.read_text(encoding="utf-8").replace("lon: 56.1800", "lon: 56.2000"), encoding="utf-8")
     s2 = load_settings(project)
     assert site_state(s2, s2.site("ustyurt")) == "stale"
     with pytest.raises(GateError, match="changed after approval"):

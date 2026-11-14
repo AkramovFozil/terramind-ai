@@ -29,11 +29,12 @@ sites:
     body: earth
     role: candidate
     lat: 43.6510
-    lon: 56.1280
-    provisional: true
+    lon: 56.1800
+    provisional: false
     note: >-
-      PROVISIONAL. The team picks the final center after the quick-look.
-      56 deg E is close to the Kazakhstan border.
+      Center fixed on 2026-11-14 after the quick-look and before any score:
+      moved from 56.128 to 56.180 deg E so the whole 25 km window lies in
+      Uzbekistan (the border follows the 56th meridian here).
     enabled: true
     dataset: SRTMGL1
 

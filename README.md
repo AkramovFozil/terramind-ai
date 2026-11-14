@@ -77,7 +77,7 @@ A missing input or key stops with exact instructions and a non-zero exit code. T
 | Site | Body | Role | Center |
 |---|---|---|---|
 | Gale Crater floor (Aeolis Palus) | Mars | Reference | 4.49° S, 137.42° E |
-| Ustyurt Plateau | Earth | Candidate | ≈ 43.65° N, 56.13° E (provisional) |
+| Ustyurt Plateau | Earth | Candidate | 43.65° N, 56.18° E |
 | Kyzylkum Desert | Earth | Candidate | to be chosen |
 | Yungay, Atacama | Earth | Validation (known Mars analog) | 24.08° S, 69.92° W |
 | MDRS, Utah | Earth | Validation (known Mars analog) | 38.41° N, 110.79° W |
