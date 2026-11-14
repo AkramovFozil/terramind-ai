@@ -109,6 +109,8 @@ function Panel({id,title,subtitle,data,layer,range,exaggeration,align,unit,floor
   </div>;
 }
 
+function flatShare(d:TerrainData,deg:number){let n=0,k=0;for(let i=0;i<d.elevations.length;i++){const s=d.layers.slope_deg[i];if(!d.roi_mask[i]||s===null||!Number.isFinite(s))continue;n++;if(s<deg)k++}return n?100*k/n:null}
+const pct=(v:number|null)=>v===null?'—':`${v.toFixed(0)} %`;
 const fmt=(v:number|null|undefined,d=1)=>v===null||v===undefined||!Number.isFinite(v)?'—':v.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});
 const signed=(v:number|null,d=1)=>v===null||!Number.isFinite(v)?'—':`${v>0?'+':''}${fmt(v,d)}`;
 
@@ -153,15 +155,15 @@ export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='
       <Panel id="earth" title="YER" subtitle={`${rightSub??`${fmt(earth.center.lat,3)}°, ${fmt(earth.center.lon,3)}° · Copernicus 463 m`}${score===undefined?'':` · ${fmt(score)}/100`}`} data={earth} layer={layer} range={range} exaggeration={exaggeration} align={earthAlign} unit={unit} floor={floor} probe={probe} sample={es} onProbe={onProbe} rigs={rigs} driver={driver}/>
     </div>
     <div className="compare-readout">
-      <table><thead><tr><th>{probe?'Kursor ostidagi nuqta':'Butun doira (25 km)'}</th><th>{probe?'Balandlik':'Balandlik oralig‘i'}</th><th>{probe?'Relyef':'Relyef amplitudasi'}</th><th>Qiyalik{probe?'':' · mediana / p95'}</th><th>Notekislik{probe?'':' · mediana / p95'}</th></tr></thead>
+      <table><thead><tr><th>{probe?'Kursor ostidagi nuqta':'Butun doira (25 km)'}</th><th>{probe?'Balandlik':'Balandlik oralig‘i'}</th><th>{probe?'Relyef':'Relyef amplitudasi'}</th><th>Qiyalik{probe?'':' · mediana / p95'}</th><th>Notekislik{probe?'':' · mediana / p95'}</th>{!probe&&<th title="Qiyalik < 5° — tekis, < 15° — ehtiyot, ≥ 15° — xavfli. O‘lchangan balandlikdan oddiy qo‘nish skriningi, missiya bahosi emas.">Qo‘nish uchun tekis · &lt;5° / &lt;15°</th>}</tr></thead>
         <tbody>{probe?<>
           <tr className="row-mars"><td><i/>{leftName}</td><td>{fmt(ms?.elevation,0)} m</td><td>{signed(ms?.relief??null,0)} m</td><td>{fmt(ms?.slope,2)}°</td><td>{fmt(ms?.roughness,2)} m</td></tr>
           <tr className="row-earth"><td><i/>Yer</td><td>{fmt(es?.elevation,0)} m</td><td>{signed(es?.relief??null,0)} m</td><td>{fmt(es?.slope,2)}°</td><td>{fmt(es?.roughness,2)} m</td></tr>
           <tr className="row-diff"><td>Farq (Yer − {leftName})</td><td>—</td><td>{signed(diff(ms?.relief,es?.relief),0)} m</td><td>{signed(diff(ms?.slope,es?.slope),2)}°</td><td>{signed(diff(ms?.roughness,es?.roughness),2)} m</td></tr>
         </>:<>
-          <tr className="row-mars"><td><i/>{leftName}</td><td>{fmt(mars.roi_min_elevation_m,0)} … {fmt(mars.roi_max_elevation_m,0)} m</td><td>{fmt(mars.roi_max_elevation_m-mars.roi_min_elevation_m,0)} m</td><td>{fmt(stat(mars,'slope_deg').median,2)}° / {fmt(stat(mars,'slope_deg').p95,2)}°</td><td>{fmt(stat(mars,'roughness_m').median,2)} / {fmt(stat(mars,'roughness_m').p95,2)} m</td></tr>
-          <tr className="row-earth"><td><i/>Yer</td><td>{fmt(earth.roi_min_elevation_m,0)} … {fmt(earth.roi_max_elevation_m,0)} m</td><td>{fmt(earth.roi_max_elevation_m-earth.roi_min_elevation_m,0)} m</td><td>{fmt(stat(earth,'slope_deg').median,2)}° / {fmt(stat(earth,'slope_deg').p95,2)}°</td><td>{fmt(stat(earth,'roughness_m').median,2)} / {fmt(stat(earth,'roughness_m').p95,2)} m</td></tr>
-          <tr className="row-diff"><td>Farq (Yer − {leftName})</td><td>—</td><td>{signed((earth.roi_max_elevation_m-earth.roi_min_elevation_m)-(mars.roi_max_elevation_m-mars.roi_min_elevation_m),0)} m</td><td>{signed(diff(stat(mars,'slope_deg').median,stat(earth,'slope_deg').median),2)}°</td><td>{signed(diff(stat(mars,'roughness_m').median,stat(earth,'roughness_m').median),2)} m</td></tr>
+          <tr className="row-mars"><td><i/>{leftName}</td><td>{fmt(mars.roi_min_elevation_m,0)} … {fmt(mars.roi_max_elevation_m,0)} m</td><td>{fmt(mars.roi_max_elevation_m-mars.roi_min_elevation_m,0)} m</td><td>{fmt(stat(mars,'slope_deg').median,2)}° / {fmt(stat(mars,'slope_deg').p95,2)}°</td><td>{fmt(stat(mars,'roughness_m').median,2)} / {fmt(stat(mars,'roughness_m').p95,2)} m</td><td className="landing-cell"><span className="lbar" style={{width:`${flatShare(mars,5)??0}%`}}/>{pct(flatShare(mars,5))} / {pct(flatShare(mars,15))}</td></tr>
+          <tr className="row-earth"><td><i/>Yer</td><td>{fmt(earth.roi_min_elevation_m,0)} … {fmt(earth.roi_max_elevation_m,0)} m</td><td>{fmt(earth.roi_max_elevation_m-earth.roi_min_elevation_m,0)} m</td><td>{fmt(stat(earth,'slope_deg').median,2)}° / {fmt(stat(earth,'slope_deg').p95,2)}°</td><td>{fmt(stat(earth,'roughness_m').median,2)} / {fmt(stat(earth,'roughness_m').p95,2)} m</td><td className="landing-cell"><span className="lbar" style={{width:`${flatShare(earth,5)??0}%`}}/>{pct(flatShare(earth,5))} / {pct(flatShare(earth,15))}</td></tr>
+          <tr className="row-diff"><td>Farq (Yer − {leftName})</td><td>—</td><td>{signed((earth.roi_max_elevation_m-earth.roi_min_elevation_m)-(mars.roi_max_elevation_m-mars.roi_min_elevation_m),0)} m</td><td>{signed(diff(stat(mars,'slope_deg').median,stat(earth,'slope_deg').median),2)}°</td><td>{signed(diff(stat(mars,'roughness_m').median,stat(earth,'roughness_m').median),2)} m</td><td>{signed(diff(flatShare(mars,5),flatShare(earth,5)),0)} / {signed(diff(flatShare(mars,15),flatShare(earth,15)),0)} %</td></tr>
         </>}</tbody></table>
       <p>{probe?'Oq belgi ikkala sayyorada bir xil (moslashtirilgan) nuqtani ko‘rsatadi.':'Sichqonchani relyef ustiga olib boring: ikkala sayyoradagi mos nuqtaning aniq qiymatlari chiqadi.'} Kameralar sinxron. Qiymatlar 463 m katakdagi haqiqiy DEM o‘lchovlari; ranglar tanlangan qatlamni ko‘rsatadi.</p>
     </div>

@@ -41,6 +41,13 @@
 .ai-refrow dl div{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:7px 9px;border-radius:6px;background:#1d261d;border:1px solid var(--line)}
 .ai-refrow dt{font-size:11px;color:var(--soft)}
 .ai-refrow dd{margin:0;font:500 14px 'Space Grotesk',sans-serif;white-space:nowrap}
+.ai-landing{display:grid;gap:5px;padding:12px 13px 0}
+.ai-landing.compact{padding:10px 0 0}
+.ai-landing span{font:8.5px var(--mono);letter-spacing:1.2px;text-transform:uppercase;color:var(--quiet)}
+.ai-landing i{display:flex;height:7px;border-radius:4px;overflow:hidden;background:#0006}
+.ai-landing b{display:block;height:100%}
+.ai-landing .flat{background:#9fdc7c}.ai-landing .caution{background:#e7b779}.ai-landing .hazard{background:#d9644a}
+.ai-landing em{font:normal 10.5px var(--mono);color:var(--soft)}.ai-landing em strong{color:#9fdc7c;font-size:12px}
 .ai-fine{display:block;padding:10px 13px 12px;font-size:10.5px;line-height:1.45;color:var(--quiet)}
 .ai-leads{list-style:none;margin:0;padding:0}
 .ai-leads li{border-bottom:1px solid var(--line)}

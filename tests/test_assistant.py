@@ -84,6 +84,8 @@ def test_routes(moon_project, monkeypatch):
     assert ref["map"]["kind"] == "polar"
     assert client.get(ref["map"]["image"]).status_code == 200
     assert client.get("/api/tm/terrain/site/mouton").status_code == 200
+    assert 0 <= ref["landing"]["flat_lt5"] <= 1 and ref["landing"]["lt15"] >= ref["landing"]["flat_lt5"]
+    assert "landing" in client.get("/api/tm/terrain/site/mouton").json()
     img = client.get("/api/tm/window-image/mouton.png")
     assert img.status_code == 200 and img.content[:4] == b"\x89PNG"
     assert client.get("/api/tm/window-image/nope.png").status_code == 404

@@ -33,7 +33,9 @@ You run TerraMind's analog search. Use the tools; never name places from your ow
   closest available region (if they say "Earth" or "anywhere", use uzbekistan_west and say which regions exist).
 - Then answer in 3-6 short sentences in the user's language: what the reference terrain is like, the best leads with
   coordinates and scores, which metric drives the match, and that leads need human review on satellite imagery.
-  Mention a known analog site's rank when the region contains one."""
+  Mention a known analog site's rank when the region contains one.
+- "landing" in a reference = share of the 25 km window with slope < 5 deg (flat), < 15 deg, and >= 15 deg (hazard):
+  a simple landing screen from measured elevation, not a mission rating. Quote it when asked about landing or base sites."""
 
 
 # --------------------------------------------------------------------------- settings / helpers
@@ -78,8 +80,33 @@ def reference_info(settings: Settings, site_id: str) -> dict:
         "dataset": (roi.get("input") or {}).get("name"),
         "window_km": settings.window_km, "grid_m": settings.grid_m,
         "metric_summary": roi.get("metric_summary"),
+        "landing": site_landing(settings, site.id),
         "note": site.note,
     }
+
+
+LANDING_FLAT_DEG = 5.0    # NASA landing-site screening commonly treats < 5 deg as flat, 5-15 as caution, > 15 as hazard
+LANDING_CAUTION_DEG = 15.0
+
+
+def landing_safety(slope: np.ndarray) -> dict:
+    """Share of the window that is flat / caution / hazard by slope. A simple, explainable landing screen, not a mission rating."""
+    v = np.asarray(slope, dtype="float64")
+    v = v[np.isfinite(v)]
+    if v.size == 0:
+        return {"flat_lt5": None, "lt15": None, "hazard_gt15": None, "cells": 0}
+    return {"flat_lt5": round(float((v < LANDING_FLAT_DEG).mean()), 3), "lt15": round(float((v < LANDING_CAUTION_DEG).mean()), 3),
+            "hazard_gt15": round(float((v >= LANDING_CAUTION_DEG).mean()), 3), "cells": int(v.size),
+            "thresholds_deg": [LANDING_FLAT_DEG, LANDING_CAUTION_DEG]}
+
+
+def site_landing(settings: Settings, site_id: str) -> dict | None:
+    from terramind.raster import read_band
+
+    path = settings.processed_dir(site_id) / "dem_463m.tif"
+    if not path.exists():
+        return None
+    return landing_safety(tmetrics.slope_deg(np.asarray(read_band(path), dtype="float64"), settings.grid_m))
 
 
 def terrain_payload(dem: np.ndarray, res_m: float, body: str, lat: float, lon: float, provenance: dict) -> dict:
@@ -104,6 +131,7 @@ def terrain_payload(dem: np.ndarray, res_m: float, body: str, lat: float, lon: f
         "median_elevation_m": float(np.nanmedian(dem)),
         "layers": {"slope_deg": flat(slope, 3), "roughness_m": flat(rough, 3)},
         "layer_stats": stats, "provenance": provenance, "measured_dem": True,
+        "landing": landing_safety(np.where(inside, slope, np.nan)),
     }
 
 
@@ -426,6 +454,13 @@ def make_router() -> APIRouter:
     def terrain_point(region: str = Query(min_length=1), lat: float = Query(ge=-60, le=60), lon: float = Query(ge=-180, le=180)):
         try:
             return point_terrain(_settings(), region, lat, lon)
+        except TerraMindError as exc:
+            raise _http(exc, 404) from None
+
+    @router.get("/landing/point")
+    def landing_point(region: str = Query(min_length=1), lat: float = Query(ge=-60, le=60), lon: float = Query(ge=-180, le=180)):
+        try:
+            return point_terrain(_settings(), region, lat, lon)["landing"]
         except TerraMindError as exc:
             raise _http(exc, 404) from None
 
