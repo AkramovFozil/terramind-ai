@@ -1,0 +1,17 @@
+# secrets
+.env
+
+# input data (large, downloaded locally)
+data/raw/
+
+# generated outputs
+data/processed/
+results/
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
