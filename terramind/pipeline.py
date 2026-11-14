@@ -63,9 +63,12 @@ def prepare(settings: Settings, site_id: str, api_key: str | None = None, sessio
     out = settings.processed_dir(site.id)
     dem30 = grid30 = None
 
-    if site.body == "mars":
+    if site.body in ("mars", "moon"):
         src = resolve_dem_path(settings, site)
-        dem, src_info = read_to_grid(src, grid, "mars", Resampling.bilinear, f"{site.id} MOLA", settings.root)
+        # MOLA (463 m) is resampled bilinearly; finer DEMs such as LOLA 80 m are averaged, like SRTM.
+        native = DATASETS[site.dataset]["native_resolution_m"]
+        resampling = Resampling.average if native < settings.grid_m / 2 else Resampling.bilinear
+        dem, src_info = read_to_grid(src, grid, site.body, resampling, f"{site.id} {site.dataset}", settings.root)
     else:
         src = srtm_cache_path(settings, site)
         downloaded = not src.exists()
@@ -232,10 +235,10 @@ def ranking_stability(scores_a: dict, scores_b: dict) -> float:
 
 def matrix_sites(settings: Settings) -> tuple[list[Site], list[Site]]:
     """The declared matrix: every enabled Mars reference x every enabled Earth site."""
-    refs = [s for s in settings.sites.values() if s.enabled and s.body == "mars" and s.role == "reference"]
+    refs = [s for s in settings.sites.values() if s.enabled and s.body in ("mars", "moon") and s.role == "reference"]
     earth = [s for s in settings.sites.values() if s.enabled and s.body == "earth"]
     if not refs or not earth:
-        raise ConfigError("The matrix needs at least one enabled Mars reference and one enabled Earth site.")
+        raise ConfigError("The matrix needs at least one enabled Mars or Moon reference and one enabled Earth site.")
     return refs, earth
 
 

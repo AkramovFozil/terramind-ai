@@ -48,6 +48,7 @@ pytest                               # all tests run on synthetic data, no downl
   cp .env.example .env               # then edit .env: OPENTOPO_API_KEY=...
   ```
   `prepare` downloads SRTM for the window once and caches it in `data/raw/earth/`.
+- Moon: download `LDEM_80S_80MPP_ADJ.TIF` (~181 MB) from https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF into `data/raw/moon/`.
 - Mars: the Gale window needs MOLA. Either clip only the Gale region straight from USGS (a few tens of MB read, not 2 GB):
   ```bash
   python scripts/clip_mola_gale.py   # writes data/raw/mars/gale_mola_463m.tif
@@ -109,6 +110,7 @@ A missing input or key stops with exact instructions and a non-zero exit code. T
 |---|---|---|---|
 | Gale Crater floor (Aeolis Palus) | Mars | Reference | 4.49° S, 137.42° E |
 | Meridiani Planum (Opportunity landing site) | Mars | Reference | 1.95° S, 354.47° E |
+| Mons Mouton Plateau (Artemis III candidate region, IM-2 landing point) | Moon | Reference | 84.79° S, 29.20° E |
 | Ustyurt Plateau | Earth | Candidate | 43.65° N, 56.18° E |
 | Kyzylkum Desert | Earth | Candidate | to be chosen |
 | Yungay, Atacama | Earth | Validation (known Mars analog) | 24.08° S, 69.92° W |
@@ -120,7 +122,7 @@ A missing input or key stops with exact instructions and a non-zero exit code. T
 |---|---|---|---|
 | SRTM GL1 v003 | Earth | 1″ ≈ 30 m | NASA LP DAAC, via the OpenTopography Global DEM API ([DOI 10.5067/MEaSUREs/SRTM/SRTMGL1.003](https://doi.org/10.5067/MEaSUREs/SRTM/SRTMGL1.003)) |
 | MGS MOLA DEM 463 m | Mars | 463 m | [USGS Astrogeology](https://astrogeology.usgs.gov/search/map/mars_mgs_mola_dem_463m) |
-| LOLA DEM (south pole) | Moon | 80 m | NASA PDS — next phase |
+| LRO LOLA south pole DEM | Moon | 80 m | [NASA GSFC PGDA](https://pgda.gsfc.nasa.gov/products/90) (Barker et al. 2023, [DOI 10.60903/gsfcpgda-lola-spole](https://doi.org/10.60903/gsfcpgda-lola-spole)) |
 
 ## Repository layout
 

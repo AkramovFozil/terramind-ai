@@ -27,7 +27,7 @@ def test_matrix_refuses_until_all_enabled_sites_are_approved(project, synthetic_
         approve(s, site)
     with pytest.raises(GateError) as e:
         matrix(s)
-    for missing in ("meridiani", "yungay", "mdrs"):
+    for missing in ("meridiani", "mouton", "yungay", "mdrs"):
         assert missing in str(e.value)
 
 
@@ -35,7 +35,7 @@ def test_matrix_reports_every_cell_and_rank_stability(project, synthetic_mola, s
     # Keep Gale as the only Mars reference; add two more Earth sites on the same synthetic DEM
     # so that rank stability (>= 3 Earth sites) is computed.
     def edit(sites):
-        for sid in ("meridiani", "yungay", "mdrs"):
+        for sid in ("meridiani", "mouton", "yungay", "mdrs"):
             sites[sid]["enabled"] = False
         for sid, dlat in (("ust_b", 0.05), ("ust_c", -0.05)):
             sites[sid] = dict(sites["ustyurt"], name=f"Test {sid}", role="validation", lat=sites["ustyurt"]["lat"] + dlat)

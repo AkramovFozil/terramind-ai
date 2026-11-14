@@ -16,6 +16,19 @@ Every input the pipeline reads is listed here. Each prepared window also records
 | How we use it | read locally; never downloaded automatically. `scripts/clip_mola_gale.py` can cut only the Gale window from the URL |
 | Citation | Smith, D. E., et al. (2001), JGR Planets 106(E10). |
 
+## Moon — LRO LOLA south pole DEM (80 m)
+
+| Field | Value |
+|---|---|
+| Name | LOLA Digital Elevation Model, 80° S to pole, 80 m/pixel (`LDEM_80S_80MPP_ADJ.TIF`) |
+| Provider | NASA Goddard Planetary Geodesy Data Archive (LRO Lunar Orbiter Laser Altimeter) |
+| Page | https://pgda.gsfc.nasa.gov/products/90 |
+| File | https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF (~181 MB, cloud-optimised GeoTIFF) |
+| CRS | south polar stereographic, metres, MOON_ME frame (JPL DE421); Moon sphere R = 1,737,400 m for our local projection |
+| Values | surface height in metres |
+| How we use it | read locally; averaged from 80 m to the 463 m matching grid |
+| Citation | Barker, M. K., et al. (2023), *Planet. Sci. J.* 4, 183, doi:10.3847/PSJ/acf3e1. Data: doi:10.60903/gsfcpgda-lola-spole |
+
 ## Earth — SRTM GL1 v003
 
 | Field | Value |
@@ -31,11 +44,9 @@ Every input the pipeline reads is listed here. Each prepared window also records
 | Terms | OpenTopography API keys are for non-commercial use. TerraMind is a non-commercial student project. |
 | Citation | Farr, T. G., et al. (2007), Reviews of Geophysics 45, RG2004. OpenTopography: https://doi.org/10.5069/G9445JDF |
 
-## Next phase
+## Earth — SRTM GL3 (Analog Finder)
 
-| Dataset | Body | Use |
-|---|---|---|
-| LRO LOLA DEM, south pole (80 m) | Moon | Moon base analog sites (Phase 3) |
+The region search uses NASA SRTM GL3 (3 arc-second, ~90 m) from the same OpenTopography API (`demtype=SRTMGL3`), downloaded in tiles of up to 3° × 3° and cached in `data/raw/earth/regions/<region>/`, then averaged to the 463 m grid.
 
 ## Not used for scoring
 

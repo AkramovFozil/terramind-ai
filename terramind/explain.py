@@ -21,12 +21,13 @@ DEFAULT_MAX_TOKENS = 700  # answers are a few sentences; also keeps the credit r
 REPO_URL = "https://github.com/AkramovFozil/terramind-ai"
 
 SYSTEM_PROMPT = """You are the explainer of TerraMind AI, a NASA Space Apps 2026 project that compares the
-terrain of Earth sites with reference sites on Mars using NASA elevation data (MOLA for Mars, SRTM for Earth).
+terrain of Earth sites with reference sites on Mars and the Moon using NASA elevation data
+(MOLA for Mars, LOLA for the Moon, SRTM for Earth), to find Earth analogs for future landing sites and bases.
 
 You receive the project's computed results as JSON in CONTEXT. Rules:
 1. Use only numbers that appear in CONTEXT. Never compute, estimate, round differently or invent a score.
    If a number the user asks for is not in CONTEXT, say that TerraMind has not computed it.
-2. Say which pair (Mars reference vs Earth site) and which weight set (A or B) a score belongs to.
+2. Say which pair (Mars or Moon reference vs Earth site) and which weight set (A or B) a score belongs to.
 3. Scores compare distributions of slope, local relief and roughness (TRI) on a 463 m grid in 25 x 25 km
    windows, from 0 (no overlap) to 1 (identical). They say nothing about geology, minerals, climate,
    water or habitability. If asked about those, say TerraMind does not measure them.
@@ -148,8 +149,8 @@ def _redact(text: str, secret: str | None) -> str:
 
 
 SEARCH_PROMPT = """
-Searching: if the user asks to FIND or SEARCH places on Earth that resemble a Mars site, call the
-analog_search tool with a Mars reference and a region from its lists. Never name candidate places from your
+Searching: if the user asks to FIND or SEARCH places on Earth that resemble a Mars or Moon site, call the
+analog_search tool with a reference and a region from its lists. Never name candidate places from your
 own knowledge: only the tool's results count. Present the top leads with coordinates and scores, say they are
 leads for human review (check satellite imagery first), and if a known analog site is in the region, report its
 rank as a check of the method. Only the listed regions can be searched; if the user asks for the whole Earth or
@@ -179,11 +180,11 @@ def _post(http, headers, payload, timeout, api_key) -> dict:
 
 
 def search_tool_spec(settings: Settings) -> dict | None:
-    """OpenAI-style tool schema for analog_search, limited to approved Mars references and configured regions."""
+    """OpenAI-style tool schema for analog_search, limited to approved Mars/Moon references and configured regions."""
     from terramind.gate import site_state
     from terramind.regions import load_regions
 
-    refs = [s for s in settings.sites.values() if s.body == "mars" and s.role == "reference"
+    refs = [s for s in settings.sites.values() if s.body in ("mars", "moon") and s.role == "reference"
             and s.lat is not None and site_state(settings, s) == "approved"]
     try:
         regions = load_regions(settings)
@@ -197,7 +198,7 @@ def search_tool_spec(settings: Settings) -> dict | None:
             "name": "analog_search",
             "description": (
                 "Scan a region of Earth with NASA SRTM elevation data for 25 x 25 km windows whose terrain "
-                "(slope, relief, roughness) resembles an approved Mars reference site. Returns ranked leads "
+                "(slope, relief, roughness) resembles an approved Mars or Moon reference site. Returns ranked leads "
                 "computed by TerraMind's algorithm. References: "
                 + "; ".join(f"{s.id} = {s.name}" for s in refs)
                 + ". Regions: " + "; ".join(f"{r.id} = {r.name}" for r in regions.values()) + "."

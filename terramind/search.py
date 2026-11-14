@@ -121,8 +121,8 @@ def known_sites_in(settings: Settings, region: Region) -> list:
 def search(settings: Settings, reference_id: str, region_id: str, api_key: str | None = None,
            session=None, top_n: int = 10, min_sep_km: float | None = None, progress=None) -> dict:
     ref = settings.site(reference_id)
-    if ref.body != "mars":
-        raise ConfigError(f"'{reference_id}' is not a Mars site; the search reference must be a Mars reference.")
+    if ref.body not in ("mars", "moon"):
+        raise ConfigError(f"'{reference_id}' is not a Mars or Moon site; the search reference must be one.")
     ref_roi = require_approved(settings, reference_id)
     region = get_region(settings, region_id)
     ref_hists = _reference_hists(settings, reference_id)

@@ -123,7 +123,7 @@ def histograms(path: Path, comparison: dict, target, candidate) -> Path:
                 ax.fill_between(centers, p, step="mid", color=color, alpha=0.35, lw=0)
                 ax.step(centers, p, where="mid", color=color, lw=1.2, label=f"{site.name} (Earth)")
             else:
-                ax.step(centers, p, where="mid", color=color, lw=2.0, label=f"{site.name} (Mars)")
+                ax.step(centers, p, where="mid", color=color, lw=2.0, label=f"{site.name} ({site.body.title()})")
         name, unit = METRIC_LABELS.get(metric, (metric, ""))
         ax.set_xlim(lo, hi)
         ax.set_ylim(bottom=0)
