@@ -72,6 +72,14 @@ To compare every Mars reference with every Earth site at once (all enabled sites
 python -m terramind matrix          # writes results/matrix/matrix.json, matrix.csv, matrix.png
 ```
 
+**3. Ask the AI to explain the results** (needs `OPENROUTER_API_KEY` in `.env`):
+
+```bash
+python -m terramind ask "Why does Ustyurt match Meridiani but not Gale?"
+```
+
+The model gets only TerraMind's computed results as context. Every number in its answer is checked against those results; anything that is not there is printed as a warning. The AI explains, it never scores.
+
 `score` refuses to run until both sites are approved, and refuses again if a site’s center, window, grid, CRS or dataset changes after approval. Results go to `results/gale__ustyurt/`: `metrics.json`, `comparison.csv`, `histograms.png`.
 
 A missing input or key stops with exact instructions and a non-zero exit code. The pipeline never writes made-up output.
@@ -117,7 +125,8 @@ terramind/    Python package
   quicklook.py  hillshade quick-look, histogram figure
   gate.py       review gate: params hash, approve, refuse
   pipeline.py   prepare and score
-  cli.py        status / prepare / approve / score
+  explain.py    AI explanation via OpenRouter, with a number-grounding check
+  cli.py        status / prepare / approve / score / matrix / ask
   sources/      MOLA (local file) and OpenTopography (download + cache)
 scripts/      clip_mola_gale.py
 tests/        pytest, synthetic DEMs only
@@ -136,7 +145,8 @@ docs/         PHASE1.md (technical task), methodology, data sources, validation
 | Matrix: Gale + Meridiani × Ustyurt, Yungay, MDRS | Done (hackathon, day 1) — [results](docs/results.md) |
 | Negative control (flat non-analog plain) | Planned (hackathon) |
 | Kyzylkum | Planned (hackathon) |
-| Web app + AI explanation | Planned (hackathon) |
+| AI explanation (`ask`, OpenRouter, grounding check) | Done (hackathon, day 1) |
+| Web platform | Planned (hackathon) |
 
 ## Work done before the hackathon
 
@@ -144,7 +154,7 @@ Space Apps allows preparation; we list it openly. Before 14 November 2026 the te
 
 ## Secrets
 
-The OpenTopography API key lives only in a local `.env` file (see `.env.example`), which is git-ignored. Never commit it. The pipeline never prints it, and removes it from any error message.
+The OpenTopography and OpenRouter API keys live only in a local `.env` file (see `.env.example`), which is git-ignored. Never commit it. The pipeline never prints it, and removes it from any error message.
 
 ## License
 

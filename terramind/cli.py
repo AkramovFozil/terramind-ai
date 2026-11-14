@@ -92,6 +92,23 @@ def cmd_matrix(settings, args) -> int:
     return 0
 
 
+def cmd_ask(settings, args) -> int:
+    from terramind.explain import ask
+
+    res = ask(
+        settings,
+        " ".join(args.question),
+        api_key=os.environ.get("OPENROUTER_API_KEY"),
+        model=args.model or os.environ.get("OPENROUTER_MODEL") or None,
+    )
+    print(res["answer"])
+    print(f"\n[model: {res['model']} · context: {res['context_source']}]")
+    if res["unverified_numbers"]:
+        print("WARNING: these numbers are not in TerraMind's results — do not trust them: "
+              + ", ".join(res["unverified_numbers"]))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="terramind", description="TerraMind AI — Earth/Mars DEM terrain matching (Phase 1)")
     p.add_argument("--root", help="project root (default: $TERRAMIND_ROOT or current directory)")
@@ -108,6 +125,10 @@ def build_parser() -> argparse.ArgumentParser:
     ss.add_argument("--candidate", required=True)
     ss.set_defaults(func=cmd_score)
     sub.add_parser("matrix", help="score every approved Mars reference against every approved Earth site").set_defaults(func=cmd_matrix)
+    sq = sub.add_parser("ask", help="ask the AI to explain TerraMind's results (OpenRouter)")
+    sq.add_argument("question", nargs="+")
+    sq.add_argument("--model", help="OpenRouter model id (default: $OPENROUTER_MODEL or openai/gpt-4o)")
+    sq.set_defaults(func=cmd_ask)
     return p
 
 
