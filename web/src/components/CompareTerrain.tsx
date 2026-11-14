@@ -145,7 +145,7 @@ export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='
       <div className="compare-layers" role="group" aria-label="Ko‘rsatiladigan qatlam">{LAYERS.map(l=><button key={l.id} aria-pressed={layer===l.id} title={l.hint} onClick={()=>setLayer(l.id)}>{l.name}</button>)}</div>
       <div className="compare-legend" title={info.hint}><span>{fmt(range[0],layer==='relief'?0:1)}{info.unit}</span><i style={{background:gradient}}/><span>{fmt(range[1],layer==='relief'?0:1)}{info.unit}</span><em>ikkala sayyora uchun bitta shkala</em></div>
       <label className="compare-option"><input type="checkbox" checked={aligned} onChange={e=>setAligned(e.target.checked)} disabled={!match}/>Yerni {leftName}ga moslab burish{match?` (${match.rotation_deg}°${match.mirrored?', ko‘zgu':''})`:''}</label>
-      <label className="compare-option">Balandlik <select value={exaggeration} onChange={e=>setExaggeration(Number(e.target.value))}><option value={1}>1× haqiqiy</option><option value={3}>3×</option><option value={5}>5×</option><option value={10}>10×</option></select></label>
+      <label className="compare-option">Balandlik masshtabi <select value={exaggeration} onChange={e=>setExaggeration(Number(e.target.value))}><option value={1}>1× — haqiqiy nisbat</option><option value={3}>3× — bo‘rttirilgan</option><option value={5}>5× — bo‘rttirilgan</option><option value={10}>10× — bo‘rttirilgan</option></select></label>
       <button className="compare-view-button" onClick={topView}>Tepadan</button><button className="compare-view-button" onClick={resetView}>3D</button>
     </div>
     <div className="compare-panels">
