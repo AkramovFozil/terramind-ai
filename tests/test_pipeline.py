@@ -27,7 +27,8 @@ def test_full_flow(project, synthetic_mola, synthetic_srtm):
     assert gale["input"]["longitude_domain"] == "regional"
 
     with rasterio.open(project / gale["files"]["dem"]) as src:
-        assert abs(src.width - 108) <= 1 and src.res[0] == pytest.approx(463)
+        expected = round(s.window_km * 1000 / s.grid_m)
+        assert abs(src.width - expected) <= 1 and src.res[0] == pytest.approx(463)
         assert "3396190" in src.crs.to_string()
         dem = src.read(1)
         assert -6000 < np.nanmedian(dem) < -3000  # MOLA-like values survived reprojection

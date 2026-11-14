@@ -1,10 +1,10 @@
 # Methodology (Phase 1)
 
-TerraMind compares the **shape of terrain** in two 50 × 50 km windows, one on Mars and one on Earth. It does not compare geology, minerals, climate or habitability.
+TerraMind compares the **shape of terrain** in two 25 × 25 km windows, one on Mars and one on Earth. It does not compare geology, minerals, climate or habitability.
 
 ## 1. Windows and projections
 
-- Each site has a fixed center in `config/sites.yaml`. The window is a 50 × 50 km square centered exactly on it.
+- Each site has a fixed center in `config/sites.yaml`. The window is a 25 × 25 km square centered exactly on it (`window_km` in `config/sites.yaml`).
 - Each window gets its own **local azimuthal equidistant (AEQD)** projection centered on the site, so distances and pixel sizes are true metres near the center.
   - Mars: `+proj=aeqd +lat_0=<lat> +lon_0=<lon> +R=3396190 +units=m` — the IAU Mars sphere used by MOLA.
   - Earth: `+proj=aeqd +lat_0=<lat> +lon_0=<lon> +datum=WGS84 +units=m`.
@@ -12,7 +12,7 @@ TerraMind compares the **shape of terrain** in two 50 × 50 km windows, one on M
 
 ## 2. Common grid
 
-- Both planets are resampled to the same **463 m** grid (108 × 108 pixels), close to MOLA's native resolution.
+- Both planets are resampled to the same **463 m** grid (54 × 54 = 2,916 pixels), close to MOLA's native resolution.
   - Earth SRTM (~30 m) → 463 m with **average** resampling (each 463 m cell is the mean of the few hundred SRTM cells inside it).
   - Mars MOLA (463 m) → local grid with **bilinear** resampling.
 - Earth also keeps a **30 m** version of the window (`dem_30m.tif`, bilinear) for the Phase 2 hazard map. It is not used for the score.
@@ -66,3 +66,9 @@ The center is frozen **before** any score is seen, so a site cannot be moved aro
 - Swain, M. J., & Ballard, D. H. (1991). Color indexing. *International Journal of Computer Vision*, 7(1), 11–32. (histogram intersection)
 - Smith, D. E., et al. (2001). Mars Orbiter Laser Altimeter: Experiment summary after the first year of global mapping of Mars. *JGR Planets*, 106(E10), 23689–23722.
 - Farr, T. G., et al. (2007). The Shuttle Radar Topography Mission. *Reviews of Geophysics*, 45, RG2004.
+
+## Decision log
+
+| Date | Decision | Why |
+|---|---|---|
+| 2026-11-14 | Window reduced from **50 km to 25 km** for every site, before any score was computed. | The first real Gale quick-look (MOLA) showed that a 50 km window around −4.49°, 137.42° is not only crater floor: it includes the northern crater wall and the foot of Aeolis Mons (Mount Sharp), up to ~4.7 km above the window median. 26 % of pixels were more than 1 km above the median and 22 % had slopes above 10°. In the 25 km window at the same center these drop to 0.2 % and 3 %, so the reference really is Aeolis Palus. 25 km is close to the smallest window that still passes the 2,500-pixel minimum at 463 m (2,916 pixels). |

@@ -39,8 +39,8 @@ def _now() -> str:
 
 def map_links(lat: float, lon: float) -> dict:
     return {
-        "satellite": f"https://www.google.com/maps/@{lat:.5f},{lon:.5f},11z/data=!3m1!1e3",
-        "openstreetmap": f"https://www.openstreetmap.org/#map=11/{lat:.5f}/{lon:.5f}",
+        "satellite": f"https://www.google.com/maps/@{lat:.5f},{lon:.5f},12z/data=!3m1!1e3",
+        "openstreetmap": f"https://www.openstreetmap.org/#map=12/{lat:.5f}/{lon:.5f}",
     }
 
 

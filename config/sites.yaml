@@ -4,8 +4,8 @@
 # Change a center only before `approve`. Changing it afterwards blocks `score`
 # until the site is prepared and approved again.
 
-window_km: 50            # ROI = 50 x 50 km square, centered on the site
-grid_m: 463              # common matching grid for Mars and Earth (~108 x 108 px)
+window_km: 25            # ROI = 25 x 25 km square, centered on the site (was 50 km; see docs/methodology.md, decision log)
+grid_m: 463              # common matching grid for Mars and Earth (~54 x 54 px = 2,916 px)
 hazard_grid_m: 30        # Earth only: native SRTM grid kept for the Phase 2 hazard map
 min_valid_pixels: 2500   # a ROI with fewer valid pixels fails
 max_nodata_fraction: 0.10

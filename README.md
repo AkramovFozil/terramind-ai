@@ -11,7 +11,7 @@ Student team from OXUS University, Tashkent. Not affiliated with or endorsed by 
 
 ## How it works
 
-1. Cut a 50 × 50 km window around each site.
+1. Cut a 25 × 25 km window around each site (small enough that the Gale window is crater floor only — see the decision log in [docs/methodology.md](docs/methodology.md)).
 2. Project each window into its own local azimuthal equidistant (AEQD) projection: Mars on a sphere of radius 3,396,190 m, Earth on WGS84.
 3. Resample both planets to one common 463 m grid (Earth SRTM by averaging, Mars MOLA bilinear).
 4. Derive three terrain metrics: local relief (elevation minus window median), slope (Horn, degrees) and roughness (TRI, metres).
@@ -97,7 +97,7 @@ config/       sites.yaml (sites, windows) · metrics.yaml (bins, weights)
 terramind/    Python package
   config.py     settings, sites, dataset registry, error types
   crs.py        Mars sphere / WGS84 local AEQD projections
-  roi.py        50 km window and 463 m / 30 m grids
+  roi.py        square window and 463 m / 30 m grids
   raster.py     reproject a DEM onto a grid, quality check, GeoTIFF I/O
   terrain.py    slope (Horn), local relief, TRI
   similarity.py fixed-bin histograms, intersection, weighted score, Spearman
