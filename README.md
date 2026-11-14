@@ -22,6 +22,31 @@ Student team from OXUS University, Tashkent. Not affiliated with or endorsed by 
 The score compares terrain shape only. It is **not** a habitability or mission-safety assessment.
 Details: [docs/methodology.md](docs/methodology.md) · [docs/data-sources.md](docs/data-sources.md) · [docs/validation.md](docs/validation.md)
 
+## Global search (web explorer)
+
+The web explorer does not pick from a fixed list of Earth sites. For any Mars point it searches all of Earth's land:
+
+1. **Mars** — the 25 km radius circle is read from USGS MOLA on the 463 m grid.
+2. **Global screening** — a one-time index of every land window on Earth (56° S – 80° N, centres every ~28 km), built from NOAA ETOPO 2022 60″, stores slope / relief / TRI histograms and a rotation- and mirror-invariant *shape descriptor* (ring × sector means, Fourier harmonics; harmonic 0 keeps its sign, so a crater and a dome are opposites). The 12 best places at least 150 km apart go on.
+3. **Precise match** — for each place a 90 × 90 km Copernicus GLO-30 area is measured at 463 m and the 25 km circle is slid ±20 km to the centre where the Mars landform overlays best. That circle is then scored in full.
+
+**Score** = 50 % *shape* (best Pearson correlation of the relief maps, Mars rotated every 15° and mirrored) + 50 % *distribution*, where distribution = 70 % histogram overlap of slope, relief and TRI + 30 % overlap of *detrended roughness*. Shape is what separates a crater floor from a volcano; histograms alone cannot. Detrended roughness (RMS residual from the best-fit 3 × 3 plane) is scored separately because TRI rises on any slope, even a smooth one.
+Open water (sea, lakes: exactly flat in Copernicus) over 10 % of the circle is rejected.
+
+Copernicus is read from each tile's internal 8× overview (~240 m), which is the exact block mean of the 30 m data, so averaging it into the 463 m grid loses nothing and a search takes seconds. Tiles are cached on disk after the first download.
+
+The **Mars ↔ Earth compare view** shows both measured surfaces side by side (Mars left, Earth right) on one colour scale and one vertical scale, with relief / slope / roughness layers, synced cameras, Earth turned into the matched orientation, and a cursor that reads the values of the same matched point on both planets.
+
+```bash
+pip install -e ".[dev,api]"
+python -m terramind build-index      # once: downloads ETOPO (~480 MB) and writes the index (~100 MB)
+cd web && npm ci && npm run build && cd ..   # once: builds the site into web/dist
+python -m uvicorn terramind.api:app --host 127.0.0.1 --port 8000   # serves web/dist and /api
+python scripts/search_demo.py 18.38 77.58    # optional: one search from the command line (run with PYTHONPATH=.)
+```
+
+Large data goes to `$TERRAMIND_DATA_DIR` (on the dev PC, `D:\CodexWork\terramind-ai\data`).
+
 ## Quick start (from a fresh clone)
 
 Python 3.10+ with GDAL-backed `rasterio` (on Windows, `pip install rasterio` ships wheels with GDAL included).

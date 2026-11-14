@@ -1,4 +1,4 @@
-"""Command line: status, prepare, approve, score."""
+"""Command line: status, prepare, approve, score, build-index."""
 
 from __future__ import annotations
 
@@ -74,6 +74,19 @@ def cmd_score(settings, args) -> int:
     return 0
 
 
+def cmd_build_index(settings, args) -> int:
+    from terramind.global_index import build_index, index_dir
+    from terramind.sources.etopo import download_etopo
+
+    if (index_dir() / "meta.json").exists() and not args.force:
+        print(f"Global Earth index already exists at {index_dir()} (use --force to rebuild)")
+        return 0
+    path = download_etopo(progress=print)
+    print(f"ETOPO grid: {path}")
+    build_index(progress=print)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="terramind", description="TerraMind AI — Earth/Mars DEM terrain matching (Phase 1)")
     p.add_argument("--root", help="project root (default: $TERRAMIND_ROOT or current directory)")
@@ -89,6 +102,9 @@ def build_parser() -> argparse.ArgumentParser:
     ss.add_argument("--target", required=True)
     ss.add_argument("--candidate", required=True)
     ss.set_defaults(func=cmd_score)
+    sb = sub.add_parser("build-index", help="download ETOPO once and build the global Earth search index")
+    sb.add_argument("--force", action="store_true", help="rebuild even if the index exists")
+    sb.set_defaults(func=cmd_build_index)
     return p
 
 

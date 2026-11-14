@@ -1,0 +1,31 @@
+.science-map{position:relative;isolation:isolate;width:100%;height:100%;min-height:350px;overflow:hidden;border:1px solid rgba(235,229,211,.15);border-radius:14px;background:#262625;color:#f2eee4}
+.science-map-canvas{position:absolute;inset:0;z-index:0;background:#292521;font-family:inherit}
+.science-map-earth .science-map-canvas{background:#c5d1ce}
+.science-map .leaflet-tile-pane{filter:saturate(.72) brightness(.86)}
+.science-map-earth .leaflet-tile-pane{filter:saturate(.28) brightness(.78)}
+.science-map .leaflet-control-attribution{max-width:100%;padding:3px 7px;background:rgba(21,24,22,.88);color:#ccc8bc;font-size:9px;line-height:1.4}
+.science-map .leaflet-control-attribution a{color:#eee7d3;text-decoration:none}
+.science-map .leaflet-control-attribution a:hover{text-decoration:underline}
+.science-map .leaflet-control-zoom{margin-right:13px;margin-bottom:39px;border:1px solid #ffffff2b;border-radius:6px;overflow:hidden;box-shadow:0 3px 15px #0002}
+.science-map .leaflet-control-zoom a{width:31px;height:31px;line-height:29px;background:#232722ed;color:#edeade;border-color:#ffffff20;font-family:inherit;font-weight:400;font-size:22px}
+.science-map .leaflet-control-zoom a:hover{background:#353c32;color:#fff}
+.science-map .leaflet-control-zoom a.leaflet-disabled{background:#232722ed;color:#85887f}
+.science-map .leaflet-control-scale{margin:0 0 42px 14px}
+.science-map .leaflet-control-scale-line{color:#f6f0df;background:#1c201b9e;border-color:#ddd9c9;border-width:0 1px 1px;padding:2px 6px;font:9px 'IBM Plex Mono',monospace;text-shadow:none}
+.science-map-caption{position:absolute;z-index:500;left:14px;top:14px;display:flex;align-items:center;gap:8px;max-width:calc(100% - 65px);padding:9px 11px;border:1px solid #ffffff21;border-radius:5px;background:#20231dda;font:8px/1.5 'IBM Plex Mono',monospace;letter-spacing:1.3px;pointer-events:none}
+.science-map-caption-dot{width:5px;height:5px;flex:none;border-radius:50%;background:#e1b58b}
+.science-map-earth .science-map-caption-dot{background:#bad8c8}
+.science-map-recenter{position:absolute;z-index:500;right:14px;top:14px;width:32px;height:32px;border:1px solid #ffffff2b;border-radius:5px;background:#20231ded;color:#eae6d8;font-size:24px;line-height:27px;padding:0}
+.science-map-recenter:hover{background:#353c32}
+.science-map-coordinate-readout{position:absolute;z-index:500;bottom:23px;left:14px;pointer-events:none;font:8px/1.5 'IBM Plex Mono',monospace;letter-spacing:.25px;padding:5px 7px;color:#eae8dc;background:#20231dba;border-radius:3px}
+.science-map-coordinate-readout span{color:#aeafa0}
+.science-map-status{position:absolute;z-index:550;left:50%;top:50%;transform:translate(-50%,-50%);max-width:80%;padding:11px 15px;border:1px solid #e9e2d42b;border-radius:6px;background:#22261bea;color:#eee8d7;font-size:11px;line-height:1.7;text-align:center;pointer-events:none}
+.science-map-status.error{color:#f0d1ab}
+.science-map-select-hint{position:absolute;z-index:500;left:50%;bottom:56px;transform:translateX(-50%);white-space:nowrap;border-radius:4px;padding:6px 9px;background:#20231dc9;color:#e9e5d7;font-size:9px;pointer-events:none}
+.science-map-pin-holder{background:transparent;border:0}
+.science-map-pin{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid #e3e7d1;border-radius:50%;background:#252e23;color:#f0f1df;box-shadow:0 2px 9px #0005;font:11px 'IBM Plex Mono',monospace;transition:background .15s,transform .15s}
+.science-map-pin.is-selected{background:#dce8ad;color:#243120;border:2px solid #fffde9;transform:scale(1.12);box-shadow:0 0 0 5px #c9df9b30,0 2px 9px #0005}
+.science-map .science-map-tooltip{padding:7px 10px;background:#242a21;color:#f0ecde;border:1px solid #dfe7c850;border-radius:5px;box-shadow:0 2px 9px #0003;font-size:10px}
+.science-map .science-map-tooltip:before{border-top-color:#dfe7c850}
+.science-map .leaflet-marker-icon:focus-visible,.science-map .leaflet-control a:focus-visible{outline:2px solid #eff9c3;outline-offset:3px}
+@media(max-width:600px){.science-map{min-height:310px;border-radius:10px}.science-map-caption{font-size:7px;letter-spacing:.8px;padding:8px;left:10px;top:10px}.science-map-recenter{right:10px;top:10px}.science-map-coordinate-readout{left:10px;font-size:7px}.science-map-select-hint{font-size:8px;bottom:63px}}

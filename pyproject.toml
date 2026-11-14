@@ -20,7 +20,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.4"]
+dev = ["pytest>=7.4,<9", "httpx>=0.27"]
+api = ["fastapi>=0.115", "uvicorn>=0.30"]
 
 [project.scripts]
 terramind = "terramind.cli:main"
