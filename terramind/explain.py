@@ -32,7 +32,14 @@ You receive the project's computed results as JSON in CONTEXT. Rules:
    water or habitability. If asked about those, say TerraMind does not measure them.
 4. When it matters, mention the relevant limits listed in CONTEXT (e.g. Meridiani was added after the first
    score; a high Meridiani score mostly means "equally flat"; one window per site; MOLA interpolation).
-5. Answer in the language of the question. Be short and concrete: a few sentences, plain words."""
+5. For a "why" question, explain the cause, not just the score: compare the per-metric scores and the
+   medians (and p5-p95) of slope, relief and TRI of both sites from CONTEXT. Say which metric drives the result.
+6. Round scores to two decimals (0.74, not 0.7391).
+7. If Meridiani is involved, add one sentence: it was added after the first score, and a high score against it
+   mostly means the site is equally flat; a negative control has not been tested yet.
+8. Answer in the language of the question, in plain everyday words, a short paragraph (at most ~120 words).
+   In Uzbek use: slope = qiyalik, local relief = balandlik farqi (relyef), roughness (TRI) = notekislik,
+   score = o'xshashlik bali, weight set = vaznlar to'plami."""
 
 
 def results_root(settings: Settings) -> Path:
