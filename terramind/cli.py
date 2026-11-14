@@ -154,6 +154,13 @@ def cmd_search(settings, args) -> int:
     return 0
 
 
+def cmd_serve(settings, args) -> int:
+    from terramind.server import serve
+
+    serve(settings, host=args.host, port=args.port)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="terramind", description="TerraMind AI — Earth/Mars DEM terrain matching (Phase 1)")
     p.add_argument("--root", help="project root (default: $TERRAMIND_ROOT or current directory)")
@@ -176,6 +183,10 @@ def build_parser() -> argparse.ArgumentParser:
     sr.add_argument("--region", required=True, help="region id from config/regions.yaml")
     sr.add_argument("--top", type=int, default=10)
     sr.set_defaults(func=cmd_search)
+    sv = sub.add_parser("serve", help="start the web platform (http://127.0.0.1:8000)")
+    sv.add_argument("--host", default="127.0.0.1")
+    sv.add_argument("--port", type=int, default=8000)
+    sv.set_defaults(func=cmd_serve)
     sq = sub.add_parser("ask", help="ask the AI to explain TerraMind's results (OpenRouter)")
     sq.add_argument("question", nargs="+")
     sq.add_argument("--model", help="OpenRouter model id (default: $OPENROUTER_MODEL or openai/gpt-4o)")

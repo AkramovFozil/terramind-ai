@@ -83,7 +83,15 @@ python -m terramind search --reference meridiani --region uzbekistan_west
 
 Scans every 25 km window in the region (NASA SRTM GL3 via OpenTopography) with the same method and writes `results/search/<reference>__<region>/`: `map.png` (similarity map with numbered leads), `windows.csv` (every window), `search.json` (top leads with satellite links, known-site rank, limits). Leads are for human review, not confirmed analogs.
 
-**4. Ask the AI** (needs `OPENROUTER_API_KEY` in `.env`) (needs `OPENROUTER_API_KEY` in `.env`):
+**4. Web platform** — interactive map of the Analog Finder (satellite imagery to review leads, accept/reject), the matrix, every site's quick-look and approval, and Ask AI:
+
+```bash
+python -m terramind serve           # then open http://127.0.0.1:8000
+```
+
+Runs locally with the Python standard library; API keys stay on the server. Lead reviews are saved to `results/search/<search>/reviews.json`.
+
+**5. Ask the AI** (needs `OPENROUTER_API_KEY` in `.env`) (needs `OPENROUTER_API_KEY` in `.env`):
 
 ```bash
 python -m terramind ask "Why does Ustyurt match Meridiani but not Gale?"
@@ -141,7 +149,9 @@ terramind/    Python package
   regions.py    search regions, SRTM GL3 tile download, VRT mosaic
   search.py     Analog Finder: scan, score, rank, known-site check
   explain.py    AI explanation via OpenRouter: search tool + number-grounding check
-  cli.py        status / prepare / approve / score / matrix / regions / search / ask
+  server.py     local web platform (standard library HTTP server + JSON API)
+  web/          single-page app: Analog Finder map, matrix, sites, Ask AI, method
+  cli.py        status / prepare / approve / score / matrix / regions / search / serve / ask
   sources/      MOLA (local file) and OpenTopography (download + cache)
 scripts/      clip_mola_gale.py
 tests/        pytest, synthetic DEMs only
@@ -162,7 +172,9 @@ docs/         PHASE1.md (technical task), methodology, data sources, validation
 | Kyzylkum | Planned (hackathon) |
 | AI explanation (`ask`, OpenRouter, grounding check) | Done (hackathon, day 1) |
 | Analog Finder (`search`) + AI search tool | Done (hackathon, day 1) — first real runs next |
-| Web platform | Planned (hackathon) |
+| Moon reference (Mons Mouton Plateau, LOLA) | Done (hackathon, day 1) |
+| Web platform (`serve`) | Done (hackathon, day 1) |
+| Demo video / slides, Space Apps project page | Planned (hackathon, day 2) |
 
 ## Work done before the hackathon
 
