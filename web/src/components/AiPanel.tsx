@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
-import {Bot,Layers,LoaderCircle,MapPin,Orbit,Search,Send,ShieldCheck,Sparkles,TriangleAlert,X} from 'lucide-react';
+import {Bot,FileText,Layers,LoaderCircle,MapPin,Orbit,Search,Send,ShieldCheck,Sparkles,TriangleAlert,X} from 'lucide-react';
 import './ai-panel.css';
 
 /* AI yordamchi — Abubakr'ning Explorer sahifasi ichidagi panel.
@@ -86,7 +86,7 @@ export default function AiPanel({open,onClose,reference,search,selected,onRefere
           <button className="ai-lead" onClick={()=>onSelect(i)}><span className="ai-rank">{i+1}</span><span className="ai-coord">{coord(l)}</span><strong>{nf(l.overall_A)}</strong></button>
           {i===selected&&<div className="ai-leaddetail"><div className="ai-bars">{(['slope_deg','relief_m','tri_m'] as const).map(k=><label key={k}><span>{k==='slope_deg'?'Qiyalik':k==='relief_m'?'Relyef':'Notekislik'}</span><i><b style={{width:`${(l[k]??0)*100}%`}}/></i><em>{nf(l[k])}</em></label>)}</div>
             <LandingBar l={leadLanding[`${search.region.id}|${l.lat},${l.lon}`]} compact/>
-            <div className="ai-actions"><button className="primary" onClick={()=>onCompare(l)}><Layers size={13}/>3D da solishtirish</button><a href={l.satellite} target="_blank" rel="noreferrer"><MapPin size={13}/>Sun’iy yo‘ldosh</a></div></div>}
+            <div className="ai-actions"><button className="primary" onClick={()=>onCompare(l)}><Layers size={13}/>3D da solishtirish</button><a href={l.satellite} target="_blank" rel="noreferrer"><MapPin size={13}/>Sun’iy yo‘ldosh</a><a href={`/api/tm/report/${search.reference.id}__${search.region.id}?lat=${l.lat}&lon=${l.lon}`} target="_blank" rel="noreferrer" title="Bir sahifali missiya hisoboti: ikkala oyna, raqamlar, manbalar, tekshiruv holati. Brauzerdan PDF qilib saqlash mumkin."><FileText size={13}/>Hisobot</a></div></div>}
         </li>)}</ol>
         {search.known_sites.map(k=><p key={k.site} className="ai-known">Ma’lum analog — {k.name}: {k.of} oynadan {k.rank}-o‘rin (top {k.top_percent}%), ball {nf(k.score)}.</p>)}
         <small className="ai-fine">Joylar Yer xaritasida ham belgilandi. Bu — nomzodlar; analog deb atash uchun inson sun’iy yo‘ldosh suratida tekshiradi.</small></section>}

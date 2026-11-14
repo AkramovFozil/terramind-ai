@@ -464,6 +464,17 @@ def make_router() -> APIRouter:
         except TerraMindError as exc:
             raise _http(exc, 404) from None
 
+    @router.get("/report/{search_id}")
+    def report(search_id: str, lat: float = Query(ge=-60, le=60), lon: float = Query(ge=-180, le=180)):
+        from fastapi.responses import HTMLResponse
+
+        from terramind.report import mission_brief
+
+        try:
+            return HTMLResponse(mission_brief(_settings(), search_id, lat, lon))
+        except TerraMindError as exc:
+            raise _http(exc, 404) from None
+
     @router.post("/chat")
     def chat_route(req: ChatRequest):
         s = _settings()

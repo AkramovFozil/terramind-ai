@@ -86,6 +86,12 @@ def test_routes(moon_project, monkeypatch):
     assert client.get("/api/tm/terrain/site/mouton").status_code == 200
     assert 0 <= ref["landing"]["flat_lt5"] <= 1 and ref["landing"]["lt15"] >= ref["landing"]["flat_lt5"]
     assert "landing" in client.get("/api/tm/terrain/site/mouton").json()
+    search(load_settings(moon_project), "mouton", "testland", api_key="key", session=FakeOpenTopo())
+    sid = "mouton__testland"
+    top = client.get(f"/api/tm/search/{sid}").json()["top"][0]
+    rep = client.get(f"/api/tm/report/{sid}", params={"lat": top["lat"], "lon": top["lon"]})
+    assert rep.status_code == 200 and "Mission brief" in rep.text and "DOI" in rep.text
+    assert client.get(f"/api/tm/report/{sid}", params={"lat": 0, "lon": 0}).status_code == 404
     img = client.get("/api/tm/window-image/mouton.png")
     assert img.status_code == 200 and img.content[:4] == b"\x89PNG"
     assert client.get("/api/tm/window-image/nope.png").status_code == 404
