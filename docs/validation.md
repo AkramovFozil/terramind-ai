@@ -27,7 +27,7 @@ How we check that TerraMind measures something real, and what we have checked so
 
 The tests found one real bug while being written: Horn's slope does not use the centre cell, so a nodata pixel surrounded by valid ones got a slope value. Fixed: a nodata centre is now always nodata.
 
-## 2. Validation sites (Phase 2, in progress)
+## 2. Validation sites (Phase 2, first run done — see [results.md](results.md))
 
 Known Mars analogs are scored against Gale with exactly the same settings, so the Ustyurt score can be read on the same scale:
 

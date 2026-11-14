@@ -22,6 +22,12 @@ Student team from OXUS University, Tashkent. Not affiliated with or endorsed by 
 The score compares terrain shape only. It is **not** a habitability or mission-safety assessment.
 Details: [docs/methodology.md](docs/methodology.md) · [docs/data-sources.md](docs/data-sources.md) · [docs/validation.md](docs/validation.md)
 
+## First results (14 Nov 2026)
+
+![Similarity matrix](docs/results/matrix.png)
+
+Known Mars analogs Yungay and MDRS score 0.77 and 0.66 against the Gale crater floor, so the method recognises them. Ustyurt does not resemble Gale (0.12) but scores 0.74 against Meridiani Planum, the flat plain where Opportunity landed. Full table, per-metric scores and limits: **[docs/results.md](docs/results.md)**.
+
 ## Quick start (from a fresh clone)
 
 Python 3.10+ with GDAL-backed `rasterio` (on Windows, `pip install rasterio` ships wheels with GDAL included).
@@ -127,7 +133,8 @@ docs/         PHASE1.md (technical task), methodology, data sources, validation
 | Config + Mars/Earth CRS module | Done (before the hackathon) |
 | DEM pipeline, metrics, similarity, review gate, CLI, tests | Done (hackathon, day 1) — run on real data next |
 | First real result: Gale vs Ustyurt = 0.12 | Done (hackathon, day 1) |
-| Matrix: Gale + Meridiani × Ustyurt, Yungay, MDRS | In progress (hackathon, day 1) |
+| Matrix: Gale + Meridiani × Ustyurt, Yungay, MDRS | Done (hackathon, day 1) — [results](docs/results.md) |
+| Negative control (flat non-analog plain) | Planned (hackathon) |
 | Kyzylkum | Planned (hackathon) |
 | Web app + AI explanation | Planned (hackathon) |
 
