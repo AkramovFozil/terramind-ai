@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/sandstone_cracks/sandstone_cracks_rough_2k.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\terrain\\rock-roughness.jpg",
+    "bytes": 1569280,
+    "sha256": "45347870225f1f1b223968e8fc0ac2125374c0b1e0907cda7ad93b1c5dda39f4"
+  },
+  {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/sandstone_cracks/sandstone_cracks_diff_2k.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\terrain\\rock-color.jpg",
+    "bytes": 2870078,
+    "sha256": "6d3f99604c85a818277150db784ac66e67a4d91ddc255dabf61b3e956564090d"
+  },
+  {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/coast_sand_01/coast_sand_01_nor_gl_2k.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\terrain\\sand-normal.jpg",
+    "bytes": 4630126,
+    "sha256": "e5b1430c751727c8ab0332adfd8960c48342936146de258aa9b7736630cdbb62"
+  },
+  {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/coast_sand_01/coast_sand_01_rough_2k.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\terrain\\sand-roughness.jpg",
+    "bytes": 1389332,
+    "sha256": "93caeb7332d1593702d97a59040ce178a27c9d705b30c55413e0d2507e09a762"
+  },
+  {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/sandstone_cracks/sandstone_cracks_nor_gl_2k.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\terrain\\rock-normal.jpg",
+    "bytes": 4545235,
+    "sha256": "904e852268e1fb1bd5c0d035382f6a0e64c98dceea784fe957b1983d98b0231a"
+  },
+  {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/coast_sand_01/coast_sand_01_diff_2k.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\terrain\\sand-color.jpg",
+    "bytes": 3552676,
+    "sha256": "e1c37ea8b4282fda612b0584d864ca4eef2da28c2fa9f3930cad9209414eb979"
+  },
+  {
+    "url": "https://www.solarsystemscope.com/textures/download/2k_earth_nightmap.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\planets\\earth-night.jpg",
+    "bytes": 255287,
+    "sha256": "c16fd1bc096ab91a5c5265c6ff9847c43f489f2e2ee790ccdbcbd03251cf3a5a"
+  },
+  {
+    "url": "https://www.solarsystemscope.com/textures/download/8k_earth_daymap.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\planets\\earth-day.jpg",
+    "bytes": 4565076,
+    "sha256": "88ab060b6e7d241cfc590c69f528fab2b3247b738d40124cb590999a6fe44abc"
+  },
+  {
+    "url": "https://www.solarsystemscope.com/textures/download/2k_earth_clouds.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\work\\asset-research\\earth-clouds-source.jpg",
+    "bytes": 965676,
+    "sha256": "fffd7f68d41b37274822150e54a6ef605af1d3ec35624d9f628c3b896bfa42ed"
+  },
+  {
+    "url": "https://www.solarsystemscope.com/textures/download/8k_mars.jpg",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\public\\textures\\planets\\mars-color.jpg",
+    "bytes": 8396951,
+    "sha256": "4cc52149924abc6ae507d63032f994e1d42a55cb82c09e002d1a567ff66c23ee"
+  },
+  {
+    "url": "https://www.solarsystemscope.com/textures/download/2k_earth_specular_map.tif",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\work\\asset-research\\earth-specular-source.tif",
+    "bytes": 338524,
+    "sha256": "6b90ecfce248591a1ecc9a3e49acca1a7059b6828877e718302ed9a6b4471bd7"
+  },
+  {
+    "url": "https://www.solarsystemscope.com/textures/download/2k_earth_normal_map.tif",
+    "file": "C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\work\\asset-research\\earth-normal-source.tif",
+    "bytes": 521376,
+    "sha256": "f518ce2646ca935dbc17e316041de4fea7a5da0ec441e4eb22e711eabd843ba2"
+  }
+]
