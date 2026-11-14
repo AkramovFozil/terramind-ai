@@ -225,12 +225,19 @@ def search_map(path: Path, region, vrt_path, rows: list, top: list, known: list,
         patches.append(Rectangle((r["lon"] - dlon / 2, r["lat"] - dlat / 2), dlon, dlat))
         values.append(r[key])
     if patches:
-        pc = PatchCollection(patches, cmap=cmap, alpha=0.78, linewidths=0)
-        pc.set_array(np.array(values))
-        pc.set_clim(0, 1)
+        vals = np.array(values)
+        # Stretch the color range to this map's scores (rounded to 0.05) so differences inside a region are
+        # visible; the colorbar states the range, and search.json keeps the raw numbers.
+        lo = max(0.0, np.floor(np.percentile(vals, 2) * 20) / 20)
+        hi = min(1.0, np.ceil(vals.max() * 20) / 20)
+        if hi - lo < 0.1:
+            lo, hi = max(0.0, hi - 0.1), min(1.0, max(hi, lo + 0.1))
+        pc = PatchCollection(patches, cmap=cmap, alpha=0.8, linewidths=0)
+        pc.set_array(vals)
+        pc.set_clim(lo, hi)
         ax.add_collection(pc)
         cb = fig.colorbar(pc, ax=ax, fraction=0.035, pad=0.02)
-        cb.set_label(f"similarity to {ref_name}", fontsize=8, color=INK)
+        cb.set_label(f"similarity to {ref_name} (color range {lo:.2f}–{hi:.2f})", fontsize=8, color=INK)
         cb.ax.tick_params(labelsize=7, colors=MUTED)
         cb.outline.set_visible(False)
 
