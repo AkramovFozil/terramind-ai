@@ -1,0 +1,11 @@
+# Fixed histogram bin edges — identical for every site, so scores are comparable.
+# Values below `min` and at/above `max` go to separate underflow/overflow bins.
+bins:
+  slope_deg: {min: 0, max: 45, step: 0.5}
+  relief_m: {min: -1000, max: 1000, step: 10}
+  tri_m: {min: 0, max: 200, step: 1}
+
+# Weight sets for the overall score (weighted mean; weights are normalised by their sum).
+weights:
+  A: {slope_deg: 0.40, relief_m: 0.35, tri_m: 0.25}
+  B: {slope_deg: 1, relief_m: 1, tri_m: 1}

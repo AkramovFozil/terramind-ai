@@ -1,0 +1,65 @@
+# TerraMind AI — sites and analysis windows.
+#
+# RULE: a site's center is frozen BEFORE any similarity score is seen.
+# Change a center only before `approve`. Changing it afterwards blocks `score`
+# until the site is prepared and approved again.
+
+window_km: 50            # ROI = 50 x 50 km square, centered on the site
+grid_m: 463              # common matching grid for Mars and Earth (~108 x 108 px)
+hazard_grid_m: 30        # Earth only: native SRTM grid kept for the Phase 2 hazard map
+min_valid_pixels: 2500   # a ROI with fewer valid pixels fails
+max_nodata_fraction: 0.10
+
+sites:
+  gale:
+    name: Gale Crater (Aeolis Palus)
+    body: mars
+    role: reference
+    lat: -4.49
+    lon: 137.42
+    enabled: true
+    dataset: MOLA_MEGDR_463m
+    # First existing file wins: the global mosaic, or a local clip around Gale.
+    dem_paths:
+      - data/raw/mars/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif
+      - data/raw/mars/gale_mola_463m.tif
+
+  ustyurt:
+    name: Ustyurt Plateau
+    body: earth
+    role: candidate
+    lat: 43.6510
+    lon: 56.1280
+    provisional: true
+    note: >-
+      PROVISIONAL. The team picks the final center after the quick-look.
+      56 deg E is close to the Kazakhstan border.
+    enabled: true
+    dataset: SRTMGL1
+
+  kyzylkum:
+    name: Kyzylkum Desert
+    body: earth
+    role: candidate
+    lat: null   # TBD by the team: inside the desert, away from rivers, fields, towns and mines
+    lon: null
+    enabled: false
+    dataset: SRTMGL1
+
+  yungay:
+    name: Yungay, Atacama (Chile)
+    body: earth
+    role: validation
+    lat: -24.0848
+    lon: -69.9151
+    enabled: false   # Phase 2
+    dataset: SRTMGL1
+
+  mdrs:
+    name: MDRS, Utah (USA)
+    body: earth
+    role: validation
+    lat: 38.4062
+    lon: -110.7894
+    enabled: false   # Phase 2
+    dataset: SRTMGL1
