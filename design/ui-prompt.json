@@ -1,0 +1,333 @@
+{
+  "instruction": {
+    "role": "You are a senior product designer for scientific and geospatial software.",
+    "task": "Design the complete UI for TerraMind AI, described in this JSON. Produce high-fidelity screens for every page in `pages`, using the design system in `design_system` and the components in `components`. Follow every rule in `content_rules` and `accessibility`.",
+    "output": "One frame per page at 1440 px wide (desktop) plus a 390 px wide (phone) version of the Explorer and Report pages. Show the key states listed in `states`.",
+    "priority": "Scientific honesty and clarity over decoration. A judge must understand in 10 seconds what is compared, how the score is made, and what it does NOT mean."
+  },
+
+  "project": {
+    "name": "TerraMind AI",
+    "tagline": "Understand Earth. Explore Beyond.",
+    "one_liner": "A web tool that finds places on Earth whose terrain resembles a chosen site on Mars, using NASA open elevation data, and explains every score.",
+    "context": "Built for NASA Space Apps Challenge 2026, challenge 'Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars'. Independent student project from OXUS University, Tashkent. Not affiliated with or endorsed by NASA.",
+    "core_principle": "The algorithm calculates. The AI only explains. The AI never invents or changes a score.",
+    "audience": [
+      "Hackathon judges (scientists and engineers) who will look for rigour",
+      "Planetary science researchers and students",
+      "University leadership seeing a demo"
+    ],
+    "main_user_flow": [
+      "1. Pick a Mars reference site (Gale Crater floor).",
+      "2. See Earth candidate sites ranked by terrain similarity.",
+      "3. Open one candidate to compare it side by side with Mars.",
+      "4. Read the AI explanation, the method and the limitations.",
+      "5. Export the report."
+    ]
+  },
+
+  "domain_glossary": {
+    "explanation": "Plain-language meaning of every technical term the UI shows. Use these exact words in tooltips.",
+    "DEM": "Digital Elevation Model: a map where every pixel stores the height of the ground.",
+    "ROI": "Region of interest: the 50 x 50 km square window analysed around each site.",
+    "common_grid": "Both planets are resampled to the same 463 m pixel size so they can be compared fairly.",
+    "local_relief": "Height of each pixel minus the median height of its window, in metres. Used because Earth and Mars have different 'sea levels'.",
+    "slope": "How steep the ground is, in degrees (Horn method).",
+    "roughness_TRI": "Terrain Ruggedness Index: average height difference between a pixel and its 8 neighbours, in metres. Shows how bumpy the ground is.",
+    "histogram_intersection": "How much two distributions overlap. 0 = no overlap, 1 = identical.",
+    "similarity_score": "Weighted mean of the three metric scores, from 0 to 1. It compares terrain shape only.",
+    "weight_set_A": "Slope 40%, relief 35%, roughness 25%.",
+    "weight_set_B": "All three metrics equal.",
+    "rank_stability": "Spearman correlation between the rankings from weight sets A and B. Close to 1 = ranking does not depend on the weights.",
+    "validation_site": "A place NASA-related teams already use as a Mars analog (Atacama, MDRS Utah). Used to check whether the method behaves sensibly.",
+    "review_gate": "A human must look at each window's preview and approve it before any score is calculated, so nobody can move a window after seeing results.",
+    "hazard_map": "Earth only, at the original 30 m resolution: slope classes that show where a rover would struggle. Demo categories, not real rover limits."
+  },
+
+  "data_model": {
+    "explanation": "Entities the screens display. Values marked sample are for the mockup only and must carry the SAMPLE DATA badge.",
+    "reference_sites": [
+      { "id": "gale", "name": "Gale Crater floor (Aeolis Palus)", "body": "Mars", "center": "4.49°S, 137.42°E", "dataset": "MOLA DEM 463 m", "status": "available" },
+      { "id": "shackleton", "name": "Moon — South Pole (Shackleton)", "body": "Moon", "dataset": "LOLA 80 m", "status": "coming next (disabled)" }
+    ],
+    "earth_sites": [
+      { "id": "ustyurt", "name": "Ustyurt Plateau", "country": "Uzbekistan", "role": "candidate", "center": "≈ 43.65°N, 56.13°E", "note": "provisional center" },
+      { "id": "kyzylkum", "name": "Kyzylkum Desert", "country": "Uzbekistan", "role": "candidate", "center": "to be chosen by the team" },
+      { "id": "yungay", "name": "Yungay, Atacama", "country": "Chile", "role": "validation", "center": "24.08°S, 69.92°W" },
+      { "id": "mdrs", "name": "MDRS, Utah", "country": "USA", "role": "validation", "center": "38.41°N, 110.79°W" }
+    ],
+    "site_review_statuses": ["Not prepared", "Pending review", "Approved (frozen)", "Failed quality check"],
+    "metrics": ["Local relief (m)", "Slope (°)", "Roughness — TRI (m)"],
+    "sample_values_for_mockup_only": {
+      "ustyurt_vs_gale": { "overall_A": 0.68, "relief": 0.74, "slope": 0.71, "roughness": 0.58 },
+      "ustyurt_stats": { "relief_p5_p95": "−42 → +58 m", "median_slope": "0.6°", "median_tri": "3.1 m" },
+      "gale_stats": { "relief_p5_p95": "−65 → +90 m", "median_slope": "1.1°", "median_tri": "6.4 m" },
+      "rank_stability": "ρ = 0.XX (computed when ≥ 3 sites are approved)"
+    }
+  },
+
+  "design_system": {
+    "mood": "Dark scientific instrument panel: calm, precise, data-first. Think mission control software, not a sci-fi movie.",
+    "theme": "Dark by default; text must stay readable on a projector.",
+    "colors": {
+      "explanation": "Each colour has one job. Earth is always cyan, Mars always orange, the AI always violet. Never use a colour for decoration only.",
+      "bg": { "hex": "#0A0F1E", "use": "page background" },
+      "surface": { "hex": "#111A2F", "use": "cards, panels" },
+      "surface_raised": { "hex": "#16213A", "use": "selected rows, active nav item" },
+      "border": { "hex": "#22304F", "use": "card borders, dividers" },
+      "text": { "hex": "#EEF2F8", "use": "primary text" },
+      "text_muted": { "hex": "#A9B6CC", "use": "secondary text" },
+      "text_dim": { "hex": "#8D99B0", "use": "captions, footnotes (still ≥ 4.5:1)" },
+      "earth": { "hex": "#38D0E8", "use": "everything about Earth sites; primary buttons" },
+      "mars": { "hex": "#F08A5D", "use": "everything about the Mars reference" },
+      "ai": { "hex": "#9C8CFF", "use": "AI explanation panel, sample-data badge" },
+      "warning": { "hex": "#E8C547", "use": "pending review, provisional coordinates" },
+      "danger": { "hex": "#D9485F", "use": "failed quality check, blocked actions" },
+      "hazard_scale": {
+        "low_0_10": "#2F7FD0",
+        "medium_10_20": "#E8C547",
+        "high_20_30": "#F08A5D",
+        "very_high_30_plus": "#D9485F",
+        "rule": "Always show the class name and degree range as text next to the colour."
+      }
+    },
+    "typography": {
+      "headings": "Space Grotesk, 600–700",
+      "body": "Inter, 400–600",
+      "data_and_labels": "JetBrains Mono, 500 — coordinates, scores, units, small uppercase section labels",
+      "scale_px": [72, 48, 28, 20, 16, 14, 12],
+      "rules": "Scores use tabular numbers. Minimum text size 12 px. Section labels are small uppercase mono with letter-spacing."
+    },
+    "layout": {
+      "grid": "12 columns, 24 px gutters, max content width 1440 px, 24 px page padding",
+      "spacing_scale_px": [4, 8, 12, 16, 24, 32, 48],
+      "radius_px": { "chip": 999, "button": 10, "card": 16 },
+      "elevation": "No drop shadows or glows; separate surfaces with borders and tone."
+    },
+    "iconography": "Simple 1.5 px stroke line icons. No emoji. Icon-only buttons need a visible tooltip and an accessible name.",
+    "imagery": "Terrain previews are rendered from real DEM data (shaded relief). In the mockup, use clearly abstract shaded-relief placeholders labelled 'DEM preview renders here'. No stock photos, no AI-generated planet art, no images copied from other websites.",
+    "avoid": [
+      "NASA logos or anything implying NASA endorsement",
+      "gradient washes, glowing neon, glassmorphism",
+      "fake 3D globes and starfields as decoration",
+      "percent signs on similarity scores (scores are 0–1)",
+      "red/green as the only difference between two states"
+    ]
+  },
+
+  "information_architecture": {
+    "global_header": {
+      "explanation": "Same header on every page.",
+      "left": "Logo mark (small Earth circle with an orange Mars dot) + 'TerraMind AI'",
+      "nav": ["Explorer", "Report", "Review", "Methodology & Data"],
+      "right": ["Language toggle EN / UZ", "Export button (on Report)"]
+    },
+    "global_footer": [
+      "Data: NASA SRTM GL1 · MOLA DEM (USGS / NASA PDS) — open data",
+      "Terrain similarity only — not a habitability or mission-safety assessment",
+      "Not affiliated with or endorsed by NASA"
+    ]
+  },
+
+  "pages": [
+    {
+      "id": "landing",
+      "route": "/",
+      "purpose": "Explain the idea in one screen and send the visitor to the Explorer.",
+      "sections": [
+        {
+          "name": "Hero",
+          "content": "Eyebrow 'SPACE APPS 2026 · EARTH ANALOGS FOR MARS AND THE MOON'. Headline 'Find Mars on Earth — with evidence.' Sub-text: one sentence on what is compared and with which data. Buttons: 'Open Explorer' (primary), 'How the score works' (secondary). Chips: 'Earth · SRTM 30 m', 'Mars · MOLA 463 m', 'Moon · LOLA — next'.",
+          "visual": "Split terrain illustration: Earth plateau (left, cyan label) meets Mars crater floor (right, orange label), with a small floating score chip '0.68 · SAMPLE'."
+        },
+        {
+          "name": "How it works",
+          "content": "Three numbered cards: 01 Pick a Mars reference site · 02 See ranked Earth candidates · 03 Read an explainable score."
+        },
+        {
+          "name": "Why Uzbekistan",
+          "content": "Two cards (Ustyurt Plateau, Kyzylkum Desert) with coordinates and three plain facts each. Headline: 'Uzbekistan’s deserts, tested — not assumed.'"
+        },
+        {
+          "name": "Built on open NASA data",
+          "content": "Four source cards: SRTM GL1 (in MVP), MOLA DEM (in MVP), LOLA (next, dashed border), NASA POWER (later, dashed border)."
+        },
+        {
+          "name": "Honesty band",
+          "content": "Violet-bordered card: 'What a score means — and what it doesn’t' + link to Methodology."
+        }
+      ]
+    },
+    {
+      "id": "explorer",
+      "route": "/explorer",
+      "purpose": "The main working screen: choose the Mars reference and see Earth candidates ranked.",
+      "layout": "Three columns on desktop: left setup panel (320 px), centre map (flexible), right ranking panel (400 px). On phone: setup → map → ranking, stacked.",
+      "sections": [
+        {
+          "name": "Setup panel (left)",
+          "content": [
+            "Step 1 · REFERENCE SITE (orange label): selectable card 'Mars — Gale Crater floor, 4.49°S 137.42°E, MOLA 463 m' (selected); disabled card 'Moon — South Pole (Shackleton)' with a 'NEXT' chip.",
+            "Step 2 · EARTH SITES (cyan label): one row per Earth site with name, country, role chip (Candidate / Validation — known Mars analog) and review status pill. Checkbox to include it in the ranking. Kyzylkum shows 'Center not chosen' and is disabled.",
+            "Step 3 · WEIGHTS (violet label): segmented control A / B with a one-line description of each set, and a link 'Why two weight sets?'.",
+            "Primary button 'Run ranking'. Disabled with a reason when fewer than one approved Earth site is selected.",
+            "Footnote: 'Window 50 × 50 km · common grid 463 m · ≈ 108 × 108 px'."
+          ]
+        },
+        {
+          "name": "Map (centre)",
+          "content": [
+            "Toggle at the top: 'Mars view' / 'Earth view'.",
+            "Mars view: shaded-relief map around Gale with the 50 km window as a dashed orange square.",
+            "Earth view: world map with a pin per Earth site (cyan for candidates, white outline for validation sites). Hovering a pin shows name, score and status.",
+            "Layer control: Elevation · Slope · Roughness, with a legend that changes with the layer.",
+            "Zoom in, zoom out, reset (icon buttons with accessible names). Scale bar. Small label 'ILLUSTRATIVE BASEMAP' in the mockup."
+          ]
+        },
+        {
+          "name": "Ranking (right)",
+          "content": [
+            "Header 'Earth sites ranked by terrain similarity to Gale' + SAMPLE DATA badge.",
+            "Ranked list: position number, site name, role chip, overall score (large mono number 0.00–1.00), qualitative word (High ≥ 0.75 / Moderate ≥ 0.55 / Low), and three mini bars for relief, slope, roughness.",
+            "Validation sites are marked with a small 'known analog' tag so judges can see how they rank.",
+            "Rank stability row: 'Ranking stability (A vs B): ρ = 0.XX' with an info tooltip. If fewer than 3 approved sites: 'Needs ≥ 3 approved sites'.",
+            "Clicking a row opens the Report for that pair."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "route": "/report/gale/ustyurt",
+      "purpose": "Side-by-side comparison of one Earth site with the Mars reference, with every number explained and sourced.",
+      "sections": [
+        {
+          "name": "Title bar",
+          "content": "Breadcrumb 'Explorer / Report'. Title 'Ustyurt Plateau ↔ Gale Crater floor, Mars'. Chips: window, grid, weight set, SAMPLE DATA. Big score card '0.68 · Moderate terrain similarity · 0 = no overlap, 1 = identical'. Buttons: Export PDF, Download CSV, Download JSON, Copy citation."
+        },
+        {
+          "name": "Terrain windows",
+          "content": "Two equal panels. Left: EARTH · USTYURT (cyan) with shaded relief preview, coordinates, and three stats (relief p5–p95, median slope, median TRI). Right: MARS · GALE FLOOR (orange) with the same layout. Caption under each: 'Rendered from the real DEM'."
+        },
+        {
+          "name": "Metric distributions",
+          "content": "Three small histogram charts (relief, slope, roughness). Earth = filled cyan bars, Mars = dashed orange outline, so they differ by shape as well as colour. Each chart shows its score: 'Overlap 0.71'."
+        },
+        {
+          "name": "Parameter table",
+          "content": "Columns: Parameter · Earth value · Mars value · Similarity · Weight. Last row: Overall (weighted mean). Note: 'Similarity compares the full distributions, not the single values shown.'"
+        },
+        {
+          "name": "AI explanation",
+          "content": "Violet panel 'Assistant summary': 2–3 short paragraphs that only restate and interpret the numbers on this page, ending with 'Generated only from the scores and statistics on this page'. Suggested questions as chips. Text input 'Ask about this result' with a send button. If the AI is unavailable, the panel shows 'Explanation unavailable — scores are unaffected'."
+        },
+        {
+          "name": "Rover hazard map (Earth, 30 m)",
+          "content": "Map of the Earth window coloured by slope class with the legend 'Low 0–10° · Medium 10–20° · High 20–30° · Very high 30°+' and the note 'Demo categories, not real rover limits'. Shows the share of the window in each class."
+        },
+        {
+          "name": "Limitations",
+          "content": "Warm-bordered card 'What this score is not': not habitability or mission safety; terrain geometry only; the 463 m grid hides features smaller than ~1 km; MOLA is partly interpolated near the equator."
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "route": "/review/ustyurt",
+      "purpose": "The human review gate: check that each window covers the intended terrain, then approve and freeze it before any score is computed.",
+      "sections": [
+        {
+          "name": "Site header",
+          "content": "Site name, body, role, status pill. If the center is provisional: yellow banner 'Provisional center — confirm before approving'."
+        },
+        {
+          "name": "Preview",
+          "content": "Quick-look shaded relief of the 50 km window (463 m) and, for Earth, the 30 m version side by side. Center cross, 10 km scale bar, bounding box coordinates."
+        },
+        {
+          "name": "Checks",
+          "content": "Read-only facts: valid pixels (e.g. 11 664 of 11 664), no-data share, dataset and file name. Button 'Open satellite view' (external link). Human checklist: 'No river valley', 'No irrigated fields', 'No towns', 'No open-pit mines', 'Terrain matches the intent'."
+        },
+        {
+          "name": "Approve",
+          "content": "Primary button 'Approve and freeze window', enabled only when every checklist item is ticked. After approval: green-free success state using a lock icon + text 'Frozen on <date> · hash 3f9a…', and a note 'Changing the center now requires a new review'."
+        }
+      ]
+    },
+    {
+      "id": "methodology",
+      "route": "/methodology",
+      "purpose": "Everything a scientist needs to judge the method, on one page.",
+      "sections": [
+        { "name": "Pipeline", "content": "Numbered steps: Clip 50 km → Project (Mars sphere R = 3 396 190 m / WGS84) → Resample to 463 m → Derive relief, slope, TRI → Compare histograms → Weighted mean." },
+        { "name": "Formula", "content": "S = Σ_k w_k Σ_b min(p_k,b , q_k,b), with a one-line explanation of each symbol." },
+        { "name": "Validation and sensitivity", "content": "How known analogs are used, that windows are frozen before results, and what the A vs B stability number means." },
+        { "name": "Data sources", "content": "Table: Dataset · Body · Resolution · Archive · Status (In MVP / Next / Later), with links." },
+        { "name": "Limitations", "content": "Same list as on the Report page." }
+      ]
+    }
+  ],
+
+  "components": {
+    "explanation": "Reusable parts. Design each once with its variants, then use it everywhere.",
+    "SiteCard": "Selectable card: name, coordinates (mono), dataset, role chip, status pill. Variants: selected, unselected, disabled with reason.",
+    "RoleChip": "Candidate (cyan outline) · Validation — known Mars analog (white outline) · Reference (orange outline).",
+    "StatusPill": "Not prepared (grey) · Pending review (yellow + clock icon) · Approved (lock icon) · Failed quality (red + alert icon). Icon + text, never colour alone.",
+    "ScoreDisplay": "Large mono number with '/ 1.00' and a qualitative word. Sizes: L (72 px), M (34 px), S (16 px).",
+    "MetricBar": "Label, value, thin bar 0–1, caption with weight %. ",
+    "RankingRow": "Rank number, site, role chip, score M, three mini MetricBars, chevron. Hover and selected states.",
+    "SampleDataBadge": "Violet pill 'SAMPLE DATA'. Must appear on every panel that shows mockup numbers.",
+    "LayerToggle": "Segmented control with aria-pressed states.",
+    "HistogramChart": "Two series: filled bars (Earth) and dashed outline (Mars), x axis with units, legend in words.",
+    "HazardLegend": "Four swatches with class names and degree ranges in text.",
+    "AIPanel": "Violet-bordered panel with icon, text, provenance line, suggestion chips, input. States: answering (skeleton lines), unavailable, error.",
+    "ReviewChecklist": "Checkbox list with labels; approve button disabled until all ticked.",
+    "ProvenanceNote": "Small mono line naming the dataset, resolution and date behind a number."
+  },
+
+  "states": {
+    "explanation": "Show each of these at least once in the mockups.",
+    "loading": "Skeleton cards and a map placeholder while data loads; never a blank page.",
+    "empty_ranking": "'No approved Earth sites yet — review a site first' with a button to the Review page.",
+    "gate_blocked": "Run ranking disabled with the reason 'Ustyurt is pending review'.",
+    "quality_failed": "Red status pill and the numbers: 'Only 1 820 valid pixels (minimum 2 500)'.",
+    "ai_unavailable": "'Explanation unavailable — scores are unaffected.'",
+    "provisional_center": "Yellow banner on the site card and review page.",
+    "sample_data": "SAMPLE DATA badge on every number in the mockup."
+  },
+
+  "interactions": [
+    "Selecting a site on the map highlights its row in the ranking and vice versa.",
+    "Switching weight set A/B re-orders the ranking with a short 200 ms animation; the stability number stays visible.",
+    "Tooltips on every metric name show the glossary text.",
+    "Report export buttons give a short toast confirmation.",
+    "Keyboard: Tab order follows reading order; Enter opens a ranking row; Escape closes tooltips and dialogs."
+  ],
+
+  "accessibility": [
+    "WCAG 2.1 AA: text contrast ≥ 4.5:1, large text ≥ 3:1.",
+    "Touch targets at least 44 × 44 px.",
+    "Colour is never the only signal: pair it with text, icons or line style.",
+    "Real buttons, links and labelled inputs; icon-only buttons have accessible names.",
+    "Charts and maps have a text alternative summarising what they show."
+  ],
+
+  "content_rules": [
+    "Interface language: English first, with an EN / UZ toggle (Uzbek Latin script).",
+    "Scores are 0–1 with two decimals, never percentages.",
+    "Every number shows its unit (m, °, km, px).",
+    "Every screen with scores carries the disclaimer: 'Terrain similarity only — not a habitability or mission-safety assessment.'",
+    "Never claim a site is a confirmed Mars analog; candidates are 'tested, not assumed'.",
+    "No NASA logo or wording that suggests NASA endorsement; name NASA only as the data source.",
+    "Mockup numbers must carry the SAMPLE DATA badge."
+  ],
+
+  "tech_handoff": {
+    "explanation": "So the design can be built quickly during the hackathon.",
+    "framework": "Next.js + TypeScript + Tailwind CSS",
+    "map": "MapLibre GL JS",
+    "charts": "Simple SVG or a light chart library",
+    "backend_data": "The Python pipeline writes metrics.json, comparison.csv and PNG previews; the UI reads them.",
+    "design_tokens": "Export colours, type and spacing as Tailwind theme tokens using the names in design_system.colors."
+  }
+}
