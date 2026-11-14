@@ -1,4 +1,4 @@
-"""Local web platform: `python -m terramind serve` → http://127.0.0.1:8000
+"""Analysis console: `python -m terramind serve` → http://127.0.0.1:8001
 
 Standard-library HTTP server (no extra dependencies). It serves the single-page app in
 terramind/web/, read-only JSON views of TerraMind's results, lead reviews, and the AI
@@ -231,7 +231,7 @@ def make_handler(settings: Settings):
     return Handler
 
 
-def serve(settings: Settings, host: str = "127.0.0.1", port: int = 8000) -> None:
+def serve(settings: Settings, host: str = "127.0.0.1", port: int = 8001) -> None:
     httpd = ThreadingHTTPServer((host, port), make_handler(settings))
     print(f"TerraMind platform: http://{host}:{port}   (Ctrl+C to stop)", flush=True)
     if host not in ("127.0.0.1", "localhost"):

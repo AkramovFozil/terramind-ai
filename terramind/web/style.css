@@ -21,7 +21,7 @@ h2 { font-size: 22px; margin: 0 0 6px; }
 .brand-name { font-size: 18px; font-weight: 700; }
 .brand-tag { color: var(--muted); font-size: 12px; }
 .tabs { display: flex; gap: 4px; flex-wrap: wrap; }
-.tab { background: none; border: 1px solid transparent; color: var(--muted); padding: 7px 12px; border-radius: 8px; cursor: pointer; font: 500 13px Inter, sans-serif; }
+.tab { text-decoration: none; background: none; border: 1px solid transparent; color: var(--muted); padding: 7px 12px; border-radius: 8px; cursor: pointer; font: 500 13px Inter, sans-serif; }
 .tab:hover { color: var(--text); background: var(--surface2); }
 .tab.active { color: var(--text); background: var(--surface2); border-color: var(--border); }
 

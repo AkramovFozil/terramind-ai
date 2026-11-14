@@ -74,3 +74,17 @@ def test_relief_subtracts_median():
 def test_relief_refuses_empty():
     with pytest.raises(ValueError):
         terrain.local_relief(np.full((3, 3), np.nan))
+
+
+def test_roughness_ignores_smooth_slopes_but_sees_broken_ground():
+    import numpy as np
+    from terramind import terrain
+    y, x = np.indices((40, 40), dtype="float64")
+    ramp = 30.0 * x + 12.0 * y                       # steep but perfectly smooth
+    assert np.nanmax(terrain.roughness(ramp)) < 1e-6
+    assert np.nanmin(terrain.tri(ramp)[1:-1, 1:-1]) > 20  # TRI calls the same ramp "rugged"
+    rng = np.random.default_rng(0)
+    broken = ramp + rng.normal(0, 8, ramp.shape)
+    rough = terrain.roughness(broken)
+    assert 4 < np.nanmedian(rough) < 10
+    assert np.isnan(rough[0, 0]) and np.isfinite(rough[5, 5])

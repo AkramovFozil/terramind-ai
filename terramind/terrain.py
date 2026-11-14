@@ -36,6 +36,23 @@ def tri(z: np.ndarray) -> np.ndarray:
     return np.mean(np.abs(neighbours - e), axis=0).astype("float32")
 
 
+def roughness(z: np.ndarray) -> np.ndarray:
+    """Detrended roughness, metres: RMS height residual from the best-fit plane of each 3x3 window.
+
+    TRI grows on any slope, even a perfectly smooth one, because neighbours on a ramp
+    differ in height. Removing the least-squares plane first leaves only the part of
+    the surface that is genuinely uneven: a smooth ramp scores 0, broken ground does not.
+    """
+    a, b, c, d, e, f, g, h, i = _neighbourhood(z)
+    mean = (a + b + c + d + e + f + g + h + i) / 9.0
+    gx = ((c + f + i) - (a + d + g)) / 6.0   # plane gradient per pixel, columns
+    gy = ((g + h + i) - (a + b + c)) / 6.0   # rows
+    total = 0.0
+    for value, dx, dy in ((a, -1, -1), (b, 0, -1), (c, 1, -1), (d, -1, 0), (e, 0, 0), (f, 1, 0), (g, -1, 1), (h, 0, 1), (i, 1, 1)):
+        total = total + (value - (mean + gx * dx + gy * dy)) ** 2
+    return np.sqrt(total / 9.0).astype("float32")
+
+
 def local_relief(z: np.ndarray) -> np.ndarray:
     """Elevation minus the window median, metres (each planet has its own zero level)."""
     z = np.asarray(z, dtype="float64")

@@ -28,6 +28,44 @@ Details: [docs/methodology.md](docs/methodology.md) · [docs/data-sources.md](do
 
 Known Mars analogs Yungay and MDRS score 0.77 and 0.66 against the Gale crater floor, so the method recognises them. Ustyurt does not resemble Gale (0.12) but scores 0.74 against Meridiani Planum, the flat plain where Opportunity landed. Full table, per-metric scores and limits: **[docs/results.md](docs/results.md)**.
 
+## Two tools, one project
+
+| | Global Explorer (3D) | Analysis pipeline + console |
+|---|---|---|
+| Question | "Where on Earth looks like this Mars point?" | "How similar are these reviewed sites, and which places in a region are leads?" |
+| Earth data | ETOPO 2022 screening, Copernicus GLO-30 refinement | NASA SRTM GL1 / GL3 |
+| Mars / Moon data | MOLA (read remotely) | MOLA, LOLA (local files) |
+| Window | 25 km radius circle, shape + distribution score | 25 × 25 km square, histogram overlap |
+| Review | automated, unreviewed | human approval gate, lead accept / reject |
+| Run | `uvicorn terramind.api:app --port 8000` | `python -m terramind serve` (port 8001) |
+
+## Global Explorer (3D web app)
+
+The Global Explorer (React + Three.js, `web/`, FastAPI `terramind/api.py`) does not pick from a fixed list of Earth sites. For any Mars point it searches all of Earth's land:
+
+1. **Mars** — the 25 km radius circle is read from USGS MOLA on the 463 m grid.
+2. **Global screening** — a one-time index of every land window on Earth (56° S – 80° N, centres every ~28 km), built from NOAA ETOPO 2022 60″, stores slope / relief / TRI histograms and a rotation- and mirror-invariant *shape descriptor* (ring × sector means, Fourier harmonics; harmonic 0 keeps its sign, so a crater and a dome are opposites). The 12 best places at least 150 km apart go on.
+3. **Precise match** — for each place a 90 × 90 km Copernicus GLO-30 area is measured at 463 m and the 25 km circle is slid ±20 km to the centre where the Mars landform overlays best. That circle is then scored in full.
+
+**Score** = 50 % *shape* (best Pearson correlation of the relief maps, Mars rotated every 15° and mirrored) + 50 % *distribution*, where distribution = 70 % histogram overlap of slope, relief and TRI + 30 % overlap of *detrended roughness*. Shape is what separates a crater floor from a volcano; histograms alone cannot. Detrended roughness (RMS residual from the best-fit 3 × 3 plane) is scored separately because TRI rises on any slope, even a smooth one.
+Open water (sea, lakes: exactly flat in Copernicus) over 10 % of the circle is rejected.
+
+Copernicus is read from each tile's internal 8× overview (~240 m), which is the exact block mean of the 30 m data, so averaging it into the 463 m grid loses nothing and a search takes seconds. Tiles are cached on disk after the first download.
+
+The **Mars ↔ Earth compare view** shows both measured surfaces side by side (Mars left, Earth right) on one colour scale and one vertical scale, with relief / slope / roughness layers, synced cameras, Earth turned into the matched orientation, and a cursor that reads the values of the same matched point on both planets.
+
+```bash
+pip install -e ".[dev,api]"
+python -m terramind build-index      # once: downloads ETOPO (~480 MB) and writes the index (~100 MB)
+cd web && npm ci && npm run build && cd ..   # once: builds the site into web/dist
+python -m uvicorn terramind.api:app --host 127.0.0.1 --port 8000   # serves web/dist and /api
+python scripts/search_demo.py 18.38 77.58    # optional: one search from the command line (run with PYTHONPATH=.)
+```
+
+Large data goes to `$TERRAMIND_DATA_DIR`, or `data/` in the project root (git-ignored).
+
+The Global Explorer is exploratory: its circles are 25 km in **radius** and its score adds a shape term, so its numbers are not the same scale as the reviewed pipeline below (25 km square windows, histogram overlap only). Both use the same slope / relief / TRI code.
+
 ## Quick start (from a fresh clone)
 
 Python 3.10+ with GDAL-backed `rasterio` (on Windows, `pip install rasterio` ships wheels with GDAL included).
@@ -86,7 +124,7 @@ Scans every 25 km window in the region (NASA SRTM GL3 via OpenTopography) with t
 **4. Web platform** — interactive map of the Analog Finder (satellite imagery to review leads, accept/reject), the matrix, every site's quick-look and approval, and Ask AI:
 
 ```bash
-python -m terramind serve           # then open http://127.0.0.1:8000
+python -m terramind serve           # then open http://127.0.0.1:8001
 ```
 
 Runs locally with the Python standard library; API keys stay on the server. Lead reviews are saved to `results/search/<search>/reviews.json`.
