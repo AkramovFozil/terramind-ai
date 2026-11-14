@@ -30,16 +30,13 @@ Known Mars analogs Yungay and MDRS score 0.77 and 0.66 against the Gale crater f
 
 ## One platform
 
-Open **http://127.0.0.1:8000** after the steps below. Three pages, one server:
+Open **http://127.0.0.1:8000** after the steps below: the Global Explorer (Abubakr's 3D web app) with the **AI yordamchi** panel inside it (header button or the floating button).
 
-| Page | What it does |
-|---|---|
-| **AI Assistant** (home page) | Ask in any language, e.g. *"Find a place on Earth whose terrain matches LOLA's Mons Mouton plateau on the Moon"*. The AI calls TerraMind's tools: **1** it marks the reference on its map (Moon south-pole hillshade from LRO LOLA, or the Mars map) and shows the approved 25 km window; **2** the Analog Finder scans an Earth region with the same method and the map flies to the numbered leads; **3** *Compare in 3D* puts the reference and an Earth lead side by side on one scale. Every number in the answer is checked against the computed results; anything else is flagged. Without an AI key, "Or choose directly" shows the same results. |
-| **Global Explorer** (`/?view=explorer`) | Pick any Mars point; screens all of Earth's land and compares both surfaces in 3D. |
-| Studio (`/?studio`) | Design sandbox for the 3D scenes. |
+Ask in any language, e.g. *"Menga Oydagi LOLA ning yerdagi relyefiga mos bo'lgan joyni topib ber"*. The AI calls TerraMind's tools: **1** it marks the reference on its map (Moon south-pole hillshade from LRO LOLA, or the Mars map) and shows the approved 25 km window; **2** the Analog Finder scans an Earth region with the same method and the leads are drawn on the Earth map; **3** *3D da solishtirish* puts the reference and an Earth lead side by side on one scale. Every number in the answer is checked against the computed results; anything else is flagged. Without an AI key, the panel's direct mode shows the same results.
 
 ```bash
 pip install -e ".[dev,api]"
+python -m terramind build-index          # once (~480 MB ETOPO download): enables "O'xshash joylarni topish"
 cd web && npm ci && npm run build && cd ..
 python -m uvicorn terramind.api:app --host 127.0.0.1 --port 8000    # from the project root
 ```
@@ -219,7 +216,7 @@ docs/         PHASE1.md (technical task), methodology, data sources, validation
 | Analog Finder (`search`) + AI search tool | Done (hackathon, day 1) — first real runs next |
 | Moon reference (Mons Mouton Plateau, LOLA) | Done (hackathon, day 1) |
 | Web platform (`serve`) | Done (hackathon, day 1) |
-| One platform: AI Assistant (Moon/Mars reference → Earth leads → 3D compare) + Global Explorer, English UI | Done (hackathon, day 1 night) |
+| AI yordamchi panel inside the Global Explorer (Moon/Mars reference → Earth leads → 3D compare) | Done (hackathon, day 1 night) |
 | Demo video / slides, Space Apps project page | Planned (hackathon, day 2) |
 
 ## Work done before the hackathon

@@ -21,4 +21,3 @@
 @media(max-width:900px){.compare-panel{height:44svh;min-height:230px}.compare-legend em{display:none}.compare-legend i{width:90px}.compare-readout{overflow-x:auto}.compare-view-button:first-of-type{margin-left:0}.compare-tag span{display:none}.compare-toolbar{gap:9px;padding:9px 12px}}
 @media(max-width:480px){.compare-panels{grid-template-columns:1fr}.compare-panel{height:34svh}}
 .metric-bars>div:nth-child(4) .metric-track i{background:#c9a36a}.metric-bars>div:nth-child(5) .metric-track i{background:#7d8f7a}
-.science-header nav a{display:flex;align-items:center;gap:7px;height:100%;color:var(--soft)}.science-header nav a:hover{color:var(--ink)}

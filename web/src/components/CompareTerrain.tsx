@@ -13,9 +13,9 @@ type Rig={camera:THREE.Camera;controls:{target:THREE.Vector3;update:()=>void}|nu
 const SIZE=100;
 const NO_ALIGN:Align={angle:0,mirrored:false};
 const LAYERS:{id:Layer;name:string;unit:string;hint:string}[]=[
-  {id:'relief',name:'Relief',unit:'m',hint:'Elevation minus the window median'},
-  {id:'slope_deg',name:'Slope',unit:'°',hint:'Horn method on the 463 m grid'},
-  {id:'roughness_m',name:'Roughness',unit:'m',hint:'Bumpiness left after removing the slope (RMS deviation from a 3×3 plane)'},
+  {id:'relief',name:'Relyef',unit:'m',hint:'Balandlik − doira medianasi'},
+  {id:'slope_deg',name:'Qiyalik',unit:'°',hint:'Horn usuli, 463 m katakda'},
+  {id:'roughness_m',name:'Notekislik',unit:'m',hint:'Qiyalik olib tashlangach qolgan g‘adir-budurlik (3×3 tekislikdan RMS chetlanish)'},
 ];
 const RAMPS:Record<Layer,string[]>={
   relief:['#27408b','#7fa9d4','#efe9d6','#d8935f','#8a2a1c'],
@@ -113,14 +113,14 @@ const fmt=(v:number|null|undefined,d=1)=>v===null||v===undefined||!Number.isFini
 const signed=(v:number|null,d=1)=>v===null||!Number.isFinite(v)?'—':`${v>0?'+':''}${fmt(v,d)}`;
 
 export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='MARS',leftSub,rightSub}:{marsUrl:string;earthUrl:string;match?:Match;score?:number;leftTitle?:string;leftSub?:string;rightSub?:string}){
-  const leftName=leftTitle.charAt(0)+leftTitle.slice(1).toLowerCase();
+  const leftName=leftTitle==='MARS'?'Mars':leftTitle.charAt(0)+leftTitle.slice(1).toLowerCase();
   const [mars,setMars]=useState<TerrainData|null>(null),[earth,setEarth]=useState<TerrainData|null>(null),[error,setError]=useState('');
   const [layer,setLayer]=useState<Layer>('relief'),[exaggeration,setExaggeration]=useState(5),[aligned,setAligned]=useState(true);
   const [probe,setProbe]=useState<Probe|null>(null);
   const rigs=useRef<Record<string,Rig>>({}),driver=useRef<string|null>(null);
   useEffect(()=>{
     const controller=new AbortController();setMars(null);setEarth(null);setError('');
-    const load=(url:string)=>fetch(url,{signal:controller.signal}).then(r=>{if(!r.ok)throw new Error('Could not load the terrain data.');return r.json() as Promise<TerrainData>}).then(d=>{if(!d.measured_dem||!d.layers)throw new Error('Measured DEM layers are missing. Update the server.');return d});
+    const load=(url:string)=>fetch(url,{signal:controller.signal}).then(r=>{if(!r.ok)throw new Error('Relyef ma’lumotini olishda xato.');return r.json() as Promise<TerrainData>}).then(d=>{if(!d.measured_dem||!d.layers)throw new Error('O‘lchangan DEM qatlamlari topilmadi. Serverni yangilang.');return d});
     Promise.all([load(marsUrl),load(earthUrl)]).then(([m,e])=>{setMars(m);setEarth(e)}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});
     return()=>controller.abort();
   },[marsUrl,earthUrl]);
@@ -132,7 +132,7 @@ export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='
   const resetView=()=>{for(const rig of Object.values(rigs.current)){rig.camera.position.set(70,62,88);rig.controls?.target.set(0,0,0);rig.controls?.update();rig.invalidate()}};
   const topView=()=>{for(const rig of Object.values(rigs.current)){rig.camera.position.set(0,150,.01);rig.controls?.target.set(0,0,0);rig.controls?.update();rig.invalidate()}};
   if(error)return <div className="terrain-loading error-message">{error}</div>;
-  if(!mars||!earth)return <div className="terrain-loading"><span className="science-spinner"/>Loading the measured terrain of both bodies…</div>;
+  if(!mars||!earth)return <div className="terrain-loading"><span className="science-spinner"/>Ikkala sayyoraning o‘lchangan relyefi yuklanmoqda…</div>;
   const unit=SIZE/(Math.max(mars.width,mars.height)*mars.pixel_size_m);
   const ms=probe?sampleAt(mars,NO_ALIGN,probe,unit):null,es=probe?sampleAt(earth,earthAlign,probe,unit):null;
   const floor=Math.min(mars.roi_min_elevation_m-mars.median_elevation_m,earth.roi_min_elevation_m-earth.median_elevation_m)*unit*exaggeration-2;
@@ -140,30 +140,30 @@ export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='
   const gradient=`linear-gradient(90deg,${RAMPS[layer].join(',')})`;
   const stat=(d:TerrainData,key:'slope_deg'|'roughness_m')=>d.layer_stats[key];
   const diff=(a:number|null|undefined,b:number|null|undefined)=>a===null||a===undefined||b===null||b===undefined?null:b-a;
-  return <div className={`compare-view left-${leftTitle.toLowerCase()}`}>
+  return <div className="compare-view">
     <div className="compare-toolbar">
-      <div className="compare-layers" role="group" aria-label="Layer to show">{LAYERS.map(l=><button key={l.id} aria-pressed={layer===l.id} title={l.hint} onClick={()=>setLayer(l.id)}>{l.name}</button>)}</div>
-      <div className="compare-legend" title={info.hint}><span>{fmt(range[0],layer==='relief'?0:1)}{info.unit}</span><i style={{background:gradient}}/><span>{fmt(range[1],layer==='relief'?0:1)}{info.unit}</span><em>one scale for both</em></div>
-      <label className="compare-option"><input type="checkbox" checked={aligned} onChange={e=>setAligned(e.target.checked)} disabled={!match}/>Rotate Earth to fit {leftName}{match?` (${match.rotation_deg}°${match.mirrored?', mirrored':''})`:''}</label>
-      <label className="compare-option">Vertical <select value={exaggeration} onChange={e=>setExaggeration(Number(e.target.value))}><option value={1}>1× true</option><option value={3}>3×</option><option value={5}>5×</option><option value={10}>10×</option></select></label>
-      <button className="compare-view-button" onClick={topView}>Top view</button><button className="compare-view-button" onClick={resetView}>3D</button>
+      <div className="compare-layers" role="group" aria-label="Ko‘rsatiladigan qatlam">{LAYERS.map(l=><button key={l.id} aria-pressed={layer===l.id} title={l.hint} onClick={()=>setLayer(l.id)}>{l.name}</button>)}</div>
+      <div className="compare-legend" title={info.hint}><span>{fmt(range[0],layer==='relief'?0:1)}{info.unit}</span><i style={{background:gradient}}/><span>{fmt(range[1],layer==='relief'?0:1)}{info.unit}</span><em>ikkala sayyora uchun bitta shkala</em></div>
+      <label className="compare-option"><input type="checkbox" checked={aligned} onChange={e=>setAligned(e.target.checked)} disabled={!match}/>Yerni {leftName}ga moslab burish{match?` (${match.rotation_deg}°${match.mirrored?', ko‘zgu':''})`:''}</label>
+      <label className="compare-option">Balandlik <select value={exaggeration} onChange={e=>setExaggeration(Number(e.target.value))}><option value={1}>1× haqiqiy</option><option value={3}>3×</option><option value={5}>5×</option><option value={10}>10×</option></select></label>
+      <button className="compare-view-button" onClick={topView}>Tepadan</button><button className="compare-view-button" onClick={resetView}>3D</button>
     </div>
     <div className="compare-panels">
       <Panel id="mars" title={leftTitle} subtitle={leftSub??`${fmt(mars.center.lat,3)}°, ${fmt(mars.center.lon,3)}° · MOLA 463 m`} data={mars} layer={layer} range={range} exaggeration={exaggeration} align={NO_ALIGN} unit={unit} floor={floor} probe={probe} sample={ms} onProbe={onProbe} rigs={rigs} driver={driver}/>
-      <Panel id="earth" title="EARTH" subtitle={`${rightSub??`${fmt(earth.center.lat,3)}°, ${fmt(earth.center.lon,3)}° · Copernicus 463 m`}${score===undefined?'':` · ${fmt(score)}/100`}`} data={earth} layer={layer} range={range} exaggeration={exaggeration} align={earthAlign} unit={unit} floor={floor} probe={probe} sample={es} onProbe={onProbe} rigs={rigs} driver={driver}/>
+      <Panel id="earth" title="YER" subtitle={`${rightSub??`${fmt(earth.center.lat,3)}°, ${fmt(earth.center.lon,3)}° · Copernicus 463 m`}${score===undefined?'':` · ${fmt(score)}/100`}`} data={earth} layer={layer} range={range} exaggeration={exaggeration} align={earthAlign} unit={unit} floor={floor} probe={probe} sample={es} onProbe={onProbe} rigs={rigs} driver={driver}/>
     </div>
     <div className="compare-readout">
-      <table><thead><tr><th>{probe?'Point under the cursor':'Whole window (25 km)'}</th><th>{probe?'Elevation':'Elevation range'}</th><th>{probe?'Relief':'Relief amplitude'}</th><th>Slope{probe?'':' · median / p95'}</th><th>Roughness{probe?'':' · median / p95'}</th></tr></thead>
+      <table><thead><tr><th>{probe?'Kursor ostidagi nuqta':'Butun doira (25 km)'}</th><th>{probe?'Balandlik':'Balandlik oralig‘i'}</th><th>{probe?'Relyef':'Relyef amplitudasi'}</th><th>Qiyalik{probe?'':' · mediana / p95'}</th><th>Notekislik{probe?'':' · mediana / p95'}</th></tr></thead>
         <tbody>{probe?<>
           <tr className="row-mars"><td><i/>{leftName}</td><td>{fmt(ms?.elevation,0)} m</td><td>{signed(ms?.relief??null,0)} m</td><td>{fmt(ms?.slope,2)}°</td><td>{fmt(ms?.roughness,2)} m</td></tr>
-          <tr className="row-earth"><td><i/>Earth</td><td>{fmt(es?.elevation,0)} m</td><td>{signed(es?.relief??null,0)} m</td><td>{fmt(es?.slope,2)}°</td><td>{fmt(es?.roughness,2)} m</td></tr>
-          <tr className="row-diff"><td>Difference (Earth − {leftName})</td><td>—</td><td>{signed(diff(ms?.relief,es?.relief),0)} m</td><td>{signed(diff(ms?.slope,es?.slope),2)}°</td><td>{signed(diff(ms?.roughness,es?.roughness),2)} m</td></tr>
+          <tr className="row-earth"><td><i/>Yer</td><td>{fmt(es?.elevation,0)} m</td><td>{signed(es?.relief??null,0)} m</td><td>{fmt(es?.slope,2)}°</td><td>{fmt(es?.roughness,2)} m</td></tr>
+          <tr className="row-diff"><td>Farq (Yer − {leftName})</td><td>—</td><td>{signed(diff(ms?.relief,es?.relief),0)} m</td><td>{signed(diff(ms?.slope,es?.slope),2)}°</td><td>{signed(diff(ms?.roughness,es?.roughness),2)} m</td></tr>
         </>:<>
           <tr className="row-mars"><td><i/>{leftName}</td><td>{fmt(mars.roi_min_elevation_m,0)} … {fmt(mars.roi_max_elevation_m,0)} m</td><td>{fmt(mars.roi_max_elevation_m-mars.roi_min_elevation_m,0)} m</td><td>{fmt(stat(mars,'slope_deg').median,2)}° / {fmt(stat(mars,'slope_deg').p95,2)}°</td><td>{fmt(stat(mars,'roughness_m').median,2)} / {fmt(stat(mars,'roughness_m').p95,2)} m</td></tr>
-          <tr className="row-earth"><td><i/>Earth</td><td>{fmt(earth.roi_min_elevation_m,0)} … {fmt(earth.roi_max_elevation_m,0)} m</td><td>{fmt(earth.roi_max_elevation_m-earth.roi_min_elevation_m,0)} m</td><td>{fmt(stat(earth,'slope_deg').median,2)}° / {fmt(stat(earth,'slope_deg').p95,2)}°</td><td>{fmt(stat(earth,'roughness_m').median,2)} / {fmt(stat(earth,'roughness_m').p95,2)} m</td></tr>
-          <tr className="row-diff"><td>Difference (Earth − {leftName})</td><td>—</td><td>{signed((earth.roi_max_elevation_m-earth.roi_min_elevation_m)-(mars.roi_max_elevation_m-mars.roi_min_elevation_m),0)} m</td><td>{signed(diff(stat(mars,'slope_deg').median,stat(earth,'slope_deg').median),2)}°</td><td>{signed(diff(stat(mars,'roughness_m').median,stat(earth,'roughness_m').median),2)} m</td></tr>
+          <tr className="row-earth"><td><i/>Yer</td><td>{fmt(earth.roi_min_elevation_m,0)} … {fmt(earth.roi_max_elevation_m,0)} m</td><td>{fmt(earth.roi_max_elevation_m-earth.roi_min_elevation_m,0)} m</td><td>{fmt(stat(earth,'slope_deg').median,2)}° / {fmt(stat(earth,'slope_deg').p95,2)}°</td><td>{fmt(stat(earth,'roughness_m').median,2)} / {fmt(stat(earth,'roughness_m').p95,2)} m</td></tr>
+          <tr className="row-diff"><td>Farq (Yer − {leftName})</td><td>—</td><td>{signed((earth.roi_max_elevation_m-earth.roi_min_elevation_m)-(mars.roi_max_elevation_m-mars.roi_min_elevation_m),0)} m</td><td>{signed(diff(stat(mars,'slope_deg').median,stat(earth,'slope_deg').median),2)}°</td><td>{signed(diff(stat(mars,'roughness_m').median,stat(earth,'roughness_m').median),2)} m</td></tr>
         </>}</tbody></table>
-      <p>{probe?'The white pin marks the same (aligned) point on both surfaces.':'Move the cursor over the terrain to read exact values at the matching point on both surfaces.'} Cameras are synced. Values are measured DEM data on the 463 m grid; colours show the selected layer.</p>
+      <p>{probe?'Oq belgi ikkala sayyorada bir xil (moslashtirilgan) nuqtani ko‘rsatadi.':'Sichqonchani relyef ustiga olib boring: ikkala sayyoradagi mos nuqtaning aniq qiymatlari chiqadi.'} Kameralar sinxron. Qiymatlar 463 m katakdagi haqiqiy DEM o‘lchovlari; ranglar tanlangan qatlamni ko‘rsatadi.</p>
     </div>
   </div>;
 }
