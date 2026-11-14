@@ -2,7 +2,7 @@
 
 **Understand Earth. Explore Beyond.**
 
-TerraMind AI finds places on Earth whose terrain resembles a chosen site on Mars, using NASA open elevation data, and explains every score.
+TerraMind AI finds places on Earth whose terrain resembles a chosen site on Mars or the Moon, using NASA open elevation data (MOLA, LOLA, SRTM), and explains every score.
 
 Built for **NASA Space Apps Challenge 2026**, challenge *“Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars”*.
 Student team from OXUS University, Tashkent. Not affiliated with or endorsed by NASA.
@@ -28,16 +28,23 @@ Details: [docs/methodology.md](docs/methodology.md) · [docs/data-sources.md](do
 
 Known Mars analogs Yungay and MDRS score 0.77 and 0.66 against the Gale crater floor, so the method recognises them. Ustyurt does not resemble Gale (0.12) but scores 0.74 against Meridiani Planum, the flat plain where Opportunity landed. Full table, per-metric scores and limits: **[docs/results.md](docs/results.md)**.
 
-## Two tools, one project
+## One platform
 
-| | Global Explorer (3D) | Analysis pipeline + console |
-|---|---|---|
-| Question | "Where on Earth looks like this Mars point?" | "How similar are these reviewed sites, and which places in a region are leads?" |
-| Earth data | ETOPO 2022 screening, Copernicus GLO-30 refinement | NASA SRTM GL1 / GL3 |
-| Mars / Moon data | MOLA (read remotely) | MOLA, LOLA (local files) |
-| Window | 25 km radius circle, shape + distribution score | 25 × 25 km square, histogram overlap |
-| Review | automated, unreviewed | human approval gate, lead accept / reject |
-| Run | `uvicorn terramind.api:app --port 8000` | `python -m terramind serve` (port 8001) |
+Open **http://127.0.0.1:8000** after the steps below. Three pages, one server:
+
+| Page | What it does |
+|---|---|
+| **AI Assistant** (home page) | Ask in any language, e.g. *"Find a place on Earth whose terrain matches LOLA's Mons Mouton plateau on the Moon"*. The AI calls TerraMind's tools: **1** it marks the reference on its map (Moon south-pole hillshade from LRO LOLA, or the Mars map) and shows the approved 25 km window; **2** the Analog Finder scans an Earth region with the same method and the map flies to the numbered leads; **3** *Compare in 3D* puts the reference and an Earth lead side by side on one scale. Every number in the answer is checked against the computed results; anything else is flagged. Without an AI key, "Or choose directly" shows the same results. |
+| **Global Explorer** (`/?view=explorer`) | Pick any Mars point; screens all of Earth's land and compares both surfaces in 3D. |
+| Studio (`/?studio`) | Design sandbox for the 3D scenes. |
+
+```bash
+pip install -e ".[dev,api]"
+cd web && npm ci && npm run build && cd ..
+python -m uvicorn terramind.api:app --host 127.0.0.1 --port 8000    # from the project root
+```
+
+The AI decides which tool to call; the algorithm computes every score. Keys (`OPENROUTER_API_KEY`, `OPENTOPO_API_KEY`) stay in `.env` on the server.
 
 ## Global Explorer (3D web app)
 
@@ -121,7 +128,7 @@ python -m terramind search --reference meridiani --region uzbekistan_west
 
 Scans every 25 km window in the region (NASA SRTM GL3 via OpenTopography) with the same method and writes `results/search/<reference>__<region>/`: `map.png` (similarity map with numbered leads), `windows.csv` (every window), `search.json` (top leads with satellite links, known-site rank, limits). Leads are for human review, not confirmed analogs.
 
-**4. Web platform** — interactive map of the Analog Finder (satellite imagery to review leads, accept/reject), the matrix, every site's quick-look and approval, and Ask AI:
+**4. Analysis console** (older stand-alone page; the AI Assistant above now covers the same flow) — interactive map of the Analog Finder (satellite imagery to review leads, accept/reject), the matrix, every site's quick-look and approval, and Ask AI:
 
 ```bash
 python -m terramind serve           # then open http://127.0.0.1:8001
@@ -129,7 +136,7 @@ python -m terramind serve           # then open http://127.0.0.1:8001
 
 Runs locally with the Python standard library; API keys stay on the server. Lead reviews are saved to `results/search/<search>/reviews.json`.
 
-**5. Ask the AI** (needs `OPENROUTER_API_KEY` in `.env`) (needs `OPENROUTER_API_KEY` in `.env`):
+**5. Ask the AI** (needs `OPENROUTER_API_KEY` in `.env`):
 
 ```bash
 python -m terramind ask "Why does Ustyurt match Meridiani but not Gale?"
@@ -212,6 +219,7 @@ docs/         PHASE1.md (technical task), methodology, data sources, validation
 | Analog Finder (`search`) + AI search tool | Done (hackathon, day 1) — first real runs next |
 | Moon reference (Mons Mouton Plateau, LOLA) | Done (hackathon, day 1) |
 | Web platform (`serve`) | Done (hackathon, day 1) |
+| One platform: AI Assistant (Moon/Mars reference → Earth leads → 3D compare) + Global Explorer, English UI | Done (hackathon, day 1 night) |
 | Demo video / slides, Space Apps project page | Planned (hackathon, day 2) |
 
 ## Work done before the hackathon
