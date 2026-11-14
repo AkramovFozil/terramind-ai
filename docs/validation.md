@@ -4,7 +4,7 @@ How we check that TerraMind measures something real, and what we have checked so
 
 ## 1. Unit tests (done)
 
-`pytest` runs 37 tests on synthetic data, with no downloads:
+`pytest` runs 49 tests on synthetic data, with no downloads:
 
 | Area | Check |
 |---|---|
@@ -24,6 +24,8 @@ How we check that TerraMind measures something real, and what we have checked so
 | Gate | score refuses unapproved sites; refuses after a center change; approve refuses until prepared again |
 | End to end | synthetic MOLA (Mars Equirectangular) + synthetic SRTM (EPSG:4326) → prepare → approve → score writes all files |
 | Matrix | refuses while any enabled site is unapproved; with ≥ 3 Earth sites reports every cell and the A-vs-B Spearman rank stability |
+| Search | tiles download once and are cached; the VRT mosaic returns the tile values; flattened water is excluded; leads are sorted and ≥ 25 km apart; the known site's rank is reported; an unapproved or non-Mars reference is refused |
+| AI | the model's search request runs the tool; numbers it invents (e.g. a "water probability") are flagged; the key never appears in errors |
 
 The tests found one real bug while being written: Horn's slope does not use the centre cell, so a nodata pixel surrounded by valid ones got a slope value. Fixed: a nodata centre is now always nodata.
 

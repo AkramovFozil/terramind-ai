@@ -185,3 +185,79 @@ def matrix_figure(path: Path, refs, earth, cells: dict, weight_set: str) -> Path
     fig.savefig(path, facecolor=SURFACE)
     plt.close(fig)
     return path
+
+
+def search_map(path: Path, region, vrt_path, rows: list, top: list, known: list, ref_name: str,
+               key: str, window_km: float) -> Path:
+    """Hillshade of the region with every scored window colored by similarity, top leads numbered."""
+    import math
+
+    import rasterio
+    from matplotlib.collections import PatchCollection
+    from matplotlib.colors import LinearSegmentedColormap
+    from matplotlib.patches import Rectangle
+    from rasterio.enums import Resampling as RioResampling
+
+    w, s, e, n = region.bbox
+    mid = math.radians((s + n) / 2)
+    with rasterio.open(vrt_path) as src:
+        scale = max(src.width, src.height) / 1400.0
+        out_w, out_h = max(1, int(src.width / max(scale, 1))), max(1, int(src.height / max(scale, 1)))
+        dem = src.read(1, out_shape=(out_h, out_w), resampling=RioResampling.average, masked=True).astype("float64").filled(np.nan)
+        b = src.bounds
+    px_m = (b.right - b.left) / out_w * 111_320 * math.cos(mid)
+    hs = hillshade(dem, px_m)
+
+    cmap = LinearSegmentedColormap.from_list("seq_blue", SEQ_BLUE)
+    aspect = 1 / math.cos(mid)
+    width_in = 9.0
+    height_in = max(4.0, width_in * (n - s) * aspect / (e - w)) + 1.6
+    fig, ax = plt.subplots(figsize=(width_in + 1.4, min(height_in, 14)), dpi=120, facecolor=SURFACE)
+    ax.imshow(np.ma.masked_invalid(hs), cmap="gray", vmin=0, vmax=1, extent=(b.left, b.right, b.bottom, b.top),
+              interpolation="bilinear", alpha=0.9)
+
+    ok = [r for r in rows if r.get("status") == "ok"]
+    stride_km = region.stride_km
+    patches, values = [], []
+    for r in ok:
+        dlat = stride_km / 111.32
+        dlon = stride_km / (111.32 * math.cos(math.radians(r["lat"])))
+        patches.append(Rectangle((r["lon"] - dlon / 2, r["lat"] - dlat / 2), dlon, dlat))
+        values.append(r[key])
+    if patches:
+        pc = PatchCollection(patches, cmap=cmap, alpha=0.78, linewidths=0)
+        pc.set_array(np.array(values))
+        pc.set_clim(0, 1)
+        ax.add_collection(pc)
+        cb = fig.colorbar(pc, ax=ax, fraction=0.035, pad=0.02)
+        cb.set_label(f"similarity to {ref_name}", fontsize=8, color=INK)
+        cb.ax.tick_params(labelsize=7, colors=MUTED)
+        cb.outline.set_visible(False)
+
+    for i, r in enumerate(top, 1):
+        ax.plot(r["lon"], r["lat"], marker="o", markersize=15, mfc="white", mec=INK, mew=1.2, zorder=5)
+        ax.text(r["lon"], r["lat"], str(i), ha="center", va="center", fontsize=8, color=INK, zorder=6, fontweight="bold")
+    for k in known:
+        site_lat, site_lon = k["nearest_window"]["lat"], k["nearest_window"]["lon"]
+        ax.plot(site_lon, site_lat, marker="^", markersize=11, mfc=MARS_COLOR, mec="white", mew=1.0, zorder=7)
+        ax.annotate(f"{k['name']}: rank {k['rank']} of {k['of']} (top {k['top_percent']}%)",
+                    (site_lon, site_lat), xytext=(8, -14), textcoords="offset points", fontsize=8, color=INK, zorder=8,
+                    bbox={"boxstyle": "round,pad=0.25", "fc": "white", "ec": "none", "alpha": 0.85})
+
+    ax.set_xlim(w, e)
+    ax.set_ylim(s, n)
+    ax.set_aspect(aspect)
+    ax.set_xlabel("longitude", fontsize=8, color=MUTED)
+    ax.set_ylabel("latitude", fontsize=8, color=MUTED)
+    _style(ax)
+    ax.set_title(f"Analog search: {region.name}\nwindows most similar to {ref_name} (numbered = top leads, ≥ {window_km:g} km apart)",
+                 fontsize=10, color=INK, loc="left")
+    fig.text(0.01, 0.01,
+             f"{len(ok)} windows of {window_km:g} km scored every {stride_km:g} km; water and nodata windows not shown. "
+             "Leads for human review, not confirmed analogs. Data: NASA SRTM GL3 via OpenTopography.",
+             fontsize=7, color=MUTED, ha="left", va="bottom")
+    fig.tight_layout(rect=(0, 0.03, 1, 1))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(path, facecolor=SURFACE)
+    plt.close(fig)
+    return path

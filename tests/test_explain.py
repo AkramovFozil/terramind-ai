@@ -86,3 +86,57 @@ def test_errors_never_leak_the_key(with_results):
 def test_no_results_yet(project):
     with pytest.raises(MissingInputError, match="matrix"):
         load_context(load_settings(project))
+
+
+class SequenceSession:
+    """Returns the queued responses in order and records every request."""
+
+    def __init__(self, *responses):
+        self.responses, self.calls = list(responses), []
+
+    def post(self, url, headers, json, timeout):
+        self.calls.append(json)
+        return self.responses.pop(0)
+
+
+def test_ai_can_call_the_search_tool(project, synthetic_mola):
+    from terramind.gate import approve
+    from terramind.pipeline import prepare
+
+    (project / "config" / "regions.yaml").write_text(
+        "regions:\n  testland:\n    name: Test land\n    bbox: [56.0, 43.4, 56.6, 43.9]\n    stride_km: 5\n",
+        encoding="utf-8")
+    s = load_settings(project)
+    prepare(s, "gale")
+    approve(s, "gale")
+
+    fake_result = {
+        "reference": {"id": "gale", "name": "Gale Crater (Aeolis Palus)", "params_hash": "x"},
+        "region": {"id": "testland", "name": "Test land", "bbox": [56.0, 43.4, 56.6, 43.9]},
+        "method": {"window_km": 25}, "counts": {"windows": 35, "scored": 26, "water": 9, "nodata": 0},
+        "score_distribution": {"max": 0.4167, "p90": 0.4156, "median": 0.4131, "min": 0.4072},
+        "top": [{"lat": 43.5612, "lon": 56.3401, "rank": 1, "overall_A": 0.4167, "overall_B": 0.41,
+                 "satellite": "https://www.google.com/maps/@43.56120,56.34010,12z/data=!3m1!1e3"}],
+        "known_sites": [], "limits": ["Leads for human review."],
+    }
+    calls = []
+
+    def fake_search(ref, reg):
+        calls.append((ref, reg))
+        return fake_result
+
+    tool_call = {"id": "call_1", "type": "function",
+                 "function": {"name": "analog_search", "arguments": '{"reference": "gale", "region": "testland"}'}}
+    session = SequenceSession(
+        FakeResponse(200, {"choices": [{"message": {"content": None, "tool_calls": [tool_call]}}]}),
+        reply("Best lead: 43.5612, 56.3401 with 0.42 (A). It is a lead for human review. Water probability 0.66."),
+    )
+    res = ask(s, "Test land'da Gale'ga o'xshash joy top", FAKE_KEY, session=session, search_fn=fake_search)
+    assert calls == [("gale", "testland")]
+    assert res["search"] is fake_result
+    assert res["unverified_numbers"] == ["0.66"]  # the invented number is caught, the lead's numbers are not
+    first, second = session.calls
+    assert first["tools"][0]["function"]["name"] == "analog_search"
+    assert first["tools"][0]["function"]["parameters"]["properties"]["region"]["enum"] == ["testland"]
+    assert second["messages"][-1]["role"] == "tool" and "43.5612" in second["messages"][-1]["content"]
+    assert "tools" not in second

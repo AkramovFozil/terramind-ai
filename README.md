@@ -72,13 +72,24 @@ To compare every Mars reference with every Earth site at once (all enabled sites
 python -m terramind matrix          # writes results/matrix/matrix.json, matrix.csv, matrix.png
 ```
 
-**3. Ask the AI to explain the results** (needs `OPENROUTER_API_KEY` in `.env`):
+**3. Analog Finder — let TerraMind find the places**
+
+```bash
+python -m terramind regions                                   # list search regions
+python -m terramind search --reference gale --region utah     # validation: does MDRS rank high?
+python -m terramind search --reference meridiani --region uzbekistan_west
+```
+
+Scans every 25 km window in the region (NASA SRTM GL3 via OpenTopography) with the same method and writes `results/search/<reference>__<region>/`: `map.png` (similarity map with numbered leads), `windows.csv` (every window), `search.json` (top leads with satellite links, known-site rank, limits). Leads are for human review, not confirmed analogs.
+
+**4. Ask the AI** (needs `OPENROUTER_API_KEY` in `.env`) (needs `OPENROUTER_API_KEY` in `.env`):
 
 ```bash
 python -m terramind ask "Why does Ustyurt match Meridiani but not Gale?"
+python -m terramind ask "Find places in western Uzbekistan that look like Meridiani Planum"
 ```
 
-The model gets only TerraMind's computed results as context. Every number in its answer is checked against those results; anything that is not there is printed as a warning. The AI explains, it never scores.
+For a "find" request the model calls the Analog Finder tool (fixed lists of references and regions) instead of naming places itself. The model gets only TerraMind's computed results as context. Every number in its answer is checked against those results; anything that is not there is printed as a warning. The AI explains, it never scores.
 
 `score` refuses to run until both sites are approved, and refuses again if a site’s center, window, grid, CRS or dataset changes after approval. Results go to `results/gale__ustyurt/`: `metrics.json`, `comparison.csv`, `histograms.png`.
 
@@ -114,7 +125,7 @@ A missing input or key stops with exact instructions and a non-zero exit code. T
 ## Repository layout
 
 ```
-config/       sites.yaml (sites, windows) · metrics.yaml (bins, weights)
+config/       sites.yaml (sites, windows) · metrics.yaml (bins, weights) · regions.yaml (search regions)
 terramind/    Python package
   config.py     settings, sites, dataset registry, error types
   crs.py        Mars sphere / WGS84 local AEQD projections
@@ -125,8 +136,10 @@ terramind/    Python package
   quicklook.py  hillshade quick-look, histogram figure
   gate.py       review gate: params hash, approve, refuse
   pipeline.py   prepare and score
-  explain.py    AI explanation via OpenRouter, with a number-grounding check
-  cli.py        status / prepare / approve / score / matrix / ask
+  regions.py    search regions, SRTM GL3 tile download, VRT mosaic
+  search.py     Analog Finder: scan, score, rank, known-site check
+  explain.py    AI explanation via OpenRouter: search tool + number-grounding check
+  cli.py        status / prepare / approve / score / matrix / regions / search / ask
   sources/      MOLA (local file) and OpenTopography (download + cache)
 scripts/      clip_mola_gale.py
 tests/        pytest, synthetic DEMs only
@@ -146,6 +159,7 @@ docs/         PHASE1.md (technical task), methodology, data sources, validation
 | Negative control (flat non-analog plain) | Planned (hackathon) |
 | Kyzylkum | Planned (hackathon) |
 | AI explanation (`ask`, OpenRouter, grounding check) | Done (hackathon, day 1) |
+| Analog Finder (`search`) + AI search tool | Done (hackathon, day 1) — first real runs next |
 | Web platform | Planned (hackathon) |
 
 ## Work done before the hackathon

@@ -101,12 +101,56 @@ def cmd_ask(settings, args) -> int:
         api_key=os.environ.get("OPENROUTER_API_KEY"),
         model=args.model or os.environ.get("OPENROUTER_MODEL") or None,
         max_tokens=int(os.environ.get("OPENROUTER_MAX_TOKENS") or 0) or None,
+        opentopo_key=os.environ.get("OPENTOPO_API_KEY"),
+        progress=lambda m: print("  " + m, flush=True),
     )
     print(res["answer"])
+    if res.get("search"):
+        sr = res["search"]
+        key = next(iter(settings.weights))
+        print(f"\nLeads computed by TerraMind ({sr['region']['name']} vs {sr['reference']['name']}):")
+        for i, r in enumerate(sr["top"], 1):
+            print(f"  {i:>2}. {r['lat']:.4f}, {r['lon']:.4f}  score {r['overall_' + key]:.3f}  {r['satellite']}")
+        files = sr.get("files") or [f"results/search/{sr['reference']['id']}__{sr['region']['id']}/map.png"]
+        print("  map: " + next((f for f in files if f.endswith("map.png")), files[0]))
     print(f"\n[model: {res['model']} · context: {res['context_source']}]")
     if res["unverified_numbers"]:
         print("WARNING: these numbers are not in TerraMind's results — do not trust them: "
               + ", ".join(res["unverified_numbers"]))
+    return 0
+
+
+def cmd_regions(settings, args) -> int:
+    from terramind.regions import load_regions, tile_bounds, window_centers
+
+    print(f"{'region':<16} {'tiles':>5} {'windows':>8}  name")
+    for r in load_regions(settings).values():
+        n = len(window_centers(r, settings.window_km))
+        print(f"{r.id:<16} {len(tile_bounds(r)):>5} {n:>8}  {r.name}")
+    return 0
+
+
+def cmd_search(settings, args) -> int:
+    from terramind.search import search
+
+    res = search(settings, args.reference, args.region, api_key=os.environ.get("OPENTOPO_API_KEY"),
+                 top_n=args.top, progress=lambda m: print("  " + m, flush=True))
+    c = res["counts"]
+    key = next(iter(settings.weights))
+    print(f"\n{res['region']['name']} vs {res['reference']['name']}")
+    print(f"windows {c['windows']}: scored {c['scored']}, water {c['water']}, nodata {c['nodata']}")
+    if res["score_distribution"]:
+        d = res["score_distribution"]
+        print(f"scores: max {d['max']:.3f}, top 10% from {d['p90']:.3f}, median {d['median']:.3f}")
+    print(f"\nTop leads (weight set {key}, at least {settings.window_km:g} km apart):")
+    for i, r in enumerate(res["top"], 1):
+        print(f"  {i:>2}. {r['lat']:.4f}, {r['lon']:.4f}  score {r['overall_' + key]:.3f}  {r['satellite']}")
+    for k in res["known_sites"]:
+        print(f"Known site {k['name']}: nearest window ranks {k['rank']} of {k['of']} "
+              f"(top {k['top_percent']}%), score {k['score']:.3f}")
+    for path in res["files"]:
+        print(f"  wrote {path}")
+    print("Leads are for human review: check the satellite view before treating any of them as an analog.")
     return 0
 
 
@@ -126,6 +170,12 @@ def build_parser() -> argparse.ArgumentParser:
     ss.add_argument("--candidate", required=True)
     ss.set_defaults(func=cmd_score)
     sub.add_parser("matrix", help="score every approved Mars reference against every approved Earth site").set_defaults(func=cmd_matrix)
+    sub.add_parser("regions", help="list search regions").set_defaults(func=cmd_regions)
+    sr = sub.add_parser("search", help="Analog Finder: scan a region for windows similar to a Mars reference")
+    sr.add_argument("--reference", required=True, help="approved Mars site, e.g. gale or meridiani")
+    sr.add_argument("--region", required=True, help="region id from config/regions.yaml")
+    sr.add_argument("--top", type=int, default=10)
+    sr.set_defaults(func=cmd_search)
     sq = sub.add_parser("ask", help="ask the AI to explain TerraMind's results (OpenRouter)")
     sq.add_argument("question", nargs="+")
     sq.add_argument("--model", help="OpenRouter model id (default: $OPENROUTER_MODEL or openai/gpt-4o)")

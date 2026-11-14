@@ -1,0 +1,33 @@
+# TerraMind Analog Finder — search regions.
+#
+# A search slides 25 x 25 km windows (window_km in sites.yaml) over a region,
+# scores every window against an approved Mars reference with the same method,
+# and ranks them. Results are LEADS for human review, not confirmed analogs.
+#
+# bbox: [west, south, east, north] in degrees. Data: NASA SRTM GL3 (3 arc-second,
+# ~90 m) from OpenTopography, downloaded in tiles and averaged to the 463 m grid.
+
+regions:
+  utah:
+    name: Utah around MDRS (validation)
+    bbox: [-111.70, 37.90, -110.00, 39.00]
+    stride_km: 5
+    note: Contains the Mars Desert Research Station. Used to test whether the search singles out known analog terrain.
+
+  atacama:
+    name: Atacama around Yungay (validation)
+    bbox: [-70.60, -25.00, -69.20, -23.20]
+    stride_km: 5
+    note: Contains the Yungay analog site.
+
+  uzbekistan_west:
+    name: Western Uzbekistan deserts (Ustyurt, Aral, Kyzylkum)
+    bbox: [56.00, 39.00, 66.00, 45.60]
+    stride_km: 12.5
+    note: Box around Ustyurt, the former Aral Sea floor and Kyzylkum. Includes parts of Kazakhstan and Turkmenistan.
+
+  uzbekistan:
+    name: Uzbekistan (bounding box)
+    bbox: [56.00, 37.15, 73.20, 45.60]
+    stride_km: 12.5
+    note: Whole-country bounding box; includes neighbouring countries. Largest download (~0.5 GB).
