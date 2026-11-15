@@ -22,3 +22,23 @@
 @media(max-width:480px){.compare-panels{grid-template-columns:1fr}.compare-panel{height:34svh}}
 .metric-bars>div:nth-child(4) .metric-track i{background:#c9a36a}.metric-bars>div:nth-child(5) .metric-track i{background:#7d8f7a}
 .landing-cell{position:relative;white-space:nowrap}.landing-cell .lbar{position:absolute;left:0;bottom:2px;height:3px;background:#9fdc7c;border-radius:2px;max-width:100%;opacity:.8;display:block}
+/* Manba tanlovi: Mars / Oy */
+.moon-dot{background:radial-gradient(circle at 30% 25%,#d9d6cc,#8d8a82 50%,#34332f)}
+.body-switch{position:relative}
+.body-switch-btn{display:flex;align-items:center;gap:5px;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+.body-switch-btn h3{margin:0 0 5px!important}
+.body-switch-btn svg{margin-bottom:5px;color:#93a084;transition:transform .2s}
+.body-switch-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.body-switch-btn:hover h3{color:var(--accent)}
+.body-menu{position:absolute;top:calc(100% + 8px);left:-36px;z-index:1100;min-width:230px;padding:5px;border-radius:7px;background:#1b211b;border:1px solid #dce5ca2e;box-shadow:0 14px 34px #000a}
+.body-menu button{display:grid;grid-template-columns:18px 1fr;column-gap:9px;align-items:center;width:100%;padding:8px 9px;border:0;border-radius:5px;background:none;color:var(--ink);font-size:12px;text-align:left;cursor:pointer}
+.body-menu button:hover,.body-menu button[aria-selected="true"]{background:#dce6b214}
+.body-menu .planet-dot{width:16px;height:16px;grid-row:span 2}
+.body-menu small{font:8px var(--mono);color:var(--quiet);letter-spacing:.3px}
+.moon-polar{position:absolute;inset:0;overflow:hidden;background:#0a0c0b}
+.moon-polar.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--quiet);font-size:11px;text-align:center;padding:24px}
+.moon-polar-img{position:absolute;left:0;top:50%;width:100%;aspect-ratio:1}
+.moon-polar-img img{display:block;width:100%;height:100%}
+.moon-window{position:absolute;border:1.5px dashed #f2cc9e;border-radius:2px;box-shadow:0 0 0 1px #0006}
+.moon-pin{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#f6dcc0;border:2px solid #b5683e;box-shadow:0 0 0 5px #f2cc9e33}
+.moon-scale{position:absolute;left:12px;bottom:12px;z-index:5;font:8px var(--mono);padding:5px 7px;border-radius:3px;background:#1b211be0;color:#e0e4d4}

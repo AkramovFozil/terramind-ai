@@ -20,7 +20,7 @@ function Surface({data,exaggeration}:{data:TerrainData;exaggeration:number}){
       const i=row*width+col, value=elevations[i]??datum;
       vertices.set([(col-(width-1)/2)*pixel_size_m*scale,(value-datum)*scale*exaggeration,(row-(height-1)/2)*pixel_size_m*scale],i*3);
       const t=(value-low)/Math.max(high-low,1);
-      shade.setHSL(data.body==='mars'?.055+.025*t:.105+.06*t,.28,data.body==='mars'?.25+.28*t:.24+.29*t);
+      if((data.body as string)==='moon')shade.setHSL(.11,.05,.2+.42*t);else shade.setHSL(data.body==='mars'?.055+.025*t:.105+.06*t,.28,data.body==='mars'?.25+.28*t:.24+.29*t);
       colors.set([shade.r,shade.g,shade.b],i*3);
       if(row<height-1&&col<width-1){const a=i,b=i+1,c=i+width,d=c+1;if(valid(a)&&valid(c)&&valid(b))indices.push(a,c,b);if(valid(b)&&valid(c)&&valid(d))indices.push(b,c,d);}
     }
