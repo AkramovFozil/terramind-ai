@@ -229,4 +229,24 @@ The OpenTopography and OpenRouter API keys live only in a local `.env` file (see
 
 ## License
 
-Open source, as Space Apps requires. The team will choose the license before submission; if none is stated, NASA distributes the original content under Apache 2.0.
+**Code:** Apache License 2.0 — see [LICENSE](LICENSE). Copyright 2026 the TerraMind AI team (NASA Space Apps Challenge 2026, Tashkent).
+
+**Data and imagery we use** (cited as Space Apps requires; none of it is redistributed in this repository except small derived previews):
+
+| Source | Used for | License / terms | Citation |
+|---|---|---|---|
+| Mars MGS MOLA DEM 463 m (USGS Astrogeology / NASA PDS) | Mars terrain | U.S. Government work, public domain | Smith et al., MOLA; astrogeology.usgs.gov/search/map/mars_mgs_mola_dem_463m |
+| LRO LOLA south-pole DEM 80 m (NASA GSFC PGDA) | Moon terrain | U.S. Government work, public domain | Barker et al. 2023, doi:10.60903/gsfcpgda-lola-spole |
+| NASA SRTM GL3 via OpenTopography | Earth terrain (Analog Finder) | NASA data public domain; OpenTopography API key under its non-commercial / academic terms (key kept private in `.env`) | doi:10.5069/G9445JDF |
+| NOAA ETOPO 2022 (60″) | Global Earth screening index | U.S. Government work, public domain | NOAA NCEI, doi:10.25921/fd45-gt74 |
+| Copernicus DEM GLO-30 | Global Explorer refinement | Free use with attribution | © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA |
+| NASA Mars Trek (Viking MDIM 2.1) and Moon Trek (LRO WAC mosaic) tiles | Map backgrounds | NASA imagery, public domain; credit shown on the map | trek.nasa.gov |
+| OpenStreetMap tiles | Earth map background | Data ODbL, attribution required; light use under the OSM tile policy | © OpenStreetMap contributors |
+| Solar System Scope planet textures | 3D globes (Studio page) | CC BY 4.0 | Planet textures: Solar System Scope (CC BY 4.0) — see `web/public/ASSET-CREDITS.txt` |
+| Poly Haven rock and sand textures | Visual surface detail | CC0 1.0 | Rob Tuytel, polyhaven.com |
+
+**Software** (installed, not vendored): React, Vite, Three.js (MIT), Leaflet (BSD-2), lucide-react (ISC), FastAPI, Uvicorn (BSD/MIT), NumPy, SciPy, rasterio, pyproj, matplotlib, Pillow (BSD-style / PSF-based licenses).
+
+**AI use:** large language models (via OpenRouter) only choose tools and explain computed results in the AI assistant; every score is computed by the algorithm and every number in an answer is checked. AI coding assistants were used during development. Any AI-generated visual is labelled "AI-generated" where it appears.
+
+TerraMind AI is not affiliated with or endorsed by NASA, ESA or the other data providers.
