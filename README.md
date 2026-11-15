@@ -30,6 +30,8 @@ Details: [docs/methodology.md](docs/methodology.md) · [docs/data-sources.md](do
 
 Known Mars analogs Yungay and MDRS score 0.77 and 0.66 against the Gale crater floor, so the method recognises them. Ustyurt does not resemble Gale (0.12) but scores 0.74 against Meridiani Planum, the flat plain where Opportunity landed. Full table, per-metric scores and limits: **[docs/results.md](docs/results.md)**.
 
+**Live preview:** https://terramind-ai-one.vercel.app — landing page and interface only. The analysis (search, measured 3D terrain, Moon, AI assistant) needs the local server and the NASA data files, so the preview shows "server offline"; run it locally as described below.
+
 ## One platform
 
 Open **http://127.0.0.1:8000** after the steps below: the Global Explorer (Abubakr's 3D web app) with the **AI yordamchi** panel inside it (header button or the floating button).
