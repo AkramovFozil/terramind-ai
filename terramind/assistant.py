@@ -475,6 +475,42 @@ def make_router() -> APIRouter:
         except TerraMindError as exc:
             raise _http(exc, 404) from None
 
+    @router.get("/moon/pick")
+    def moon_pick(x: float = Query(ge=0, le=1), y: float = Query(ge=0, le=1)):
+        from terramind import moon_explore
+
+        try:
+            return moon_explore.pick(_settings(), x, y)
+        except TerraMindError as exc:
+            raise _http(exc, 422) from None
+
+    @router.get("/moon/locate")
+    def moon_locate(lat: float = Query(ge=-90, le=-60), lon: float = Query(ge=-180, le=360)):
+        from terramind import moon_explore
+
+        try:
+            return moon_explore.locate(_settings(), lat, lon)
+        except TerraMindError as exc:
+            raise _http(exc, 422) from None
+
+    @router.get("/moon/terrain")
+    def moon_terrain(lat: float = Query(ge=-90, le=-60), lon: float = Query(ge=-180, le=360)):
+        from terramind import moon_explore
+
+        try:
+            return moon_explore.terrain(_settings(), lat, lon)
+        except TerraMindError as exc:
+            raise _http(exc, 422) from None
+
+    @router.get("/moon/search")
+    def moon_search(lat: float = Query(ge=-90, le=-60), lon: float = Query(ge=-180, le=360), region: str = Query(min_length=1)):
+        from terramind import moon_explore
+
+        try:
+            return moon_explore.search(_settings(), lat, lon, region)
+        except TerraMindError as exc:
+            raise _http(exc, 422) from None
+
     @router.post("/chat")
     def chat_route(req: ChatRequest):
         s = _settings()

@@ -98,3 +98,27 @@ def test_routes(moon_project, monkeypatch):
     assert ov["pending_references"] == [] or all(p["state"] != "approved" for p in ov["pending_references"])
     r = client.post("/api/tm/chat", json={"question": "find"})
     assert r.status_code == 400 and "OPENROUTER_API_KEY" in r.json()["detail"]
+
+
+def test_moon_exploration_point(moon_project, monkeypatch):
+    monkeypatch.setenv("TERRAMIND_ROOT", str(moon_project))
+    from terramind.api import create_app
+
+    class Dummy:
+        def close(self):
+            pass
+
+    s = load_settings(moon_project)
+    search(s, "mouton", "testland", api_key="key", session=FakeOpenTopo())
+    client = TestClient(create_app(service=Dummy(), serve_frontend=False))
+    loc = client.get("/api/tm/moon/locate", params={"lat": -84.7906, "lon": 29.1957}).json()
+    p = client.get("/api/tm/moon/pick", params={"x": loc["marker"]["x"], "y": loc["marker"]["y"]}).json()
+    assert abs(p["lat"] + 84.7906) < 0.01 and abs(p["lon"] - 29.1957) < 0.05
+    assert client.get("/api/tm/moon/pick", params={"x": 0.001, "y": 0.001}).status_code == 422
+    t = client.get("/api/tm/moon/terrain", params={"lat": p["lat"], "lon": p["lon"]}).json()
+    assert t["body"] == "moon" and "landing" in t
+    r = client.get("/api/tm/moon/search", params={"lat": p["lat"], "lon": p["lon"], "region": "testland"}).json()
+    assert r["reference"]["exploration"] and r["counts"]["scored"] > 0 and r["top"]
+    # same point as the approved Mouton window -> same top score as the saved search
+    saved = client.get("/api/tm/search/mouton__testland").json()
+    assert abs(r["top"][0]["overall_A"] - saved["top"][0]["overall_A"]) < 0.05

@@ -8,7 +8,7 @@ import './ai-panel.css';
 
 type Summary={p5:number|null;median:number|null;p95:number|null;count:number};
 type MapMeta={kind:'polar'|'equirect';image:string;marker:{x:number;y:number};box:{x0:number;y0:number;x1:number;y1:number};caption:string};
-export type AiReference={id:string;name:string;body:'mars'|'moon';center:{lat:number;lon:number};dataset?:string;window_km:number;grid_m:number;metric_summary?:Record<'slope_deg'|'relief_m'|'tri_m',Summary>;map?:MapMeta|null;map_error?:string;landing?:Landing|null};
+export type AiReference={id:string;name:string;body:'mars'|'moon';center:{lat:number;lon:number};dataset?:string;window_km:number;grid_m:number;metric_summary?:Record<'slope_deg'|'relief_m'|'tri_m',Summary>;map?:MapMeta|null;map_error?:string;landing?:Landing|null;terrain_url?:string};
 export type Landing={flat_lt5:number|null;lt15:number|null;hazard_gt15:number|null};
 export type AiLead={lat:number;lon:number;rank?:number;overall_A:number;slope_deg?:number;relief_m?:number;tri_m?:number;satellite?:string};
 export type AiSearch={reference:{id:string;name:string};region:{id:string;name:string;bbox:[number,number,number,number]};counts:{windows:number;scored:number;water:number};score_distribution:{max:number;median:number}|null;top:AiLead[];known_sites:{site:string;name:string;rank:number;of:number;top_percent:number;score:number}[]};
@@ -75,7 +75,7 @@ export default function AiPanel({open,onClose,reference,search,selected,onRefere
       {busy&&<div className="ai-bubble assistant thinking"><LoaderCircle size={14} className="rotating"/>Joy belgilanmoqda, Yer skanerlanmoqda…</div>}
 
       {reference&&<section className="ai-card"><header><span className={`ai-tag ${reference.body}`}>{reference.body==='moon'?'OY':'MARS'}</span><div><strong>{reference.name}</strong><small>{coord(reference.center)} · {reference.dataset??''}</small></div></header>
-        {reference.map?<ReferenceMap meta={reference.map}/>:<p className="ai-note">{reference.map_error??'Xarita mavjud emas'}</p>}
+        {reference.map?<ReferenceMap meta={reference.map}/>:reference.id.includes('@')?<p className="ai-note">Tadqiqot nuqtasi — tekshiruvdan o‘tgan joy emas. Hisob usuli bir xil.</p>:<p className="ai-note">{reference.map_error??'Xarita mavjud emas'}</p>}
         <div className="ai-refrow"><img src={`/api/tm/window-image/${reference.id}.png`} alt="Tanlangan oynaning relyefi" onError={e=>{e.currentTarget.style.display='none'}}/>
           <dl><div><dt>Median qiyalik</dt><dd>{nf(ms?.slope_deg?.median,1)}°</dd></div><div><dt>Median notekislik (TRI)</dt><dd>{nf(ms?.tri_m?.median,1)} m</dd></div><div><dt>Relyef, 5–95%</dt><dd>{nf(ms?.relief_m?.p5,0)} … {nf(ms?.relief_m?.p95,0)} m</dd></div></dl></div>
         <LandingBar l={reference.landing}/>
@@ -86,7 +86,7 @@ export default function AiPanel({open,onClose,reference,search,selected,onRefere
           <button className="ai-lead" onClick={()=>onSelect(i)}><span className="ai-rank">{i+1}</span><span className="ai-coord">{coord(l)}</span><strong>{nf(l.overall_A)}</strong></button>
           {i===selected&&<div className="ai-leaddetail"><div className="ai-bars">{(['slope_deg','relief_m','tri_m'] as const).map(k=><label key={k}><span>{k==='slope_deg'?'Qiyalik':k==='relief_m'?'Relyef':'Notekislik'}</span><i><b style={{width:`${(l[k]??0)*100}%`}}/></i><em>{nf(l[k])}</em></label>)}</div>
             <LandingBar l={leadLanding[`${search.region.id}|${l.lat},${l.lon}`]} compact/>
-            <div className="ai-actions"><button className="primary" onClick={()=>onCompare(l)}><Layers size={13}/>3D da solishtirish</button><a href={l.satellite} target="_blank" rel="noreferrer"><MapPin size={13}/>Sun’iy yo‘ldosh</a><a href={`/api/tm/report/${search.reference.id}__${search.region.id}?lat=${l.lat}&lon=${l.lon}`} target="_blank" rel="noreferrer" title="Bir sahifali missiya hisoboti: ikkala oyna, raqamlar, manbalar, tekshiruv holati. Brauzerdan PDF qilib saqlash mumkin."><FileText size={13}/>Hisobot</a></div></div>}
+            <div className="ai-actions"><button className="primary" onClick={()=>onCompare(l)}><Layers size={13}/>3D da solishtirish</button><a href={l.satellite} target="_blank" rel="noreferrer"><MapPin size={13}/>Sun’iy yo‘ldosh</a>{!search.reference.id.includes('@')&&<a href={`/api/tm/report/${search.reference.id}__${search.region.id}?lat=${l.lat}&lon=${l.lon}`} target="_blank" rel="noreferrer" title="Bir sahifali missiya hisoboti: ikkala oyna, raqamlar, manbalar, tekshiruv holati. Brauzerdan PDF qilib saqlash mumkin."><FileText size={13}/>Hisobot</a>}</div></div>}
         </li>)}</ol>
         {search.known_sites.map(k=><p key={k.site} className="ai-known">Ma’lum analog — {k.name}: {k.of} oynadan {k.rank}-o‘rin (top {k.top_percent}%), ball {nf(k.score)}.</p>)}
         <small className="ai-fine">Joylar Yer xaritasida ham belgilandi. Bu — nomzodlar; analog deb atash uchun inson sun’iy yo‘ldosh suratida tekshiradi.</small></section>}
