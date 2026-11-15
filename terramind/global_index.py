@@ -7,12 +7,14 @@ apart) it stores, for a 25 km radius circle:
 * coarse histograms of slope, relief and TRI (screening bins), and
 * the rotation-invariant polar shape descriptor (terramind.shape).
 
-Each lattice row is resampled along longitude to square ~926 m pixels by exact
+Each lattice row is resampled along longitude to square ~1852 m pixels by exact
 area averaging, so slope and TRI use the same pixel size as the Mars side,
 which is the 463 m MOLA grid averaged 4 x 4 (1852 m).
 
-The index only *screens*. Every reported result is re-measured on Copernicus
-GLO-30 at 463 m and re-scored with the full method.
+The index only *screens*, comparing equal-radius regional context. For a
+different requested search radius it remains a context shortlist, never a
+substitute score at that radius. Every reported result is re-measured on
+Copernicus GLO-30 at 463 m over the requested circle and re-scored.
 """
 
 from __future__ import annotations

@@ -1,0 +1,2012 @@
+0 verbose cli C:\Users\User\AppData\Local\fnm_multishells\11796_1794635659165\node.exe C:\Users\User\AppData\Local\fnm_multishells\11796_1794635659165\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.8
+2 info using node@v22.23.1
+3 silly config load:file:C:\Users\User\AppData\Roaming\fnm\node-versions\v22.23.1\installation\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\.npmrc
+5 silly config load:file:C:\Users\User\.npmrc
+6 silly config load:file:C:\Users\User\AppData\Local\fnm_multishells\11796_1794635659165\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--cache" "..\\work\\npm-cache" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\work\npm-cache\_logs\2026-11-14T08_14_06_311Z-
+10 verbose logfile C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\work\npm-cache\_logs\2026-11-14T08_14_06_311Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+13 silly idealTree buildDeps
+14 silly fetch manifest react@19.3.1
+15 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/react 463ms (cache revalidated)
+17 silly packumentCache full:https://registry.npmjs.org/react set size:7136567 disposed:false
+18 silly fetch manifest react-dom@19.3.1
+19 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/react-dom 138ms (cache revalidated)
+21 silly packumentCache full:https://registry.npmjs.org/react-dom set size:9645549 disposed:false
+22 silly fetch manifest three@0.187.0
+23 silly packumentCache full:https://registry.npmjs.org/three cache-miss
+24 http fetch GET 200 https://registry.npmjs.org/three 109ms (cache revalidated)
+25 silly packumentCache full:https://registry.npmjs.org/three set size:946179 disposed:false
+26 silly fetch manifest @react-three/fiber@9.8.2
+27 silly packumentCache full:https://registry.npmjs.org/@react-three%2ffiber cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/@react-three%2ffiber 146ms (cache revalidated)
+29 silly packumentCache full:https://registry.npmjs.org/@react-three%2ffiber set size:1585878 disposed:false
+30 silly fetch manifest expo@>=43.0
+31 silly packumentCache full:https://registry.npmjs.org/expo cache-miss
+32 http fetch GET 200 https://registry.npmjs.org/expo 120ms (cache revalidated)
+33 silly packumentCache full:https://registry.npmjs.org/expo set size:4423561 disposed:false
+34 silly fetch manifest @expo/metro-runtime@*
+35 silly packumentCache full:https://registry.npmjs.org/@expo%2fmetro-runtime cache-miss
+36 http fetch GET 200 https://registry.npmjs.org/@expo%2fmetro-runtime 116ms (cache revalidated)
+37 silly packumentCache full:https://registry.npmjs.org/@expo%2fmetro-runtime set size:895730 disposed:false
+38 silly fetch manifest react-native@*
+39 silly packumentCache full:https://registry.npmjs.org/react-native cache-miss
+40 http fetch GET 200 https://registry.npmjs.org/react-native 148ms (cache revalidated)
+41 silly packumentCache full:https://registry.npmjs.org/react-native set size:16161081 disposed:false
+42 silly fetch manifest @types/react@latest
+43 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+44 http fetch GET 200 https://registry.npmjs.org/@types%2freact 118ms (cache revalidated)
+45 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2642195 disposed:false
+46 silly fetch manifest react-native-web@*
+47 silly packumentCache full:https://registry.npmjs.org/react-native-web cache-miss
+48 http fetch GET 200 https://registry.npmjs.org/react-native-web 108ms (cache revalidated)
+49 silly packumentCache full:https://registry.npmjs.org/react-native-web set size:1097441 disposed:false
+50 silly fetch manifest react-native-webview@*
+51 silly packumentCache full:https://registry.npmjs.org/react-native-webview cache-miss
+52 http fetch GET 200 https://registry.npmjs.org/react-native-webview 112ms (cache revalidated)
+53 silly packumentCache full:https://registry.npmjs.org/react-native-webview set size:1398424 disposed:false
+54 silly fetch manifest expo-asset@>=8.4
+55 silly packumentCache full:https://registry.npmjs.org/expo-asset cache-miss
+56 http fetch GET 200 https://registry.npmjs.org/expo-asset 304ms (cache revalidated)
+57 silly packumentCache full:https://registry.npmjs.org/expo-asset set size:1308579 disposed:false
+58 silly fetch manifest expo-file-system@>=11.0
+59 silly packumentCache full:https://registry.npmjs.org/expo-file-system cache-miss
+60 http fetch GET 200 https://registry.npmjs.org/expo-file-system 113ms (cache revalidated)
+61 silly packumentCache full:https://registry.npmjs.org/expo-file-system set size:1258548 disposed:false
+62 silly fetch manifest expo-gl@>=11.0
+63 silly packumentCache full:https://registry.npmjs.org/expo-gl cache-miss
+64 http fetch GET 200 https://registry.npmjs.org/expo-gl 105ms (cache revalidated)
+65 silly packumentCache full:https://registry.npmjs.org/expo-gl set size:1069029 disposed:false
+66 silly fetch manifest react-native-reanimated@*
+67 silly packumentCache full:https://registry.npmjs.org/react-native-reanimated cache-miss
+68 http fetch GET 200 https://registry.npmjs.org/react-native-reanimated 134ms (cache revalidated)
+69 silly packumentCache full:https://registry.npmjs.org/react-native-reanimated set size:12119095 disposed:false
+70 silly fetch manifest react-native-worklets@0.13.x
+71 silly packumentCache full:https://registry.npmjs.org/react-native-worklets cache-miss
+72 http fetch GET 200 https://registry.npmjs.org/react-native-worklets 308ms (cache revalidated)
+73 silly packumentCache full:https://registry.npmjs.org/react-native-worklets set size:3886522 disposed:false
+74 silly fetch manifest @babel/core@*
+75 silly packumentCache full:https://registry.npmjs.org/@babel%2fcore cache-miss
+76 http fetch GET 200 https://registry.npmjs.org/@babel%2fcore 114ms (cache revalidated)
+77 silly packumentCache full:https://registry.npmjs.org/@babel%2fcore set size:823241 disposed:false
+78 silly fetch manifest @react-native/metro-config@*
+79 silly packumentCache full:https://registry.npmjs.org/@react-native%2fmetro-config cache-miss
+80 http fetch GET 200 https://registry.npmjs.org/@react-native%2fmetro-config 142ms (cache revalidated)
+81 silly packumentCache full:https://registry.npmjs.org/@react-native%2fmetro-config set size:2620119 disposed:false
+82 silly fetch manifest @react-three/drei@latest
+83 silly packumentCache full:https://registry.npmjs.org/@react-three%2fdrei cache-miss
+84 http fetch GET 200 https://registry.npmjs.org/@react-three%2fdrei 119ms (cache revalidated)
+85 silly packumentCache full:https://registry.npmjs.org/@react-three%2fdrei set size:2793019 disposed:false
+86 silly fetch manifest lucide-react@latest
+87 silly packumentCache full:https://registry.npmjs.org/lucide-react cache-miss
+88 http fetch GET 200 https://registry.npmjs.org/lucide-react 111ms (cache revalidated)
+89 silly packumentCache full:https://registry.npmjs.org/lucide-react set size:2463892 disposed:false
+90 silly fetch manifest vite@latest
+91 silly packumentCache full:https://registry.npmjs.org/vite cache-miss
+92 http fetch GET 200 https://registry.npmjs.org/vite 1166ms (cache miss)
+93 silly packumentCache full:https://registry.npmjs.org/vite set size:undefined disposed:false
+94 silly fetch manifest @types/node@latest
+95 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+96 http fetch GET 200 https://registry.npmjs.org/@types%2fnode 135ms (cache revalidated)
+97 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:11183996 disposed:false
+98 silly fetch manifest @vitejs/devtools@^0.7.1 || ^0.8.0
+99 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools cache-miss
+100 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fdevtools 170ms (cache miss)
+101 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools set size:undefined disposed:false
+102 silly fetch manifest @vitejs/devtools-oxc@^0.8.2
+103 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-oxc cache-miss
+104 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fdevtools-oxc 362ms (cache miss)
+105 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-oxc set size:undefined disposed:false
+106 silly fetch manifest @vitejs/devtools-rolldown@^0.8.2
+107 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-rolldown cache-miss
+108 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fdevtools-rolldown 317ms (cache miss)
+109 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-rolldown set size:undefined disposed:false
+110 silly fetch manifest @vitejs/devtools-vite@^0.8.2
+111 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-vite cache-miss
+112 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fdevtools-vite 114ms (cache miss)
+113 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-vite set size:undefined disposed:false
+114 silly fetch manifest @vitejs/devtools-vitest@^0.8.2
+115 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-vitest cache-miss
+116 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fdevtools-vitest 147ms (cache miss)
+117 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools-vitest set size:undefined disposed:false
+118 silly fetch manifest vitest@*
+119 silly packumentCache full:https://registry.npmjs.org/vitest cache-miss
+120 http fetch GET 200 https://registry.npmjs.org/vitest 202ms (cache miss)
+121 silly packumentCache full:https://registry.npmjs.org/vitest set size:undefined disposed:false
+122 silly fetch manifest @edge-runtime/vm@*
+123 silly packumentCache full:https://registry.npmjs.org/@edge-runtime%2fvm cache-miss
+124 http fetch GET 200 https://registry.npmjs.org/@edge-runtime%2fvm 141ms (cache miss)
+125 silly packumentCache full:https://registry.npmjs.org/@edge-runtime%2fvm set size:undefined disposed:false
+126 silly fetch manifest @opentelemetry/api@^1.9.0
+127 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi cache-miss
+128 http fetch GET 200 https://registry.npmjs.org/@opentelemetry%2fapi 113ms (cache revalidated)
+129 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi set size:283794 disposed:false
+130 silly fetch manifest @vitest/browser-playwright@5.1.0
+131 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser-playwright cache-miss
+132 http fetch GET 200 https://registry.npmjs.org/@vitest%2fbrowser-playwright 111ms (cache miss)
+133 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser-playwright set size:undefined disposed:false
+134 silly fetch manifest playwright@*
+135 silly packumentCache full:https://registry.npmjs.org/playwright cache-miss
+136 http fetch GET 200 https://registry.npmjs.org/playwright 553ms (cache miss)
+137 silly packumentCache full:https://registry.npmjs.org/playwright set size:undefined disposed:false
+138 silly fetch manifest @vitest/browser-preview@5.1.0
+139 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser-preview cache-miss
+140 http fetch GET 200 https://registry.npmjs.org/@vitest%2fbrowser-preview 325ms (cache miss)
+141 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser-preview set size:undefined disposed:false
+142 silly fetch manifest @vitest/browser-webdriverio@^5.0.0-beta.5 || >=5.0.0
+143 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser-webdriverio cache-miss
+144 http fetch GET 200 https://registry.npmjs.org/@vitest%2fbrowser-webdriverio 110ms (cache miss)
+145 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser-webdriverio set size:undefined disposed:false
+146 silly fetch manifest webdriverio@*
+147 silly packumentCache full:https://registry.npmjs.org/webdriverio cache-miss
+148 http fetch GET 200 https://registry.npmjs.org/webdriverio 169ms (cache miss)
+149 silly packumentCache full:https://registry.npmjs.org/webdriverio set size:undefined disposed:false
+150 silly fetch manifest puppeteer-core@>=24 <26
+151 silly packumentCache full:https://registry.npmjs.org/puppeteer-core cache-miss
+152 http fetch GET 200 https://registry.npmjs.org/puppeteer-core 149ms (cache miss)
+153 silly packumentCache full:https://registry.npmjs.org/puppeteer-core set size:undefined disposed:false
+154 silly fetch manifest @vitest/coverage-istanbul@5.1.0
+155 silly packumentCache full:https://registry.npmjs.org/@vitest%2fcoverage-istanbul cache-miss
+156 http fetch GET 200 https://registry.npmjs.org/@vitest%2fcoverage-istanbul 364ms (cache miss)
+157 silly packumentCache full:https://registry.npmjs.org/@vitest%2fcoverage-istanbul set size:undefined disposed:false
+158 silly fetch manifest @vitest/coverage-v8@5.1.0
+159 silly packumentCache full:https://registry.npmjs.org/@vitest%2fcoverage-v8 cache-miss
+160 http fetch GET 200 https://registry.npmjs.org/@vitest%2fcoverage-v8 135ms (cache miss)
+161 silly packumentCache full:https://registry.npmjs.org/@vitest%2fcoverage-v8 set size:undefined disposed:false
+162 silly fetch manifest @vitest/browser@5.1.0
+163 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser cache-miss
+164 http fetch GET 200 https://registry.npmjs.org/@vitest%2fbrowser 141ms (cache miss)
+165 silly packumentCache full:https://registry.npmjs.org/@vitest%2fbrowser set size:undefined disposed:false
+166 silly fetch manifest @vitest/ui@5.1.0
+167 silly packumentCache full:https://registry.npmjs.org/@vitest%2fui cache-miss
+168 http fetch GET 200 https://registry.npmjs.org/@vitest%2fui 171ms (cache miss)
+169 silly packumentCache full:https://registry.npmjs.org/@vitest%2fui set size:undefined disposed:false
+170 silly fetch manifest happy-dom@*
+171 silly packumentCache full:https://registry.npmjs.org/happy-dom cache-miss
+172 http fetch GET 200 https://registry.npmjs.org/happy-dom 189ms (cache miss)
+173 silly packumentCache full:https://registry.npmjs.org/happy-dom set size:undefined disposed:false
+174 silly fetch manifest jsdom@*
+175 silly packumentCache full:https://registry.npmjs.org/jsdom cache-miss
+176 http fetch GET 200 https://registry.npmjs.org/jsdom 144ms (cache miss)
+177 silly packumentCache full:https://registry.npmjs.org/jsdom set size:undefined disposed:false
+178 silly fetch manifest @napi-rs/canvas@^1.0.13
+179 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas cache-miss
+180 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas 123ms (cache miss)
+181 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas set size:undefined disposed:false
+182 silly fetch manifest esbuild@^0.27.0 || ^0.28.0
+183 silly packumentCache full:https://registry.npmjs.org/esbuild cache-miss
+184 http fetch GET 200 https://registry.npmjs.org/esbuild 176ms (cache miss)
+185 silly packumentCache full:https://registry.npmjs.org/esbuild set size:undefined disposed:false
+186 silly fetch manifest jiti@>=1.21.0
+187 silly packumentCache full:https://registry.npmjs.org/jiti cache-miss
+188 http fetch GET 200 https://registry.npmjs.org/jiti 120ms (cache miss)
+189 silly packumentCache full:https://registry.npmjs.org/jiti set size:undefined disposed:false
+190 silly fetch manifest less@^4.0.0
+191 silly packumentCache full:https://registry.npmjs.org/less cache-miss
+192 http fetch GET 200 https://registry.npmjs.org/less 121ms (cache miss)
+193 silly packumentCache full:https://registry.npmjs.org/less set size:undefined disposed:false
+194 silly fetch manifest sass@^1.70.0
+195 silly packumentCache full:https://registry.npmjs.org/sass cache-miss
+196 http fetch GET 200 https://registry.npmjs.org/sass 108ms (cache revalidated)
+197 silly packumentCache full:https://registry.npmjs.org/sass set size:774924 disposed:false
+198 silly fetch manifest sass-embedded@^1.70.0
+199 silly packumentCache full:https://registry.npmjs.org/sass-embedded cache-miss
+200 http fetch GET 200 https://registry.npmjs.org/sass-embedded 116ms (cache miss)
+201 silly packumentCache full:https://registry.npmjs.org/sass-embedded set size:undefined disposed:false
+202 silly fetch manifest stylus@>=0.54.8
+203 silly packumentCache full:https://registry.npmjs.org/stylus cache-miss
+204 http fetch GET 200 https://registry.npmjs.org/stylus 112ms (cache miss)
+205 silly packumentCache full:https://registry.npmjs.org/stylus set size:undefined disposed:false
+206 silly fetch manifest sugarss@^5.0.0
+207 silly packumentCache full:https://registry.npmjs.org/sugarss cache-miss
+208 http fetch GET 200 https://registry.npmjs.org/sugarss 109ms (cache miss)
+209 silly packumentCache full:https://registry.npmjs.org/sugarss set size:undefined disposed:false
+210 silly fetch manifest postcss@^8.3.3
+211 silly packumentCache full:https://registry.npmjs.org/postcss cache-miss
+212 http fetch GET 200 https://registry.npmjs.org/postcss 103ms (cache revalidated)
+213 silly packumentCache full:https://registry.npmjs.org/postcss set size:783367 disposed:false
+214 silly fetch manifest terser@^5.16.0
+215 silly packumentCache full:https://registry.npmjs.org/terser cache-miss
+216 http fetch GET 200 https://registry.npmjs.org/terser 145ms (cache miss)
+217 silly packumentCache full:https://registry.npmjs.org/terser set size:undefined disposed:false
+218 silly fetch manifest tsx@^4.8.1
+219 silly packumentCache full:https://registry.npmjs.org/tsx cache-miss
+220 http fetch GET 200 https://registry.npmjs.org/tsx 112ms (cache miss)
+221 silly packumentCache full:https://registry.npmjs.org/tsx set size:undefined disposed:false
+222 silly fetch manifest yaml@^2.4.2
+223 silly packumentCache full:https://registry.npmjs.org/yaml cache-miss
+224 http fetch GET 200 https://registry.npmjs.org/yaml 110ms (cache miss)
+225 silly packumentCache full:https://registry.npmjs.org/yaml set size:undefined disposed:false
+226 silly fetch manifest @vitejs/plugin-react@latest
+227 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fplugin-react cache-miss
+228 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fplugin-react 133ms (cache miss)
+229 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fplugin-react set size:undefined disposed:false
+230 silly fetch manifest @rolldown/plugin-babel@^0.1.7 || ^0.2.0 || ^0.3.0
+231 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fplugin-babel cache-miss
+232 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fplugin-babel 108ms (cache miss)
+233 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fplugin-babel set size:undefined disposed:false
+234 silly fetch manifest @babel/core@^7.29.0 || ^8.0.0-rc.1
+235 silly packumentCache full:https://registry.npmjs.org/@babel%2fcore cache-hit
+236 silly fetch manifest @babel/plugin-transform-runtime@^7.29.0 || ^8.0.0-rc.1
+237 silly packumentCache full:https://registry.npmjs.org/@babel%2fplugin-transform-runtime cache-miss
+238 http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-runtime 122ms (cache miss)
+239 silly packumentCache full:https://registry.npmjs.org/@babel%2fplugin-transform-runtime set size:undefined disposed:false
+240 silly fetch manifest @babel/runtime@^7.27.0 || ^8.0.0-rc.1
+241 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime cache-miss
+242 http fetch GET 200 https://registry.npmjs.org/@babel%2fruntime 128ms (cache revalidated)
+243 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime set size:3675274 disposed:false
+244 silly fetch manifest rolldown@^1.0.0-rc.5
+245 silly packumentCache full:https://registry.npmjs.org/rolldown cache-miss
+246 http fetch GET 200 https://registry.npmjs.org/rolldown 163ms (cache miss)
+247 silly packumentCache full:https://registry.npmjs.org/rolldown set size:undefined disposed:false
+248 silly fetch manifest babel-plugin-react-compiler@^1.0.0
+249 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler cache-miss
+250 http fetch GET 200 https://registry.npmjs.org/babel-plugin-react-compiler 114ms (cache revalidated)
+251 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler set size:1356999 disposed:false
+252 silly fetch manifest oxc-transform-react@>=0.152.0 <0.157.0
+253 silly packumentCache full:https://registry.npmjs.org/oxc-transform-react cache-miss
+254 http fetch GET 200 https://registry.npmjs.org/oxc-transform-react 111ms (cache miss)
+255 silly packumentCache full:https://registry.npmjs.org/oxc-transform-react set size:undefined disposed:false
+256 silly fetch manifest typescript@latest
+257 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+258 http fetch GET 200 https://registry.npmjs.org/typescript 399ms (cache updated)
+259 silly packumentCache full:https://registry.npmjs.org/typescript set size:undefined disposed:false
+260 silly fetch manifest @types/react-dom@latest
+261 silly packumentCache full:https://registry.npmjs.org/@types%2freact-dom cache-miss
+262 http fetch GET 200 https://registry.npmjs.org/@types%2freact-dom 118ms (cache revalidated)
+263 silly packumentCache full:https://registry.npmjs.org/@types%2freact-dom set size:444906 disposed:false
+264 silly fetch manifest @types/three@latest
+265 silly packumentCache full:https://registry.npmjs.org/@types%2fthree cache-miss
+266 http fetch GET 200 https://registry.npmjs.org/@types%2fthree 108ms (cache revalidated)
+267 silly packumentCache full:https://registry.npmjs.org/@types%2fthree set size:657377 disposed:false
+268 silly placeDep ROOT @react-three/drei@10.7.9 REPLACE for: terramind-3d-studio@0.1.0 want: latest
+269 silly placeDep ROOT react@19.3.1 OK for: @react-three/drei@10.7.9 want: ^19
+270 silly placeDep ROOT three@0.187.0 OK for: @react-three/drei@10.7.9 want: >=0.159
+271 silly placeDep ROOT @react-three/fiber@9.8.2 OK for: @react-three/drei@10.7.9 want: ^9.0.0
+272 silly placeDep ROOT @types/node@26.6.6 REPLACE for: terramind-3d-studio@0.1.0 want: latest
+273 silly placeDep ROOT @types/react@19.3.0 REPLACE for: terramind-3d-studio@0.1.0 want: latest
+274 silly placeDep ROOT @types/react-dom@19.3.0 REPLACE for: terramind-3d-studio@0.1.0 want: latest
+275 silly placeDep ROOT @types/three@0.187.0 REPLACE for: terramind-3d-studio@0.1.0 want: latest
+276 silly placeDep ROOT @vitejs/plugin-react@6.3.0 OK for: terramind-3d-studio@0.1.0 want: latest
+277 silly placeDep ROOT vite@8.3.8 OK for: @vitejs/plugin-react@6.3.0 want: ^8.0.0
+278 silly placeDep ROOT lucide-react@1.73.0 REPLACE for: terramind-3d-studio@0.1.0 want: latest
+279 silly placeDep ROOT react-dom@19.3.1 OK for: terramind-3d-studio@0.1.0 want: 19.3.1
+280 silly placeDep ROOT typescript@7.0.2 REPLACE for: terramind-3d-studio@0.1.0 want: latest
+281 silly fetch manifest maath@^0.10.8
+282 silly packumentCache full:https://registry.npmjs.org/maath cache-miss
+283 silly fetch manifest hls.js@^1.5.17
+284 silly packumentCache full:https://registry.npmjs.org/hls.js cache-miss
+285 silly fetch manifest zustand@^5.0.1
+286 silly packumentCache full:https://registry.npmjs.org/zustand cache-miss
+287 silly fetch manifest meshline@^3.3.1
+288 silly packumentCache full:https://registry.npmjs.org/meshline cache-miss
+289 silly fetch manifest stats-gl@^2.2.8
+290 silly packumentCache full:https://registry.npmjs.org/stats-gl cache-miss
+291 silly fetch manifest stats.js@^0.17.0
+292 silly packumentCache full:https://registry.npmjs.org/stats.js cache-miss
+293 silly fetch manifest cross-env@^7.0.3
+294 silly packumentCache full:https://registry.npmjs.org/cross-env cache-miss
+295 silly fetch manifest detect-gpu@^5.0.56
+296 silly packumentCache full:https://registry.npmjs.org/detect-gpu cache-miss
+297 silly fetch manifest glsl-noise@^0.0.0
+298 silly packumentCache full:https://registry.npmjs.org/glsl-noise cache-miss
+299 silly fetch manifest tunnel-rat@^0.1.2
+300 silly packumentCache full:https://registry.npmjs.org/tunnel-rat cache-miss
+301 silly fetch manifest three-stdlib@^2.35.6
+302 silly packumentCache full:https://registry.npmjs.org/three-stdlib cache-miss
+303 http fetch GET 200 https://registry.npmjs.org/maath 321ms (cache revalidated)
+304 silly packumentCache full:https://registry.npmjs.org/maath set size:106088 disposed:false
+305 silly fetch manifest suspend-react@^0.1.3
+306 silly packumentCache full:https://registry.npmjs.org/suspend-react cache-miss
+307 http fetch GET 200 https://registry.npmjs.org/stats.js 375ms (cache revalidated)
+308 silly packumentCache full:https://registry.npmjs.org/stats.js set size:10673 disposed:false
+309 silly fetch manifest utility-types@^3.11.0
+310 silly packumentCache full:https://registry.npmjs.org/utility-types cache-miss
+311 http fetch GET 200 https://registry.npmjs.org/cross-env 382ms (cache revalidated)
+312 silly packumentCache full:https://registry.npmjs.org/cross-env set size:151372 disposed:false
+313 silly fetch manifest @babel/runtime@^7.26.0
+314 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime cache-miss
+315 http fetch GET 200 https://registry.npmjs.org/meshline 408ms (cache revalidated)
+316 silly packumentCache full:https://registry.npmjs.org/meshline set size:65486 disposed:false
+317 silly fetch manifest three-mesh-bvh@^0.8.3
+318 silly packumentCache full:https://registry.npmjs.org/three-mesh-bvh cache-miss
+319 http fetch GET 200 https://registry.npmjs.org/zustand 411ms (cache revalidated)
+320 silly packumentCache full:https://registry.npmjs.org/zustand set size:495355 disposed:false
+321 silly fetch manifest camera-controls@^3.1.0
+322 silly packumentCache full:https://registry.npmjs.org/camera-controls cache-miss
+323 http fetch GET 200 https://registry.npmjs.org/tunnel-rat 416ms (cache revalidated)
+324 silly packumentCache full:https://registry.npmjs.org/tunnel-rat set size:33166 disposed:false
+325 silly fetch manifest troika-three-text@^0.52.4
+326 silly packumentCache full:https://registry.npmjs.org/troika-three-text cache-miss
+327 http fetch GET 200 https://registry.npmjs.org/hls.js 447ms (cache revalidated)
+328 silly packumentCache full:https://registry.npmjs.org/hls.js set size:22732793 disposed:false
+329 silly fetch manifest @use-gesture/react@^10.3.1
+330 silly packumentCache full:https://registry.npmjs.org/@use-gesture%2freact cache-miss
+331 http cache https://registry.npmjs.org/@babel%2fruntime 183ms (cache hit)
+332 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime set size:3675274 disposed:false
+333 silly fetch manifest @monogrid/gainmap-js@^3.0.6
+334 silly packumentCache full:https://registry.npmjs.org/@monogrid%2fgainmap-js cache-miss
+335 http fetch GET 200 https://registry.npmjs.org/stats-gl 590ms (cache revalidated)
+336 silly packumentCache full:https://registry.npmjs.org/stats-gl set size:114158 disposed:false
+337 silly fetch manifest @mediapipe/tasks-vision@0.10.17
+338 silly packumentCache full:https://registry.npmjs.org/@mediapipe%2ftasks-vision cache-miss
+339 http fetch GET 200 https://registry.npmjs.org/detect-gpu 602ms (cache revalidated)
+340 silly packumentCache full:https://registry.npmjs.org/detect-gpu set size:843543 disposed:false
+341 silly fetch manifest use-sync-external-store@^1.4.0
+342 silly packumentCache full:https://registry.npmjs.org/use-sync-external-store cache-miss
+343 http fetch GET 200 https://registry.npmjs.org/three-stdlib 611ms (cache revalidated)
+344 silly packumentCache full:https://registry.npmjs.org/three-stdlib set size:639798 disposed:false
+345 silly fetch manifest buffer@^6.0.3
+346 silly packumentCache full:https://registry.npmjs.org/buffer cache-miss
+347 http fetch GET 200 https://registry.npmjs.org/suspend-react 304ms (cache revalidated)
+348 silly packumentCache full:https://registry.npmjs.org/suspend-react set size:47709 disposed:false
+349 silly fetch manifest zustand@^5.0.3
+350 silly packumentCache full:https://registry.npmjs.org/zustand cache-hit
+351 silly fetch manifest its-fine@^2.1.1
+352 silly packumentCache full:https://registry.npmjs.org/its-fine cache-miss
+353 http fetch GET 200 https://registry.npmjs.org/utility-types 253ms (cache revalidated)
+354 silly packumentCache full:https://registry.npmjs.org/utility-types set size:95104 disposed:false
+355 silly fetch manifest base64-js@^1.5.1
+356 silly packumentCache full:https://registry.npmjs.org/base64-js cache-miss
+357 http fetch GET 200 https://registry.npmjs.org/glsl-noise 632ms (cache revalidated)
+358 silly packumentCache full:https://registry.npmjs.org/glsl-noise set size:4188 disposed:false
+359 silly fetch manifest scheduler@^0.28.0
+360 silly packumentCache full:https://registry.npmjs.org/scheduler cache-miss
+361 http fetch GET 200 https://registry.npmjs.org/three-mesh-bvh 319ms (cache revalidated)
+362 silly packumentCache full:https://registry.npmjs.org/three-mesh-bvh set size:305809 disposed:false
+363 silly fetch manifest @babel/runtime@^7.17.8
+364 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime cache-miss
+365 http fetch GET 200 https://registry.npmjs.org/troika-three-text 314ms (cache revalidated)
+366 silly packumentCache full:https://registry.npmjs.org/troika-three-text set size:185662 disposed:false
+367 silly fetch manifest react-use-measure@^2.1.7
+368 silly packumentCache full:https://registry.npmjs.org/react-use-measure cache-miss
+369 http fetch GET 200 https://registry.npmjs.org/base64-js 115ms (cache revalidated)
+370 silly packumentCache full:https://registry.npmjs.org/base64-js set size:41270 disposed:false
+371 silly fetch manifest use-sync-external-store@^1.4.0
+372 silly packumentCache full:https://registry.npmjs.org/use-sync-external-store cache-miss
+373 http fetch GET 200 https://registry.npmjs.org/buffer 130ms (cache revalidated)
+374 silly packumentCache full:https://registry.npmjs.org/buffer set size:280480 disposed:false
+375 silly fetch manifest undici-types@~8.9.0
+376 silly packumentCache full:https://registry.npmjs.org/undici-types cache-miss
+377 http fetch GET 200 https://registry.npmjs.org/@use-gesture%2freact 193ms (cache revalidated)
+378 silly packumentCache full:https://registry.npmjs.org/@use-gesture%2freact set size:177708 disposed:false
+379 silly fetch manifest csstype@^3.2.2
+380 silly packumentCache full:https://registry.npmjs.org/csstype cache-miss
+381 http cache https://registry.npmjs.org/@babel%2fruntime 31ms (cache hit)
+382 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime set size:3675274 disposed:false
+383 silly fetch manifest fflate@~0.8.3
+384 silly packumentCache full:https://registry.npmjs.org/fflate cache-miss
+385 http fetch GET 200 https://registry.npmjs.org/its-fine 164ms (cache revalidated)
+386 silly packumentCache full:https://registry.npmjs.org/its-fine set size:125304 disposed:false
+387 silly fetch manifest @types/webxr@>=0.5.17
+388 silly packumentCache full:https://registry.npmjs.org/@types%2fwebxr cache-miss
+389 http fetch GET 200 https://registry.npmjs.org/@mediapipe%2ftasks-vision 211ms (cache revalidated)
+390 silly packumentCache full:https://registry.npmjs.org/@mediapipe%2ftasks-vision set size:1322930 disposed:false
+391 silly fetch manifest meshoptimizer@~1.1.1
+392 silly packumentCache full:https://registry.npmjs.org/meshoptimizer cache-miss
+393 http fetch GET 200 https://registry.npmjs.org/scheduler 185ms (cache revalidated)
+394 silly packumentCache full:https://registry.npmjs.org/scheduler set size:5883036 disposed:false
+395 silly fetch manifest @tweenjs/tween.js@~23.1.3
+396 silly packumentCache full:https://registry.npmjs.org/@tweenjs%2ftween.js cache-miss
+397 http fetch GET 200 https://registry.npmjs.org/use-sync-external-store 247ms (cache revalidated)
+398 silly packumentCache full:https://registry.npmjs.org/use-sync-external-store set size:5191199 disposed:false
+399 silly fetch manifest @dimforge/rapier3d-compat@~0.12.0
+400 silly packumentCache full:https://registry.npmjs.org/@dimforge%2frapier3d-compat cache-miss
+401 http fetch GET 200 https://registry.npmjs.org/camera-controls 513ms (cache revalidated)
+402 silly packumentCache full:https://registry.npmjs.org/camera-controls set size:507988 disposed:false
+403 silly fetch manifest @rolldown/pluginutils@^1.0.1
+404 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fpluginutils cache-miss
+405 http fetch GET 200 https://registry.npmjs.org/@monogrid%2fgainmap-js 373ms (cache revalidated)
+406 silly packumentCache full:https://registry.npmjs.org/@monogrid%2fgainmap-js set size:185937 disposed:false
+407 silly fetch manifest postcss@^8.5.32
+408 silly packumentCache full:https://registry.npmjs.org/postcss cache-hit
+409 silly fetch manifest rolldown@~1.2.18
+410 silly packumentCache full:https://registry.npmjs.org/rolldown cache-miss
+411 http cache https://registry.npmjs.org/rolldown 12ms (cache hit)
+412 silly packumentCache full:https://registry.npmjs.org/rolldown set size:3931727 disposed:false
+413 silly fetch manifest picomatch@^4.0.7
+414 silly packumentCache full:https://registry.npmjs.org/picomatch cache-miss
+415 http fetch GET 200 https://registry.npmjs.org/fflate 236ms (cache revalidated)
+416 silly packumentCache full:https://registry.npmjs.org/fflate set size:220550 disposed:false
+417 silly fetch manifest tinyglobby@^0.2.17
+418 silly packumentCache full:https://registry.npmjs.org/tinyglobby cache-miss
+419 http fetch GET 200 https://registry.npmjs.org/undici-types 273ms (cache revalidated)
+420 silly packumentCache full:https://registry.npmjs.org/undici-types set size:287834 disposed:false
+421 silly fetch manifest lightningcss@^1.33.0
+422 silly packumentCache full:https://registry.npmjs.org/lightningcss cache-miss
+423 http fetch GET 200 https://registry.npmjs.org/@dimforge%2frapier3d-compat 145ms (cache revalidated)
+424 silly packumentCache full:https://registry.npmjs.org/@dimforge%2frapier3d-compat set size:281493 disposed:false
+425 silly fetch manifest fsevents@~2.3.3
+426 silly packumentCache full:https://registry.npmjs.org/fsevents cache-miss
+427 http fetch GET 200 https://registry.npmjs.org/@tweenjs%2ftween.js 186ms (cache revalidated)
+428 silly packumentCache full:https://registry.npmjs.org/@tweenjs%2ftween.js set size:165080 disposed:false
+429 silly fetch manifest @typescript/typescript-aix-ppc64@7.0.2
+430 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-aix-ppc64 cache-miss
+431 http fetch GET 200 https://registry.npmjs.org/use-sync-external-store 297ms (cache revalidated)
+432 silly packumentCache full:https://registry.npmjs.org/use-sync-external-store set size:5191199 disposed:false
+433 silly fetch manifest @typescript/typescript-linux-arm@7.0.2
+434 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-arm cache-miss
+435 http fetch GET 200 https://registry.npmjs.org/meshoptimizer 262ms (cache revalidated)
+436 silly packumentCache full:https://registry.npmjs.org/meshoptimizer set size:79731 disposed:false
+437 silly fetch manifest @typescript/typescript-linux-x64@7.0.2
+438 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-x64 cache-miss
+439 http fetch GET 200 https://registry.npmjs.org/@types%2fwebxr 284ms (cache revalidated)
+440 silly packumentCache full:https://registry.npmjs.org/@types%2fwebxr set size:64506 disposed:false
+441 silly fetch manifest @typescript/typescript-sunos-x64@7.0.2
+442 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-sunos-x64 cache-miss
+443 http fetch GET 200 https://registry.npmjs.org/csstype 325ms (cache revalidated)
+444 silly packumentCache full:https://registry.npmjs.org/csstype set size:274189 disposed:false
+445 silly fetch manifest @typescript/typescript-win32-x64@7.0.2
+446 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-win32-x64 cache-miss
+447 http fetch GET 200 https://registry.npmjs.org/react-use-measure 358ms (cache revalidated)
+448 silly packumentCache full:https://registry.npmjs.org/react-use-measure set size:92272 disposed:false
+449 silly fetch manifest @typescript/typescript-darwin-x64@7.0.2
+450 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-darwin-x64 cache-miss
+451 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fpluginutils 184ms (cache miss)
+452 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fpluginutils set size:undefined disposed:false
+453 silly fetch manifest @typescript/typescript-netbsd-x64@7.0.2
+454 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-netbsd-x64 cache-miss
+455 http fetch GET 200 https://registry.npmjs.org/picomatch 119ms (cache miss)
+456 silly packumentCache full:https://registry.npmjs.org/picomatch set size:undefined disposed:false
+457 silly fetch manifest @typescript/typescript-freebsd-x64@7.0.2
+458 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-freebsd-x64 cache-miss
+459 http fetch GET 200 https://registry.npmjs.org/tinyglobby 153ms (cache miss)
+460 silly packumentCache full:https://registry.npmjs.org/tinyglobby set size:undefined disposed:false
+461 silly fetch manifest @typescript/typescript-linux-arm64@7.0.2
+462 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-arm64 cache-miss
+463 http fetch GET 200 https://registry.npmjs.org/lightningcss 165ms (cache miss)
+464 silly packumentCache full:https://registry.npmjs.org/lightningcss set size:undefined disposed:false
+465 silly fetch manifest @typescript/typescript-linux-ppc64@7.0.2
+466 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-ppc64 cache-miss
+467 http fetch GET 200 https://registry.npmjs.org/fsevents 164ms (cache miss)
+468 silly packumentCache full:https://registry.npmjs.org/fsevents set size:undefined disposed:false
+469 silly fetch manifest @typescript/typescript-linux-s390x@7.0.2
+470 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-s390x cache-miss
+471 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-sunos-x64 130ms (cache revalidated)
+472 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-sunos-x64 set size:8585 disposed:false
+473 silly fetch manifest @typescript/typescript-openbsd-x64@7.0.2
+474 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-openbsd-x64 cache-miss
+475 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-aix-ppc64 190ms (cache revalidated)
+476 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-aix-ppc64 set size:8587 disposed:false
+477 silly fetch manifest @typescript/typescript-win32-arm64@7.0.2
+478 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-win32-arm64 cache-miss
+479 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-arm 169ms (cache updated)
+480 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-arm set size:undefined disposed:false
+481 silly fetch manifest @typescript/typescript-darwin-arm64@7.0.2
+482 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-darwin-arm64 cache-miss
+483 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-netbsd-x64 123ms (cache revalidated)
+484 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-netbsd-x64 set size:8610 disposed:false
+485 silly fetch manifest @typescript/typescript-netbsd-arm64@7.0.2
+486 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-netbsd-arm64 cache-miss
+487 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-win32-x64 168ms (cache updated)
+488 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-win32-x64 set size:undefined disposed:false
+489 silly fetch manifest @typescript/typescript-freebsd-arm64@7.0.2
+490 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-freebsd-arm64 cache-miss
+491 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-darwin-x64 160ms (cache updated)
+492 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-darwin-x64 set size:undefined disposed:false
+493 silly fetch manifest @typescript/typescript-linux-loong64@7.0.2
+494 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-loong64 cache-miss
+495 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-x64 184ms (cache updated)
+496 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-x64 set size:undefined disposed:false
+497 silly fetch manifest @typescript/typescript-linux-riscv64@7.0.2
+498 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-riscv64 cache-miss
+499 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-freebsd-x64 137ms (cache revalidated)
+500 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-freebsd-x64 set size:8639 disposed:false
+501 silly fetch manifest @typescript/typescript-openbsd-arm64@7.0.2
+502 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-openbsd-arm64 cache-miss
+503 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-arm64 130ms (cache updated)
+504 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-arm64 set size:undefined disposed:false
+505 silly fetch manifest @typescript/typescript-linux-mips64el@7.0.2
+506 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-mips64el cache-miss
+507 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-ppc64 119ms (cache revalidated)
+508 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-ppc64 set size:8639 disposed:false
+509 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-s390x 126ms (cache revalidated)
+510 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-s390x set size:8637 disposed:false
+511 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-openbsd-x64 126ms (cache revalidated)
+512 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-openbsd-x64 set size:8637 disposed:false
+513 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-win32-arm64 138ms (cache updated)
+514 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-win32-arm64 set size:undefined disposed:false
+515 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-netbsd-arm64 125ms (cache revalidated)
+516 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-netbsd-arm64 set size:8666 disposed:false
+517 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-freebsd-arm64 127ms (cache revalidated)
+518 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-freebsd-arm64 set size:8689 disposed:false
+519 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-riscv64 121ms (cache revalidated)
+520 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-riscv64 set size:8691 disposed:false
+521 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-loong64 128ms (cache revalidated)
+522 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-loong64 set size:8691 disposed:false
+523 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-openbsd-arm64 117ms (cache revalidated)
+524 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-openbsd-arm64 set size:8689 disposed:false
+525 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-darwin-arm64 142ms (cache updated)
+526 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-darwin-arm64 set size:undefined disposed:false
+527 http fetch GET 200 https://registry.npmjs.org/@typescript%2ftypescript-linux-mips64el 106ms (cache revalidated)
+528 silly packumentCache full:https://registry.npmjs.org/@typescript%2ftypescript-linux-mips64el set size:8715 disposed:false
+529 silly fetch manifest @types/three@>=0.134.0
+530 silly packumentCache full:https://registry.npmjs.org/@types%2fthree cache-hit
+531 silly fetch manifest three@>=0.159
+532 silly packumentCache full:https://registry.npmjs.org/three cache-hit
+533 silly fetch manifest @types/react@>=18.0.0
+534 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+535 http cache https://registry.npmjs.org/@types%2freact 12ms (cache hit)
+536 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2642195 disposed:false
+537 silly fetch manifest immer@>=9.0.6
+538 silly packumentCache full:https://registry.npmjs.org/immer cache-miss
+539 http fetch GET 200 https://registry.npmjs.org/immer 99ms (cache revalidated)
+540 silly packumentCache full:https://registry.npmjs.org/immer set size:859642 disposed:false
+541 silly fetch manifest react@^19
+542 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+543 http cache https://registry.npmjs.org/react 18ms (cache hit)
+544 silly packumentCache full:https://registry.npmjs.org/react set size:7136567 disposed:false
+545 silly placeDep ROOT @babel/runtime@7.29.14 OK for: @react-three/drei@10.7.9 want: ^7.26.0
+546 silly placeDep ROOT @mediapipe/tasks-vision@0.10.17 OK for: @react-three/drei@10.7.9 want: 0.10.17
+547 silly placeDep ROOT @monogrid/gainmap-js@3.7.3 OK for: @react-three/drei@10.7.9 want: ^3.0.6
+548 silly placeDep ROOT @use-gesture/react@10.3.1 OK for: @react-three/drei@10.7.9 want: ^10.3.1
+549 silly placeDep ROOT camera-controls@3.1.2 OK for: @react-three/drei@10.7.9 want: ^3.1.0
+550 silly placeDep ROOT cross-env@7.0.3 OK for: @react-three/drei@10.7.9 want: ^7.0.3
+551 silly placeDep ROOT detect-gpu@5.0.70 OK for: @react-three/drei@10.7.9 want: ^5.0.56
+552 silly placeDep ROOT glsl-noise@0.0.0 OK for: @react-three/drei@10.7.9 want: ^0.0.0
+553 silly placeDep ROOT hls.js@1.7.4 OK for: @react-three/drei@10.7.9 want: ^1.5.17
+554 silly placeDep ROOT maath@0.10.8 OK for: @react-three/drei@10.7.9 want: ^0.10.8
+555 silly placeDep ROOT meshline@3.3.1 OK for: @react-three/drei@10.7.9 want: ^3.3.1
+556 silly placeDep ROOT stats-gl@2.4.2 OK for: @react-three/drei@10.7.9 want: ^2.2.8
+557 silly placeDep ROOT stats.js@0.17.0 OK for: @react-three/drei@10.7.9 want: ^0.17.0
+558 silly placeDep ROOT suspend-react@0.1.3 OK for: @react-three/drei@10.7.9 want: ^0.1.3
+559 silly placeDep ROOT three-mesh-bvh@0.8.3 OK for: @react-three/drei@10.7.9 want: ^0.8.3
+560 silly placeDep ROOT three-stdlib@2.36.1 OK for: @react-three/drei@10.7.9 want: ^2.35.6
+561 silly placeDep ROOT troika-three-text@0.52.5 OK for: @react-three/drei@10.7.9 want: ^0.52.4
+562 silly placeDep ROOT tunnel-rat@0.1.2 OK for: @react-three/drei@10.7.9 want: ^0.1.2
+563 silly placeDep ROOT use-sync-external-store@1.7.0 OK for: @react-three/drei@10.7.9 want: ^1.4.0
+564 silly placeDep ROOT utility-types@3.11.0 OK for: @react-three/drei@10.7.9 want: ^3.11.0
+565 silly placeDep ROOT zustand@5.1.0 OK for: @react-three/drei@10.7.9 want: ^5.0.1
+566 silly fetch manifest promise-worker-transferable@^1.0.4
+567 silly packumentCache full:https://registry.npmjs.org/promise-worker-transferable cache-miss
+568 silly fetch manifest @use-gesture/core@10.3.1
+569 silly packumentCache full:https://registry.npmjs.org/@use-gesture%2fcore cache-miss
+570 silly fetch manifest cross-spawn@^7.0.1
+571 silly packumentCache full:https://registry.npmjs.org/cross-spawn cache-miss
+572 silly fetch manifest webgl-constants@^1.1.1
+573 silly packumentCache full:https://registry.npmjs.org/webgl-constants cache-miss
+574 silly fetch manifest three@^0.170.0
+575 silly packumentCache full:https://registry.npmjs.org/three cache-hit
+576 silly fetch manifest @types/webxr@^0.5.2
+577 silly packumentCache full:https://registry.npmjs.org/@types%2fwebxr cache-hit
+578 silly fetch manifest fflate@^0.6.9
+579 silly packumentCache full:https://registry.npmjs.org/fflate cache-hit
+580 silly fetch manifest bidi-js@^1.0.2
+581 silly packumentCache full:https://registry.npmjs.org/bidi-js cache-miss
+582 silly fetch manifest zustand@^4.3.2
+583 silly packumentCache full:https://registry.npmjs.org/zustand cache-hit
+584 http fetch GET 200 https://registry.npmjs.org/cross-spawn 107ms (cache revalidated)
+585 silly packumentCache full:https://registry.npmjs.org/cross-spawn set size:109066 disposed:false
+586 http fetch GET 200 https://registry.npmjs.org/bidi-js 107ms (cache revalidated)
+587 silly packumentCache full:https://registry.npmjs.org/bidi-js set size:19460 disposed:false
+588 http fetch GET 200 https://registry.npmjs.org/promise-worker-transferable 315ms (cache revalidated)
+589 silly packumentCache full:https://registry.npmjs.org/promise-worker-transferable set size:20096 disposed:false
+590 http fetch GET 200 https://registry.npmjs.org/@use-gesture%2fcore 316ms (cache revalidated)
+591 silly packumentCache full:https://registry.npmjs.org/@use-gesture%2fcore set size:167010 disposed:false
+592 http fetch GET 200 https://registry.npmjs.org/webgl-constants 323ms (cache revalidated)
+593 silly packumentCache full:https://registry.npmjs.org/webgl-constants set size:38477 disposed:false
+594 silly placeDep node_modules/@monogrid/gainmap-js promise-worker-transferable@1.0.4 OK for: @monogrid/gainmap-js@3.7.3 want: ^1.0.4
+595 silly fetch manifest react@>=19 <19.4
+596 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+597 http cache https://registry.npmjs.org/react 16ms (cache hit)
+598 silly packumentCache full:https://registry.npmjs.org/react set size:7136567 disposed:false
+599 silly fetch manifest react-dom@>=19 <19.4
+600 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+601 http cache https://registry.npmjs.org/react-dom 25ms (cache hit)
+602 silly packumentCache full:https://registry.npmjs.org/react-dom set size:9645549 disposed:false
+603 silly placeDep node_modules/@react-three/fiber base64-js@1.5.1 OK for: @react-three/fiber@9.8.2 want: ^1.5.1
+604 silly placeDep node_modules/@react-three/fiber buffer@6.0.3 OK for: @react-three/fiber@9.8.2 want: ^6.0.3
+605 silly placeDep node_modules/@react-three/fiber its-fine@2.1.1 OK for: @react-three/fiber@9.8.2 want: ^2.1.1
+606 silly placeDep node_modules/@react-three/fiber react-use-measure@2.1.7 OK for: @react-three/fiber@9.8.2 want: ^2.1.7
+607 silly placeDep node_modules/@react-three/fiber scheduler@0.28.0 OK for: @react-three/fiber@9.8.2 want: ^0.28.0
+608 silly fetch manifest ieee754@^1.2.1
+609 silly packumentCache full:https://registry.npmjs.org/ieee754 cache-miss
+610 silly fetch manifest @types/react-reconciler@^0.28.9
+611 silly packumentCache full:https://registry.npmjs.org/@types%2freact-reconciler cache-miss
+612 http fetch GET 200 https://registry.npmjs.org/ieee754 101ms (cache revalidated)
+613 silly packumentCache full:https://registry.npmjs.org/ieee754 set size:34910 disposed:false
+614 http fetch GET 200 https://registry.npmjs.org/@types%2freact-reconciler 293ms (cache revalidated)
+615 silly packumentCache full:https://registry.npmjs.org/@types%2freact-reconciler set size:68384 disposed:false
+616 silly placeDep ROOT undici-types@8.9.0 OK for: @types/node@26.6.6 want: ~8.9.0
+617 silly placeDep ROOT csstype@3.2.3 OK for: @types/react@19.3.0 want: ^3.2.2
+618 silly placeDep ROOT @dimforge/rapier3d-compat@0.12.0 OK for: @types/three@0.187.0 want: ~0.12.0
+619 silly placeDep ROOT @tweenjs/tween.js@23.1.3 OK for: @types/three@0.187.0 want: ~23.1.3
+620 silly placeDep node_modules/@types/three @types/webxr@0.5.24 OK for: @types/three@0.187.0 want: >=0.5.17
+621 silly placeDep ROOT fflate@0.8.3 OK for: @types/three@0.187.0 want: ~0.8.3
+622 silly placeDep ROOT meshoptimizer@1.1.1 OK for: @types/three@0.187.0 want: ~1.1.1
+623 silly placeDep node_modules/@use-gesture/react @use-gesture/core@10.3.1 OK for: @use-gesture/react@10.3.1 want: 10.3.1
+624 silly placeDep ROOT @rolldown/pluginutils@1.1.1 OK for: @vitejs/plugin-react@6.3.0 want: ^1.0.1
+625 silly placeDep node_modules/cross-env cross-spawn@7.0.6 OK for: cross-env@7.0.3 want: ^7.0.1
+626 silly fetch manifest which@^2.0.1
+627 silly packumentCache full:https://registry.npmjs.org/which cache-miss
+628 silly fetch manifest path-key@^3.1.0
+629 silly packumentCache full:https://registry.npmjs.org/path-key cache-miss
+630 silly fetch manifest shebang-command@^2.0.0
+631 silly packumentCache full:https://registry.npmjs.org/shebang-command cache-miss
+632 http fetch GET 200 https://registry.npmjs.org/shebang-command 97ms (cache revalidated)
+633 silly packumentCache full:https://registry.npmjs.org/shebang-command set size:8525 disposed:false
+634 http fetch GET 200 https://registry.npmjs.org/path-key 100ms (cache revalidated)
+635 silly packumentCache full:https://registry.npmjs.org/path-key set size:16975 disposed:false
+636 http fetch GET 200 https://registry.npmjs.org/which 108ms (cache revalidated)
+637 silly packumentCache full:https://registry.npmjs.org/which set size:70147 disposed:false
+638 silly placeDep node_modules/detect-gpu webgl-constants@1.1.1 OK for: detect-gpu@5.0.70 want: ^1.1.1
+639 silly placeDep node_modules/react-dom scheduler@0.28.0 OK for: react-dom@19.3.1 want: ^0.28.0
+640 silly placeDep node_modules/stats-gl three@0.170.0 OK for: stats-gl@2.4.2 want: ^0.170.0
+641 silly placeDep node_modules/three-stdlib @types/webxr@0.5.24 OK for: three-stdlib@2.36.1 want: ^0.5.2
+642 silly placeDep node_modules/three-stdlib fflate@0.6.11 OK for: three-stdlib@2.36.1 want: ^0.6.9
+643 silly placeDep node_modules/troika-three-text bidi-js@1.1.0 OK for: troika-three-text@0.52.5 want: ^1.0.2
+644 silly fetch manifest @types/react@>=16.8
+645 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+646 http cache https://registry.npmjs.org/@types%2freact 10ms (cache hit)
+647 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2642195 disposed:false
+648 silly fetch manifest react@>=16.8
+649 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+650 http cache https://registry.npmjs.org/react 18ms (cache hit)
+651 silly packumentCache full:https://registry.npmjs.org/react set size:7136567 disposed:false
+652 silly placeDep node_modules/tunnel-rat zustand@4.5.7 OK for: tunnel-rat@0.1.2 want: ^4.3.2
+653 silly placeDep ROOT @typescript/typescript-aix-ppc64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+654 silly placeDep ROOT @typescript/typescript-darwin-arm64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+655 silly placeDep ROOT @typescript/typescript-darwin-x64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+656 silly placeDep ROOT @typescript/typescript-freebsd-arm64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+657 silly placeDep ROOT @typescript/typescript-freebsd-x64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+658 silly placeDep ROOT @typescript/typescript-linux-arm@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+659 silly placeDep ROOT @typescript/typescript-linux-arm64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+660 silly placeDep ROOT @typescript/typescript-linux-loong64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+661 silly placeDep ROOT @typescript/typescript-linux-mips64el@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+662 silly placeDep ROOT @typescript/typescript-linux-ppc64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+663 silly placeDep ROOT @typescript/typescript-linux-riscv64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+664 silly placeDep ROOT @typescript/typescript-linux-s390x@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+665 silly placeDep ROOT @typescript/typescript-linux-x64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+666 silly placeDep ROOT @typescript/typescript-netbsd-arm64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+667 silly placeDep ROOT @typescript/typescript-netbsd-x64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+668 silly placeDep ROOT @typescript/typescript-openbsd-arm64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+669 silly placeDep ROOT @typescript/typescript-openbsd-x64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+670 silly placeDep ROOT @typescript/typescript-sunos-x64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+671 silly placeDep ROOT @typescript/typescript-win32-arm64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+672 silly placeDep ROOT @typescript/typescript-win32-x64@7.0.2 OK for: typescript@7.0.2 want: 7.0.2
+673 silly placeDep ROOT fsevents@2.3.3 OK for: vite@8.3.8 want: ~2.3.3
+674 silly placeDep ROOT lightningcss@1.33.0 OK for: vite@8.3.8 want: ^1.33.0
+675 silly placeDep ROOT picomatch@4.0.7 OK for: vite@8.3.8 want: ^4.0.7
+676 silly placeDep node_modules/vite postcss@8.5.33 OK for: vite@8.3.8 want: ^8.5.32
+677 silly placeDep ROOT rolldown@1.2.19 OK for: vite@8.3.8 want: ~1.2.18
+678 silly placeDep ROOT tinyglobby@0.2.17 OK for: vite@8.3.8 want: ^0.2.17
+679 silly fetch manifest lightningcss-darwin-x64@1.33.0
+680 silly packumentCache full:https://registry.npmjs.org/lightningcss-darwin-x64 cache-miss
+681 silly fetch manifest lightningcss-linux-x64-gnu@1.33.0
+682 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-gnu cache-miss
+683 silly fetch manifest lightningcss-win32-x64-msvc@1.33.0
+684 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-x64-msvc cache-miss
+685 silly fetch manifest lightningcss-win32-arm64-msvc@1.33.0
+686 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-arm64-msvc cache-miss
+687 silly fetch manifest lightningcss-darwin-arm64@1.33.0
+688 silly packumentCache full:https://registry.npmjs.org/lightningcss-darwin-arm64 cache-miss
+689 silly fetch manifest lightningcss-linux-arm64-gnu@1.33.0
+690 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-gnu cache-miss
+691 silly fetch manifest lightningcss-linux-arm-gnueabihf@1.33.0
+692 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf cache-miss
+693 silly fetch manifest lightningcss-linux-arm64-musl@1.33.0
+694 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-musl cache-miss
+695 silly fetch manifest lightningcss-linux-x64-musl@1.33.0
+696 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-musl cache-miss
+697 silly fetch manifest lightningcss-freebsd-x64@1.33.0
+698 silly packumentCache full:https://registry.npmjs.org/lightningcss-freebsd-x64 cache-miss
+699 silly fetch manifest lightningcss-android-arm64@1.33.0
+700 silly packumentCache full:https://registry.npmjs.org/lightningcss-android-arm64 cache-miss
+701 http fetch GET 200 https://registry.npmjs.org/lightningcss-darwin-arm64 128ms (cache miss)
+702 silly packumentCache full:https://registry.npmjs.org/lightningcss-darwin-arm64 set size:undefined disposed:false
+703 silly fetch manifest nanoid@^3.3.20
+704 silly packumentCache full:https://registry.npmjs.org/nanoid cache-miss
+705 http fetch GET 200 https://registry.npmjs.org/lightningcss-darwin-x64 131ms (cache miss)
+706 silly packumentCache full:https://registry.npmjs.org/lightningcss-darwin-x64 set size:undefined disposed:false
+707 silly fetch manifest @oxc-project/types@=0.156.0
+708 silly packumentCache full:https://registry.npmjs.org/@oxc-project%2ftypes cache-miss
+709 http fetch GET 200 https://registry.npmjs.org/lightningcss-android-arm64 131ms (cache miss)
+710 silly packumentCache full:https://registry.npmjs.org/lightningcss-android-arm64 set size:undefined disposed:false
+711 silly fetch manifest @rolldown/binding-darwin-x64@1.2.19
+712 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-darwin-x64 cache-miss
+713 http fetch GET 200 https://registry.npmjs.org/lightningcss-win32-arm64-msvc 133ms (cache miss)
+714 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-arm64-msvc set size:undefined disposed:false
+715 silly fetch manifest @rolldown/binding-freebsd-x64@1.2.19
+716 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-freebsd-x64 cache-miss
+717 http fetch GET 200 https://registry.npmjs.org/lightningcss-freebsd-x64 135ms (cache miss)
+718 silly packumentCache full:https://registry.npmjs.org/lightningcss-freebsd-x64 set size:undefined disposed:false
+719 silly fetch manifest @rolldown/binding-wasm32-wasi@1.2.19
+720 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-wasm32-wasi cache-miss
+721 http fetch GET 200 https://registry.npmjs.org/lightningcss-linux-x64-gnu 140ms (cache miss)
+722 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-gnu set size:undefined disposed:false
+723 silly fetch manifest @rolldown/binding-darwin-arm64@1.2.19
+724 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-darwin-arm64 cache-miss
+725 http fetch GET 200 https://registry.npmjs.org/lightningcss-win32-x64-msvc 141ms (cache miss)
+726 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-x64-msvc set size:undefined disposed:false
+727 silly fetch manifest @rolldown/binding-android-arm64@1.2.19
+728 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-android-arm64 cache-miss
+729 http fetch GET 200 https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf 144ms (cache miss)
+730 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf set size:undefined disposed:false
+731 silly fetch manifest @rolldown/binding-linux-x64-gnu@1.2.19
+732 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-x64-gnu cache-miss
+733 http fetch GET 200 https://registry.npmjs.org/lightningcss-linux-arm64-gnu 147ms (cache miss)
+734 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-gnu set size:undefined disposed:false
+735 silly fetch manifest @rolldown/binding-linux-x64-musl@1.2.19
+736 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-x64-musl cache-miss
+737 http fetch GET 200 https://registry.npmjs.org/lightningcss-linux-x64-musl 149ms (cache miss)
+738 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-musl set size:undefined disposed:false
+739 silly fetch manifest @rolldown/binding-win32-x64-msvc@1.2.19
+740 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-win32-x64-msvc cache-miss
+741 http fetch GET 200 https://registry.npmjs.org/nanoid 122ms (cache revalidated)
+742 silly packumentCache full:https://registry.npmjs.org/nanoid set size:352791 disposed:false
+743 silly fetch manifest @rolldown/binding-linux-arm64-gnu@1.2.19
+744 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-arm64-gnu cache-miss
+745 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-android-arm64 146ms (cache miss)
+746 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-android-arm64 set size:undefined disposed:false
+747 silly fetch manifest @rolldown/binding-linux-ppc64-gnu@1.2.19
+748 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-ppc64-gnu cache-miss
+749 http fetch GET 200 https://registry.npmjs.org/@oxc-project%2ftypes 169ms (cache miss)
+750 silly packumentCache full:https://registry.npmjs.org/@oxc-project%2ftypes set size:undefined disposed:false
+751 silly fetch manifest @rolldown/binding-linux-s390x-gnu@1.2.19
+752 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-s390x-gnu cache-miss
+753 http fetch GET 200 https://registry.npmjs.org/lightningcss-linux-arm64-musl 323ms (cache miss)
+754 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-musl set size:undefined disposed:false
+755 silly fetch manifest @rolldown/binding-android-arm-eabi@1.2.19
+756 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-android-arm-eabi cache-miss
+757 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-linux-x64-gnu 189ms (cache miss)
+758 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-x64-gnu set size:undefined disposed:false
+759 silly fetch manifest @rolldown/binding-linux-arm64-musl@1.2.19
+760 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-arm64-musl cache-miss
+761 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-freebsd-x64 221ms (cache miss)
+762 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-freebsd-x64 set size:undefined disposed:false
+763 silly fetch manifest @rolldown/binding-win32-arm64-msvc@1.2.19
+764 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-win32-arm64-msvc cache-miss
+765 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-darwin-x64 240ms (cache miss)
+766 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-darwin-x64 set size:undefined disposed:false
+767 silly fetch manifest @rolldown/binding-openharmony-arm64@1.2.19
+768 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-openharmony-arm64 cache-miss
+769 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-linux-x64-musl 249ms (cache miss)
+770 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-x64-musl set size:undefined disposed:false
+771 silly fetch manifest @rolldown/binding-linux-arm-gnueabihf@1.2.19
+772 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-arm-gnueabihf cache-miss
+773 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-linux-ppc64-gnu 142ms (cache miss)
+774 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-ppc64-gnu set size:undefined disposed:false
+775 silly fetch manifest fdir@^6.5.0
+776 silly packumentCache full:https://registry.npmjs.org/fdir cache-miss
+777 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-win32-x64-msvc 287ms (cache miss)
+778 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-win32-x64-msvc set size:undefined disposed:false
+779 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-linux-s390x-gnu 145ms (cache miss)
+780 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-s390x-gnu set size:undefined disposed:false
+781 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-wasm32-wasi 320ms (cache miss)
+782 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-wasm32-wasi set size:undefined disposed:false
+783 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-darwin-arm64 341ms (cache miss)
+784 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-darwin-arm64 set size:undefined disposed:false
+785 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-openharmony-arm64 124ms (cache miss)
+786 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-openharmony-arm64 set size:undefined disposed:false
+787 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-linux-arm64-gnu 252ms (cache miss)
+788 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-arm64-gnu set size:undefined disposed:false
+789 http fetch GET 200 https://registry.npmjs.org/fdir 112ms (cache miss)
+790 silly packumentCache full:https://registry.npmjs.org/fdir set size:undefined disposed:false
+791 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-linux-arm64-musl 237ms (cache miss)
+792 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-arm64-musl set size:undefined disposed:false
+793 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-win32-arm64-msvc 245ms (cache miss)
+794 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-win32-arm64-msvc set size:undefined disposed:false
+795 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-linux-arm-gnueabihf 223ms (cache miss)
+796 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-linux-arm-gnueabihf set size:undefined disposed:false
+797 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fbinding-android-arm-eabi 326ms (cache miss)
+798 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fbinding-android-arm-eabi set size:undefined disposed:false
+799 silly placeDep ROOT lightningcss-android-arm64@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+800 silly placeDep ROOT lightningcss-darwin-arm64@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+801 silly placeDep ROOT lightningcss-darwin-x64@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+802 silly placeDep ROOT lightningcss-freebsd-x64@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+803 silly placeDep ROOT lightningcss-linux-arm-gnueabihf@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+804 silly placeDep ROOT lightningcss-linux-arm64-gnu@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+805 silly placeDep ROOT lightningcss-linux-arm64-musl@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+806 silly placeDep ROOT lightningcss-linux-x64-gnu@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+807 silly placeDep ROOT lightningcss-linux-x64-musl@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+808 silly placeDep ROOT lightningcss-win32-arm64-msvc@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+809 silly placeDep ROOT lightningcss-win32-x64-msvc@1.33.0 OK for: lightningcss@1.33.0 want: 1.33.0
+810 silly placeDep ROOT @oxc-project/types@0.156.0 OK for: rolldown@1.2.19 want: =0.156.0
+811 silly placeDep ROOT @rolldown/binding-android-arm-eabi@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+812 silly placeDep ROOT @rolldown/binding-android-arm64@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+813 silly placeDep ROOT @rolldown/binding-darwin-arm64@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+814 silly placeDep ROOT @rolldown/binding-darwin-x64@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+815 silly placeDep ROOT @rolldown/binding-freebsd-x64@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+816 silly placeDep ROOT @rolldown/binding-linux-arm-gnueabihf@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+817 silly placeDep ROOT @rolldown/binding-linux-arm64-gnu@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+818 silly placeDep ROOT @rolldown/binding-linux-arm64-musl@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+819 silly placeDep ROOT @rolldown/binding-linux-ppc64-gnu@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+820 silly placeDep ROOT @rolldown/binding-linux-s390x-gnu@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+821 silly placeDep ROOT @rolldown/binding-linux-x64-gnu@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+822 silly placeDep ROOT @rolldown/binding-linux-x64-musl@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+823 silly placeDep ROOT @rolldown/binding-openharmony-arm64@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+824 silly placeDep ROOT @rolldown/binding-wasm32-wasi@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+825 silly placeDep ROOT @rolldown/binding-win32-arm64-msvc@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+826 silly placeDep ROOT @rolldown/binding-win32-x64-msvc@1.2.19 OK for: rolldown@1.2.19 want: 1.2.19
+827 silly fetch manifest @emnapi/core@2.0.0-beta.2
+828 silly packumentCache full:https://registry.npmjs.org/@emnapi%2fcore cache-miss
+829 silly fetch manifest @emnapi/runtime@2.0.0-beta.2
+830 silly packumentCache full:https://registry.npmjs.org/@emnapi%2fruntime cache-miss
+831 silly fetch manifest @napi-rs/wasm-runtime@1.2.6
+832 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fwasm-runtime cache-miss
+833 http fetch GET 200 https://registry.npmjs.org/@emnapi%2fruntime 107ms (cache revalidated)
+834 silly packumentCache full:https://registry.npmjs.org/@emnapi%2fruntime set size:136102 disposed:false
+835 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fwasm-runtime 114ms (cache miss)
+836 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fwasm-runtime set size:undefined disposed:false
+837 http fetch GET 200 https://registry.npmjs.org/@emnapi%2fcore 120ms (cache miss)
+838 silly packumentCache full:https://registry.npmjs.org/@emnapi%2fcore set size:undefined disposed:false
+839 silly placeDep ROOT @emnapi/core@2.0.0-beta.2 OK for: @rolldown/binding-wasm32-wasi@1.2.19 want: 2.0.0-beta.2
+840 silly placeDep node_modules/@rolldown/binding-wasm32-wasi @emnapi/runtime@2.0.0-beta.2 OK for: @rolldown/binding-wasm32-wasi@1.2.19 want: 2.0.0-beta.2
+841 silly placeDep node_modules/@rolldown/binding-wasm32-wasi @napi-rs/wasm-runtime@1.2.6 OK for: @rolldown/binding-wasm32-wasi@1.2.19 want: 1.2.6
+842 silly fetch manifest tslib@^2.4.0
+843 silly packumentCache full:https://registry.npmjs.org/tslib cache-miss
+844 silly fetch manifest @emnapi/wasi-threads@2.2.0
+845 silly packumentCache full:https://registry.npmjs.org/@emnapi%2fwasi-threads cache-miss
+846 silly fetch manifest tslib@^2.4.0
+847 silly packumentCache full:https://registry.npmjs.org/tslib cache-miss
+848 silly fetch manifest @tybys/wasm-util@^0.10.3
+849 silly packumentCache full:https://registry.npmjs.org/@tybys%2fwasm-util cache-miss
+850 http fetch GET 200 https://registry.npmjs.org/tslib 114ms (cache revalidated)
+851 silly packumentCache full:https://registry.npmjs.org/tslib set size:111280 disposed:false
+852 http fetch GET 200 https://registry.npmjs.org/tslib 116ms (cache revalidated)
+853 silly packumentCache full:https://registry.npmjs.org/tslib set size:111280 disposed:false
+854 silly packumentCache full:https://registry.npmjs.org/tslib dispose
+855 http fetch GET 200 https://registry.npmjs.org/@emnapi%2fwasi-threads 120ms (cache miss)
+856 silly packumentCache full:https://registry.npmjs.org/@emnapi%2fwasi-threads set size:undefined disposed:false
+857 http fetch GET 200 https://registry.npmjs.org/@tybys%2fwasm-util 121ms (cache miss)
+858 silly packumentCache full:https://registry.npmjs.org/@tybys%2fwasm-util set size:undefined disposed:false
+859 silly placeDep ROOT @emnapi/wasi-threads@2.2.0 OK for: @emnapi/core@2.0.0-beta.2 want: 2.2.0
+860 silly placeDep node_modules/@emnapi/core tslib@2.9.1 OK for: @emnapi/core@2.0.0-beta.2 want: ^2.4.0
+861 silly placeDep node_modules/@emnapi/wasi-threads tslib@2.9.1 OK for: @emnapi/wasi-threads@2.2.0 want: ^2.4.0
+862 silly fetch manifest picomatch@^4.0.4
+863 silly packumentCache full:https://registry.npmjs.org/picomatch cache-miss
+864 http cache https://registry.npmjs.org/picomatch 6ms (cache hit)
+865 silly packumentCache full:https://registry.npmjs.org/picomatch set size:134451 disposed:false
+866 silly placeDep ROOT fdir@6.5.0 OK for: tinyglobby@0.2.17 want: ^6.5.0
+867 silly placeDep node_modules/@react-three/fiber ieee754@1.2.1 OK for: buffer@6.0.3 want: ^1.2.1
+868 silly fetch manifest @types/react@*
+869 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+870 http cache https://registry.npmjs.org/@types%2freact 10ms (cache hit)
+871 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2642195 disposed:false
+872 silly placeDep node_modules/@react-three/fiber @types/react-reconciler@0.28.9 OK for: its-fine@2.1.1 want: ^0.28.9
+873 silly placeDep node_modules/@rolldown/binding-wasm32-wasi tslib@2.9.1 OK for: @emnapi/runtime@2.0.0-beta.2 want: ^2.4.0
+874 silly placeDep ROOT @tybys/wasm-util@0.10.4 OK for: @napi-rs/wasm-runtime@1.2.6 want: ^0.10.3
+875 silly placeDep node_modules/@tybys/wasm-util tslib@2.9.1 OK for: @tybys/wasm-util@0.10.4 want: ^2.4.0
+876 silly placeDep node_modules/cross-env path-key@3.1.1 OK for: cross-spawn@7.0.6 want: ^3.1.0
+877 silly placeDep node_modules/cross-env shebang-command@2.0.0 OK for: cross-spawn@7.0.6 want: ^2.0.0
+878 silly placeDep node_modules/cross-env which@2.0.2 OK for: cross-spawn@7.0.6 want: ^2.0.1
+879 silly placeDep node_modules/vite nanoid@3.3.20 OK for: postcss@8.5.33 want: ^3.3.20
+880 silly reify mark retired [
+880 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\buffer'
+880 silly reify ]
+881 silly reify mark retired [
+881 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\baseline-browser-mapping'
+881 silly reify ]
+882 silly reify mark retired [
+882 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\camera-controls'
+882 silly reify ]
+883 silly reify mark retired [
+883 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\base64-js'
+883 silly reify ]
+884 silly reify mark retired [
+884 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\caniuse-lite'
+884 silly reify ]
+885 silly reify mark retired [
+885 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\client-only'
+885 silly reify ]
+886 silly reify mark retired [
+886 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\csstype'
+886 silly reify ]
+887 silly reify mark retired [
+887 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\cross-env'
+887 silly reify ]
+888 silly reify mark retired [
+888 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\detect-gpu'
+888 silly reify ]
+889 silly reify mark retired [
+889 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\glsl-noise'
+889 silly reify ]
+890 silly reify mark retired [
+890 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\cross-spawn'
+890 silly reify ]
+891 silly reify mark retired [
+891 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\fflate'
+891 silly reify ]
+892 silly reify mark retired [
+892 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\hls.js'
+892 silly reify ]
+893 silly reify mark retired [
+893 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\bidi-js'
+893 silly reify ]
+894 silly reify mark retired [
+894 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\ieee754'
+894 silly reify ]
+895 silly reify mark retired [
+895 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\its-fine'
+895 silly reify ]
+896 silly reify mark retired [
+896 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lucide-react'
+896 silly reify ]
+897 silly reify mark retired [
+897 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\meshoptimizer'
+897 silly reify ]
+898 silly reify mark retired [
+898 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\meshline'
+898 silly reify ]
+899 silly reify mark retired [
+899 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\maath'
+899 silly reify ]
+900 silly reify mark retired [
+900 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\nanoid'
+900 silly reify ]
+901 silly reify mark retired [
+901 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\next'
+901 silly reify ]
+902 silly reify mark retired [
+902 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\postcss'
+902 silly reify ]
+903 silly reify mark retired [
+903 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\path-key'
+903 silly reify ]
+904 silly reify mark retired [
+904 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\promise-worker-transferable'
+904 silly reify ]
+905 silly reify mark retired [
+905 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\react-use-measure'
+905 silly reify ]
+906 silly reify mark retired [
+906 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\react-dom'
+906 silly reify ]
+907 silly reify mark retired [
+907 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\scheduler'
+907 silly reify ]
+908 silly reify mark retired [
+908 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\react'
+908 silly reify ]
+909 silly reify mark retired [
+909 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\shebang-command'
+909 silly reify ]
+910 silly reify mark retired [
+910 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\styled-jsx'
+910 silly reify ]
+911 silly reify mark retired [
+911 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\three'
+911 silly reify ]
+912 silly reify mark retired [
+912 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\suspend-react'
+912 silly reify ]
+913 silly reify mark retired [
+913 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\stats.js'
+913 silly reify ]
+914 silly reify mark retired [
+914 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\semver'
+914 silly reify ]
+915 silly reify mark retired [
+915 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\stats-gl'
+915 silly reify ]
+916 silly reify mark retired [
+916 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\three-mesh-bvh'
+916 silly reify ]
+917 silly reify mark retired [
+917 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\troika-three-text'
+917 silly reify ]
+918 silly reify mark retired [
+918 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\three-stdlib'
+918 silly reify ]
+919 silly reify mark retired [
+919 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\undici-types'
+919 silly reify ]
+920 silly reify mark retired [
+920 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\tunnel-rat'
+920 silly reify ]
+921 silly reify mark retired [
+921 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\typescript'
+921 silly reify ]
+922 silly reify mark retired [
+922 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\use-sync-external-store'
+922 silly reify ]
+923 silly reify mark retired [
+923 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\utility-types'
+923 silly reify ]
+924 silly reify mark retired [
+924 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\which'
+924 silly reify ]
+925 silly reify mark retired [
+925 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\tslib'
+925 silly reify ]
+926 silly reify mark retired [
+926 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\zustand'
+926 silly reify ]
+927 silly reify mark retired [
+927 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\sharp'
+927 silly reify ]
+928 silly reify mark retired [
+928 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-darwin-arm64'
+928 silly reify ]
+929 silly reify mark retired [
+929 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@emnapi\\runtime'
+929 silly reify ]
+930 silly reify mark retired [
+930 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-darwin-x64'
+930 silly reify ]
+931 silly reify mark retired [
+931 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@babel\\runtime'
+931 silly reify ]
+932 silly reify mark retired [
+932 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@dimforge\\rapier3d-compat'
+932 silly reify ]
+933 silly reify mark retired [
+933 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-freebsd-wasm32'
+933 silly reify ]
+934 silly reify mark retired [
+934 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-darwin-arm64'
+934 silly reify ]
+935 silly reify mark retired [
+935 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-ppc64'
+935 silly reify ]
+936 silly reify mark retired [
+936 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-arm'
+936 silly reify ]
+937 silly reify mark retired [
+937 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-darwin-x64'
+937 silly reify ]
+938 silly reify mark retired [
+938 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-riscv64'
+938 silly reify ]
+939 silly reify mark retired [
+939 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-arm'
+939 silly reify ]
+940 silly reify mark retired [
+940 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-s390x'
+940 silly reify ]
+941 silly reify mark retired [
+941 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-x64'
+941 silly reify ]
+942 silly reify mark retired [
+942 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linuxmusl-x64'
+942 silly reify ]
+943 silly reify mark retired [
+943 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linuxmusl-arm64'
+943 silly reify ]
+944 silly reify mark retired [
+944 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-arm64'
+944 silly reify ]
+945 silly reify mark retired [
+945 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-arm64'
+945 silly reify ]
+946 silly reify mark retired [
+946 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-riscv64'
+946 silly reify ]
+947 silly reify mark retired [
+947 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-ppc64'
+947 silly reify ]
+948 silly reify mark retired [
+948 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-x64'
+948 silly reify ]
+949 silly reify mark retired [
+949 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-s390x'
+949 silly reify ]
+950 silly reify mark retired [
+950 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linuxmusl-arm64'
+950 silly reify ]
+951 silly reify mark retired [
+951 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-webcontainers-wasm32'
+951 silly reify ]
+952 silly reify mark retired [
+952 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-win32-arm64'
+952 silly reify ]
+953 silly reify mark retired [
+953 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linuxmusl-x64'
+953 silly reify ]
+954 silly reify mark retired [
+954 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-win32-ia32'
+954 silly reify ]
+955 silly reify mark retired [
+955 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-win32-x64'
+955 silly reify ]
+956 silly reify mark retired [
+956 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@mediapipe\\tasks-vision'
+956 silly reify ]
+957 silly reify mark retired [
+957 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\env'
+957 silly reify ]
+958 silly reify mark retired [
+958 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-darwin-x64'
+958 silly reify ]
+959 silly reify mark retired [
+959 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@monogrid\\gainmap-js'
+959 silly reify ]
+960 silly reify mark retired [
+960 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-darwin-arm64'
+960 silly reify ]
+961 silly reify mark retired [
+961 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-arm64-gnu'
+961 silly reify ]
+962 silly reify mark retired [
+962 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-x64-musl'
+962 silly reify ]
+963 silly reify mark retired [
+963 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-arm64-musl'
+963 silly reify ]
+964 silly reify mark retired [
+964 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-win32-arm64-msvc'
+964 silly reify ]
+965 silly reify mark retired [
+965 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-win32-x64-msvc'
+965 silly reify ]
+966 silly reify mark retired [
+966 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-x64-gnu'
+966 silly reify ]
+967 silly reify mark retired [
+967 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@tweenjs\\tween.js'
+967 silly reify ]
+968 silly reify mark retired [
+968 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@react-three\\drei'
+968 silly reify ]
+969 silly reify mark retired [
+969 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@react-three\\fiber'
+969 silly reify ]
+970 silly reify mark retired [
+970 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@swc\\helpers'
+970 silly reify ]
+971 silly reify mark retired [
+971 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\react'
+971 silly reify ]
+972 silly reify mark retired [
+972 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\node'
+972 silly reify ]
+973 silly reify mark retired [
+973 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\react-dom'
+973 silly reify ]
+974 silly reify mark retired [
+974 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\three'
+974 silly reify ]
+975 silly reify mark retired [
+975 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-darwin-arm64'
+975 silly reify ]
+976 silly reify mark retired [
+976 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-darwin-x64'
+976 silly reify ]
+977 silly reify mark retired [
+977 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\react-reconciler'
+977 silly reify ]
+978 silly reify mark retired [
+978 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-freebsd-arm64'
+978 silly reify ]
+979 silly reify mark retired [
+979 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-freebsd-x64'
+979 silly reify ]
+980 silly reify mark retired [
+980 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-loong64'
+980 silly reify ]
+981 silly reify mark retired [
+981 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-aix-ppc64'
+981 silly reify ]
+982 silly reify mark retired [
+982 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-arm64'
+982 silly reify ]
+983 silly reify mark retired [
+983 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-arm'
+983 silly reify ]
+984 silly reify mark retired [
+984 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-mips64el'
+984 silly reify ]
+985 silly reify mark retired [
+985 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-riscv64'
+985 silly reify ]
+986 silly reify mark retired [
+986 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-ppc64'
+986 silly reify ]
+987 silly reify mark retired [
+987 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-s390x'
+987 silly reify ]
+988 silly reify mark retired [
+988 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-x64'
+988 silly reify ]
+989 silly reify mark retired [
+989 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-netbsd-arm64'
+989 silly reify ]
+990 silly reify mark retired [
+990 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-netbsd-x64'
+990 silly reify ]
+991 silly reify mark retired [
+991 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-openbsd-x64'
+991 silly reify ]
+992 silly reify mark retired [
+992 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-win32-arm64'
+992 silly reify ]
+993 silly reify mark retired [
+993 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-win32-x64'
+993 silly reify ]
+994 silly reify mark retired [
+994 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@use-gesture\\react'
+994 silly reify ]
+995 silly reify mark retired [
+995 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@use-gesture\\core'
+995 silly reify ]
+996 silly reify mark retired [
+996 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-openbsd-arm64'
+996 silly reify ]
+997 silly reify mark retired [
+997 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-sunos-x64'
+997 silly reify ]
+998 silly reify mark retired [
+998 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\webgl-constants'
+998 silly reify ]
+999 silly reify mark retired [
+999 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-wasm32'
+999 silly reify ]
+1000 silly reify mark retired [
+1000 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\colour'
+1000 silly reify ]
+1001 silly reify moves {
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\buffer': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.buffer-TliKoebC',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\baseline-browser-mapping': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.baseline-browser-mapping-gdLyqpjV',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\camera-controls': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.camera-controls-otUgcNHP',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\base64-js': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.base64-js-LU0o8RUY',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\caniuse-lite': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.caniuse-lite-ZoYk5e6x',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\client-only': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.client-only-vP17YcaI',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\csstype': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.csstype-sg5QxQNA',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\cross-env': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.cross-env-Tt0HqFiF',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\detect-gpu': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.detect-gpu-KeErJ9Tu',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\glsl-noise': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.glsl-noise-68jL2Sx9',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\cross-spawn': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.cross-spawn-QrP8FMOz',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\fflate': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.fflate-LcVxzaVJ',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\hls.js': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.hls.js-hXjcuHAD',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\bidi-js': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.bidi-js-XLgfTJTJ',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\ieee754': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.ieee754-FrksQzhK',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\its-fine': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.its-fine-mNMH1m2L',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lucide-react': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.lucide-react-tiUU3HUx',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\meshoptimizer': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.meshoptimizer-hz4bU9pY',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\meshline': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.meshline-TvKFhXgw',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\maath': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.maath-hztpX0aK',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\nanoid': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.nanoid-ZNOJhpiG',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\next': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.next-tDzUvbWx',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\postcss': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.postcss-fFEGoZME',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\path-key': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.path-key-13SZz92a',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\promise-worker-transferable': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.promise-worker-transferable-zebVkX09',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\react-use-measure': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.react-use-measure-er2L11Qe',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\react-dom': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.react-dom-kTLo6Tho',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\scheduler': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.scheduler-t3f0WHZs',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\react': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.react-WhLq3InO',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\shebang-command': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.shebang-command-r5INKBrV',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\styled-jsx': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.styled-jsx-BMXQQ5Ol',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\three': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.three-NVZBrSt3',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\suspend-react': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.suspend-react-G71LkQSG',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\stats.js': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.stats.js-kQxENq7u',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\semver': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.semver-d0EqPE6P',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\stats-gl': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.stats-gl-do5QJiDJ',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\three-mesh-bvh': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.three-mesh-bvh-kCjxUdoV',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\troika-three-text': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.troika-three-text-fIA39AQz',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\three-stdlib': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.three-stdlib-IWRgO1fK',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\undici-types': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.undici-types-q3D38BNI',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\tunnel-rat': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.tunnel-rat-8EhfjMJk',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\typescript': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.typescript-RHQwmPri',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\use-sync-external-store': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.use-sync-external-store-QH01SDBz',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\utility-types': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.utility-types-WiIqAVC9',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\which': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.which-uh950iaX',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\tslib': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.tslib-mAnyfa8Y',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\zustand': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.zustand-PycwK4ki',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\sharp': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.sharp-a32LJZmF',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-darwin-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-darwin-arm64-ILcV5WTk',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@emnapi\\runtime': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@emnapi\\.runtime-zqvvR1gf',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-darwin-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-darwin-x64-C01uKgr0',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@babel\\runtime': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@babel\\.runtime-FzfU08qk',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@dimforge\\rapier3d-compat': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@dimforge\\.rapier3d-compat-QZE1pMRO',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-freebsd-wasm32': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-freebsd-wasm32-9PkttyLj',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-darwin-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-darwin-arm64-jBLYqI6F',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-ppc64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linux-ppc64-tyC7Ckoi',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-arm': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linux-arm-fxQFsMHE',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-darwin-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-darwin-x64-tNxkuGMT',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-riscv64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linux-riscv64-p3or8mUk',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-arm': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linux-arm-UAoZTe2s',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-s390x': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linux-s390x-pWes33Xn',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linux-x64-3sbuSgTs',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linuxmusl-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linuxmusl-x64-1O7N5NSh',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linuxmusl-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linuxmusl-arm64-9irfS4YS',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-libvips-linux-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-libvips-linux-arm64-jRzw0kjx',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linux-arm64-LXMISF4V',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-riscv64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linux-riscv64-2AFbLaPH',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-ppc64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linux-ppc64-bNSQIVEQ',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linux-x64-H820mAkz',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linux-s390x': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linux-s390x-zNlHopJ4',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linuxmusl-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linuxmusl-arm64-PLCqZKBu',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-webcontainers-wasm32': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-webcontainers-wasm32-ILbDRpmT',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-win32-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-win32-arm64-3yQ08KRa',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-linuxmusl-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-linuxmusl-x64-ngtgtBZE',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-win32-ia32': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-win32-ia32-FjtIJGeH',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-win32-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-win32-x64-tS4rtriZ',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@mediapipe\\tasks-vision': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@mediapipe\\.tasks-vision-ai2OSUdX',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\env': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.env-ngLkIyNx',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-darwin-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-darwin-x64-7TqMvsgQ',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@monogrid\\gainmap-js': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@monogrid\\.gainmap-js-PIIDsmHv',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-darwin-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-darwin-arm64-xQaeCjH7',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-arm64-gnu': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-linux-arm64-gnu-QrUsrS4y',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-x64-musl': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-linux-x64-musl-FNZrV9Er',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-arm64-musl': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-linux-arm64-musl-wHXtzTah',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-win32-arm64-msvc': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-win32-arm64-msvc-VbwcSalz',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-win32-x64-msvc': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-win32-x64-msvc-nO17wuHR',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\swc-linux-x64-gnu': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@next\\.swc-linux-x64-gnu-4WBQZ6rn',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@tweenjs\\tween.js': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@tweenjs\\.tween.js-wdNEcv97',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@react-three\\drei': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@react-three\\.drei-GTKY2mSD',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@react-three\\fiber': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@react-three\\.fiber-yIVW77HV',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@swc\\helpers': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@swc\\.helpers-UVNSNmFs',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\react': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\.react-tPxXoi9U',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\node': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\.node-uOaB3o8d',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\react-dom': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\.react-dom-VB53EZgn',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\three': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\.three-bQHyrmsX',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-darwin-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-darwin-arm64-7osN2a3N',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-darwin-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-darwin-x64-IuqVZCcV',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\react-reconciler': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@types\\.react-reconciler-4zvfQOtd',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-freebsd-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-freebsd-arm64-TmGzzpYq',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-freebsd-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-freebsd-x64-yT9y2xjA',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-loong64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-loong64-aYcWIFLY',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-aix-ppc64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-aix-ppc64-elyAH9pl',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-arm64-kzpro7rA',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-arm': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-arm-Ce3uCl1t',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-mips64el': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-mips64el-uS424Xya',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-riscv64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-riscv64-BI1E5BV7',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-ppc64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-ppc64-k6Osn9gW',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-s390x': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-s390x-zdG7D8s0',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-linux-x64-iUvMnNA6',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-netbsd-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-netbsd-arm64-JT2is8Bq',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-netbsd-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-netbsd-x64-eUhOip5x',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-openbsd-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-openbsd-x64-7zAUQVt4',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-win32-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-win32-arm64-PwoaJ0Qi',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-win32-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-win32-x64-FRpiUVxf',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@use-gesture\\react': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@use-gesture\\.react-s4kgwGMA',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@use-gesture\\core': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@use-gesture\\.core-QTaRsnyA',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-openbsd-arm64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-openbsd-arm64-mLntv1zq',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-sunos-x64': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\.typescript-sunos-x64-M7Bt11AE',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\webgl-constants': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\.webgl-constants-4yYmgyOT',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\sharp-wasm32': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.sharp-wasm32-edAQWLzR',
+1001 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\colour': 'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@img\\.colour-apLgyLxH'
+1001 silly reify }
+1002 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-win32-arm64-msvc
+1003 silly reify mark deleted [
+1003 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-win32-arm64-msvc'
+1003 silly reify ]
+1004 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-wasm32-wasi
+1005 silly reify mark deleted [
+1005 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-wasm32-wasi'
+1005 silly reify ]
+1006 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@emnapi\core
+1007 silly reify mark deleted [
+1007 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@emnapi\\core'
+1007 silly reify ]
+1008 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-wasm32-wasi\node_modules\@emnapi\runtime
+1009 silly reify mark deleted [
+1009 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-wasm32-wasi\\node_modules\\@emnapi\\runtime'
+1009 silly reify ]
+1010 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-wasm32-wasi\node_modules\@napi-rs\wasm-runtime
+1011 silly reify mark deleted [
+1011 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-wasm32-wasi\\node_modules\\@napi-rs\\wasm-runtime'
+1011 silly reify ]
+1012 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@emnapi\core\node_modules\tslib
+1013 silly reify mark deleted [
+1013 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@emnapi\\core\\node_modules\\tslib'
+1013 silly reify ]
+1014 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@emnapi\wasi-threads
+1015 silly reify mark deleted [
+1015 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@emnapi\\wasi-threads'
+1015 silly reify ]
+1016 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-wasm32-wasi\node_modules\tslib
+1017 silly reify mark deleted [
+1017 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-wasm32-wasi\\node_modules\\tslib'
+1017 silly reify ]
+1018 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@tybys\wasm-util
+1019 silly reify mark deleted [
+1019 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@tybys\\wasm-util'
+1019 silly reify ]
+1020 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@emnapi\wasi-threads\node_modules\tslib
+1021 silly reify mark deleted [
+1021 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@emnapi\\wasi-threads\\node_modules\\tslib'
+1021 silly reify ]
+1022 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@tybys\wasm-util\node_modules\tslib
+1023 silly reify mark deleted [
+1023 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@tybys\\wasm-util\\node_modules\\tslib'
+1023 silly reify ]
+1024 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-openharmony-arm64
+1025 silly reify mark deleted [
+1025 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-openharmony-arm64'
+1025 silly reify ]
+1026 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-linux-x64-musl
+1027 silly reify mark deleted [
+1027 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-linux-x64-musl'
+1027 silly reify ]
+1028 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-linux-x64-gnu
+1029 silly reify mark deleted [
+1029 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-linux-x64-gnu'
+1029 silly reify ]
+1030 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-linux-s390x-gnu
+1031 silly reify mark deleted [
+1031 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-linux-s390x-gnu'
+1031 silly reify ]
+1032 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-linux-ppc64-gnu
+1033 silly reify mark deleted [
+1033 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-linux-ppc64-gnu'
+1033 silly reify ]
+1034 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-linux-arm64-musl
+1035 silly reify mark deleted [
+1035 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-linux-arm64-musl'
+1035 silly reify ]
+1036 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-linux-arm64-gnu
+1037 silly reify mark deleted [
+1037 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-linux-arm64-gnu'
+1037 silly reify ]
+1038 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-linux-arm-gnueabihf
+1039 silly reify mark deleted [
+1039 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-linux-arm-gnueabihf'
+1039 silly reify ]
+1040 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-freebsd-x64
+1041 silly reify mark deleted [
+1041 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-freebsd-x64'
+1041 silly reify ]
+1042 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-darwin-x64
+1043 silly reify mark deleted [
+1043 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-darwin-x64'
+1043 silly reify ]
+1044 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-darwin-arm64
+1045 silly reify mark deleted [
+1045 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-darwin-arm64'
+1045 silly reify ]
+1046 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-android-arm64
+1047 silly reify mark deleted [
+1047 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-android-arm64'
+1047 silly reify ]
+1048 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@rolldown\binding-android-arm-eabi
+1049 silly reify mark deleted [
+1049 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@rolldown\\binding-android-arm-eabi'
+1049 silly reify ]
+1050 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-win32-arm64-msvc
+1051 silly reify mark deleted [
+1051 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-win32-arm64-msvc'
+1051 silly reify ]
+1052 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-linux-x64-musl
+1053 silly reify mark deleted [
+1053 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-linux-x64-musl'
+1053 silly reify ]
+1054 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-linux-x64-gnu
+1055 silly reify mark deleted [
+1055 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-linux-x64-gnu'
+1055 silly reify ]
+1056 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-linux-arm64-musl
+1057 silly reify mark deleted [
+1057 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-linux-arm64-musl'
+1057 silly reify ]
+1058 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-linux-arm64-gnu
+1059 silly reify mark deleted [
+1059 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-linux-arm64-gnu'
+1059 silly reify ]
+1060 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-linux-arm-gnueabihf
+1061 silly reify mark deleted [
+1061 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-linux-arm-gnueabihf'
+1061 silly reify ]
+1062 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-freebsd-x64
+1063 silly reify mark deleted [
+1063 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-freebsd-x64'
+1063 silly reify ]
+1064 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-darwin-x64
+1065 silly reify mark deleted [
+1065 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-darwin-x64'
+1065 silly reify ]
+1066 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-darwin-arm64
+1067 silly reify mark deleted [
+1067 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-darwin-arm64'
+1067 silly reify ]
+1068 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\lightningcss-android-arm64
+1069 silly reify mark deleted [
+1069 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\lightningcss-android-arm64'
+1069 silly reify ]
+1070 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\fsevents
+1071 silly reify mark deleted [
+1071 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\fsevents'
+1071 silly reify ]
+1072 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-sunos-x64
+1073 silly reify mark deleted [
+1073 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-sunos-x64'
+1073 silly reify ]
+1074 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-openbsd-arm64
+1075 silly reify mark deleted [
+1075 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-openbsd-arm64'
+1075 silly reify ]
+1076 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-win32-arm64
+1077 silly reify mark deleted [
+1077 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-win32-arm64'
+1077 silly reify ]
+1078 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-openbsd-x64
+1079 silly reify mark deleted [
+1079 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-openbsd-x64'
+1079 silly reify ]
+1080 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-netbsd-x64
+1081 silly reify mark deleted [
+1081 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-netbsd-x64'
+1081 silly reify ]
+1082 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-netbsd-arm64
+1083 silly reify mark deleted [
+1083 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-netbsd-arm64'
+1083 silly reify ]
+1084 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-x64
+1085 silly reify mark deleted [
+1085 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-x64'
+1085 silly reify ]
+1086 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-s390x
+1087 silly reify mark deleted [
+1087 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-s390x'
+1087 silly reify ]
+1088 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-ppc64
+1089 silly reify mark deleted [
+1089 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-ppc64'
+1089 silly reify ]
+1090 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-riscv64
+1091 silly reify mark deleted [
+1091 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-riscv64'
+1091 silly reify ]
+1092 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-mips64el
+1093 silly reify mark deleted [
+1093 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-mips64el'
+1093 silly reify ]
+1094 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-arm
+1095 silly reify mark deleted [
+1095 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-arm'
+1095 silly reify ]
+1096 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-arm64
+1097 silly reify mark deleted [
+1097 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-arm64'
+1097 silly reify ]
+1098 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-aix-ppc64
+1099 silly reify mark deleted [
+1099 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-aix-ppc64'
+1099 silly reify ]
+1100 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-linux-loong64
+1101 silly reify mark deleted [
+1101 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-linux-loong64'
+1101 silly reify ]
+1102 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-freebsd-x64
+1103 silly reify mark deleted [
+1103 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-freebsd-x64'
+1103 silly reify ]
+1104 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-freebsd-arm64
+1105 silly reify mark deleted [
+1105 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-freebsd-arm64'
+1105 silly reify ]
+1106 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-darwin-x64
+1107 silly reify mark deleted [
+1107 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-darwin-x64'
+1107 silly reify ]
+1108 verbose reify failed optional dependency C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web\node_modules\@typescript\typescript-darwin-arm64
+1109 silly reify mark deleted [
+1109 silly reify   'C:\\Users\\User\\Documents\\Codex\\2026-11-14\\https-github-com-akramovfozil-terramind-ai\\web\\node_modules\\@typescript\\typescript-darwin-arm64'
+1109 silly reify ]
+1110 http cache fdir@https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz 0ms (cache hit)
+1111 http cache @rolldown/binding-win32-x64-msvc@https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.2.19.tgz 0ms (cache hit)
+1112 http cache @emnapi/core@https://registry.npmjs.org/@emnapi/core/-/core-2.0.0-beta.2.tgz 0ms (cache hit)
+1113 http cache @tybys/wasm-util@https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.4.tgz 0ms (cache hit)
+1114 http cache @oxc-project/types@https://registry.npmjs.org/@oxc-project/types/-/types-0.156.0.tgz 0ms (cache hit)
+1115 http cache @emnapi/wasi-threads@https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-2.2.0.tgz 0ms (cache hit)
+1116 http cache lightningcss-win32-x64-msvc@https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz 0ms (cache hit)
+1117 http cache tinyglobby@https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz 0ms (cache hit)
+1118 http cache @rolldown/pluginutils@https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.1.1.tgz 0ms (cache hit)
+1119 http cache picomatch@https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz 0ms (cache hit)
+1120 http cache rolldown@https://registry.npmjs.org/rolldown/-/rolldown-1.2.19.tgz 0ms (cache hit)
+1121 http cache @use-gesture/react@https://registry.npmjs.org/@use-gesture/react/-/react-10.3.1.tgz 0ms (cache hit)
+1122 http cache @vitejs/plugin-react@https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-6.3.0.tgz 0ms (cache hit)
+1123 http cache lightningcss@https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz 0ms (cache hit)
+1124 http cache vite@https://registry.npmjs.org/vite/-/vite-8.3.8.tgz 0ms (cache hit)
+1125 http cache @typescript/typescript-win32-x64@https://registry.npmjs.org/@typescript/typescript-win32-x64/-/typescript-win32-x64-7.0.2.tgz 0ms (cache hit)
+1126 http cache @react-three/fiber@https://registry.npmjs.org/@react-three/fiber/-/fiber-9.8.2.tgz 0ms (cache hit)
+1127 http cache @types/react-dom@https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz 0ms (cache hit)
+1128 http cache @types/react@https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz 0ms (cache hit)
+1129 http cache @types/node@https://registry.npmjs.org/@types/node/-/node-26.6.6.tgz 0ms (cache hit)
+1130 http cache @react-three/drei@https://registry.npmjs.org/@react-three/drei/-/drei-10.7.9.tgz 0ms (cache hit)
+1131 http cache @types/three@https://registry.npmjs.org/@types/three/-/three-0.187.0.tgz 0ms (cache hit)
+1132 http cache @monogrid/gainmap-js@https://registry.npmjs.org/@monogrid/gainmap-js/-/gainmap-js-3.7.3.tgz 0ms (cache hit)
+1133 http cache @mediapipe/tasks-vision@https://registry.npmjs.org/@mediapipe/tasks-vision/-/tasks-vision-0.10.17.tgz 0ms (cache hit)
+1134 http cache @dimforge/rapier3d-compat@https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.12.0.tgz 0ms (cache hit)
+1135 http cache @babel/runtime@https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.14.tgz 0ms (cache hit)
+1136 http cache @tweenjs/tween.js@https://registry.npmjs.org/@tweenjs/tween.js/-/tween.js-23.1.3.tgz 0ms (cache hit)
+1137 http cache zustand@https://registry.npmjs.org/zustand/-/zustand-5.1.0.tgz 0ms (cache hit)
+1138 http cache utility-types@https://registry.npmjs.org/utility-types/-/utility-types-3.11.0.tgz 0ms (cache hit)
+1139 http cache typescript@https://registry.npmjs.org/typescript/-/typescript-7.0.2.tgz 0ms (cache hit)
+1140 http cache use-sync-external-store@https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.7.0.tgz 0ms (cache hit)
+1141 http cache tunnel-rat@https://registry.npmjs.org/tunnel-rat/-/tunnel-rat-0.1.2.tgz 0ms (cache hit)
+1142 http cache undici-types@https://registry.npmjs.org/undici-types/-/undici-types-8.9.0.tgz 0ms (cache hit)
+1143 http cache troika-three-text@https://registry.npmjs.org/troika-three-text/-/troika-three-text-0.52.5.tgz 0ms (cache hit)
+1144 http cache three-stdlib@https://registry.npmjs.org/three-stdlib/-/three-stdlib-2.36.1.tgz 0ms (cache hit)
+1145 http cache three-mesh-bvh@https://registry.npmjs.org/three-mesh-bvh/-/three-mesh-bvh-0.8.3.tgz 0ms (cache hit)
+1146 http cache stats-gl@https://registry.npmjs.org/stats-gl/-/stats-gl-2.4.2.tgz 0ms (cache hit)
+1147 http cache suspend-react@https://registry.npmjs.org/suspend-react/-/suspend-react-0.1.3.tgz 0ms (cache hit)
+1148 http cache stats.js@https://registry.npmjs.org/stats.js/-/stats.js-0.17.0.tgz 0ms (cache hit)
+1149 http cache react@https://registry.npmjs.org/react/-/react-19.3.1.tgz 0ms (cache hit)
+1150 http cache three@https://registry.npmjs.org/three/-/three-0.187.0.tgz 0ms (cache hit)
+1151 http cache meshoptimizer@https://registry.npmjs.org/meshoptimizer/-/meshoptimizer-1.1.1.tgz 0ms (cache hit)
+1152 http cache react-dom@https://registry.npmjs.org/react-dom/-/react-dom-19.3.1.tgz 0ms (cache hit)
+1153 http cache maath@https://registry.npmjs.org/maath/-/maath-0.10.8.tgz 0ms (cache hit)
+1154 http cache meshline@https://registry.npmjs.org/meshline/-/meshline-3.3.1.tgz 0ms (cache hit)
+1155 http cache lucide-react@https://registry.npmjs.org/lucide-react/-/lucide-react-1.73.0.tgz 0ms (cache hit)
+1156 http cache hls.js@https://registry.npmjs.org/hls.js/-/hls.js-1.7.4.tgz 0ms (cache hit)
+1157 http cache fflate@https://registry.npmjs.org/fflate/-/fflate-0.8.3.tgz 0ms (cache hit)
+1158 http cache cross-env@https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz 0ms (cache hit)
+1159 http cache csstype@https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz 1ms (cache hit)
+1160 http cache glsl-noise@https://registry.npmjs.org/glsl-noise/-/glsl-noise-0.0.0.tgz 0ms (cache hit)
+1161 http cache tslib@https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz 0ms (cache hit)
+1162 http cache tslib@https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz 0ms (cache hit)
+1163 http cache camera-controls@https://registry.npmjs.org/camera-controls/-/camera-controls-3.1.2.tgz 0ms (cache hit)
+1164 http cache tslib@https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz 0ms (cache hit)
+1165 http cache postcss@https://registry.npmjs.org/postcss/-/postcss-8.5.33.tgz 0ms (cache hit)
+1166 http cache nanoid@https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz 0ms (cache hit)
+1167 http cache detect-gpu@https://registry.npmjs.org/detect-gpu/-/detect-gpu-5.0.70.tgz 0ms (cache hit)
+1168 http cache @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-2.0.0-beta.2.tgz 0ms (cache hit)
+1169 http cache tslib@https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz 0ms (cache hit)
+1170 http cache @napi-rs/wasm-runtime@https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.2.6.tgz 0ms (cache hit)
+1171 http cache @types/react-reconciler@https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.28.9.tgz 0ms (cache hit)
+1172 http cache @use-gesture/core@https://registry.npmjs.org/@use-gesture/core/-/core-10.3.1.tgz 0ms (cache hit)
+1173 http cache scheduler@https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz 0ms (cache hit)
+1174 http cache zustand@https://registry.npmjs.org/zustand/-/zustand-4.5.7.tgz 0ms (cache hit)
+1175 http cache react-use-measure@https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.7.tgz 0ms (cache hit)
+1176 http cache its-fine@https://registry.npmjs.org/its-fine/-/its-fine-2.1.1.tgz 0ms (cache hit)
+1177 http cache ieee754@https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz 0ms (cache hit)
+1178 http cache buffer@https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz 0ms (cache hit)
+1179 http cache base64-js@https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz 0ms (cache hit)
+1180 http cache @types/webxr@https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz 0ms (cache hit)
+1181 http cache promise-worker-transferable@https://registry.npmjs.org/promise-worker-transferable/-/promise-worker-transferable-1.0.4.tgz 0ms (cache hit)
+1182 http cache fflate@https://registry.npmjs.org/fflate/-/fflate-0.6.11.tgz 0ms (cache hit)
+1183 http cache bidi-js@https://registry.npmjs.org/bidi-js/-/bidi-js-1.1.0.tgz 0ms (cache hit)
+1184 http cache @types/webxr@https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz 0ms (cache hit)
+1185 http cache three@https://registry.npmjs.org/three/-/three-0.170.0.tgz 0ms (cache hit)
+1186 http cache scheduler@https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz 0ms (cache hit)
+1187 http cache which@https://registry.npmjs.org/which/-/which-2.0.2.tgz 0ms (cache hit)
+1188 http cache path-key@https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz 0ms (cache hit)
+1189 http cache cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz 0ms (cache hit)
+1190 http cache shebang-command@https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz 0ms (cache hit)
+1191 silly tarball no local data for fdir@https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz. Extracting by manifest.
+1192 http cache webgl-constants@https://registry.npmjs.org/webgl-constants/-/webgl-constants-1.1.1.tgz 0ms (cache hit)
+1193 silly tarball no local data for @rolldown/binding-win32-x64-msvc@https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.2.19.tgz. Extracting by manifest.
+1194 silly tarball no local data for @emnapi/core@https://registry.npmjs.org/@emnapi/core/-/core-2.0.0-beta.2.tgz. Extracting by manifest.
+1195 silly tarball no local data for @tybys/wasm-util@https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.4.tgz. Extracting by manifest.
+1196 silly tarball no local data for @oxc-project/types@https://registry.npmjs.org/@oxc-project/types/-/types-0.156.0.tgz. Extracting by manifest.
+1197 silly tarball no local data for @emnapi/wasi-threads@https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-2.2.0.tgz. Extracting by manifest.
+1198 silly tarball no local data for lightningcss-win32-x64-msvc@https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz. Extracting by manifest.
+1199 silly tarball no local data for tinyglobby@https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz. Extracting by manifest.
+1200 silly tarball no local data for @rolldown/pluginutils@https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.1.1.tgz. Extracting by manifest.
+1201 silly tarball no local data for picomatch@https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz. Extracting by manifest.
+1202 silly tarball no local data for rolldown@https://registry.npmjs.org/rolldown/-/rolldown-1.2.19.tgz. Extracting by manifest.
+1203 silly tarball no local data for @use-gesture/react@https://registry.npmjs.org/@use-gesture/react/-/react-10.3.1.tgz. Extracting by manifest.
+1204 silly tarball no local data for @vitejs/plugin-react@https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-6.3.0.tgz. Extracting by manifest.
+1205 silly tarball no local data for lightningcss@https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz. Extracting by manifest.
+1206 silly tarball no local data for vite@https://registry.npmjs.org/vite/-/vite-8.3.8.tgz. Extracting by manifest.
+1207 silly tarball no local data for @typescript/typescript-win32-x64@https://registry.npmjs.org/@typescript/typescript-win32-x64/-/typescript-win32-x64-7.0.2.tgz. Extracting by manifest.
+1208 silly tarball no local data for @react-three/fiber@https://registry.npmjs.org/@react-three/fiber/-/fiber-9.8.2.tgz. Extracting by manifest.
+1209 silly tarball no local data for @types/react-dom@https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz. Extracting by manifest.
+1210 silly tarball no local data for @types/react@https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz. Extracting by manifest.
+1211 silly tarball no local data for @types/node@https://registry.npmjs.org/@types/node/-/node-26.6.6.tgz. Extracting by manifest.
+1212 silly tarball no local data for @react-three/drei@https://registry.npmjs.org/@react-three/drei/-/drei-10.7.9.tgz. Extracting by manifest.
+1213 silly tarball no local data for @types/three@https://registry.npmjs.org/@types/three/-/three-0.187.0.tgz. Extracting by manifest.
+1214 silly tarball no local data for @monogrid/gainmap-js@https://registry.npmjs.org/@monogrid/gainmap-js/-/gainmap-js-3.7.3.tgz. Extracting by manifest.
+1215 silly tarball no local data for @mediapipe/tasks-vision@https://registry.npmjs.org/@mediapipe/tasks-vision/-/tasks-vision-0.10.17.tgz. Extracting by manifest.
+1216 silly tarball no local data for @dimforge/rapier3d-compat@https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.12.0.tgz. Extracting by manifest.
+1217 silly tarball no local data for @babel/runtime@https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.14.tgz. Extracting by manifest.
+1218 silly tarball no local data for @tweenjs/tween.js@https://registry.npmjs.org/@tweenjs/tween.js/-/tween.js-23.1.3.tgz. Extracting by manifest.
+1219 silly tarball no local data for zustand@https://registry.npmjs.org/zustand/-/zustand-5.1.0.tgz. Extracting by manifest.
+1220 silly tarball no local data for utility-types@https://registry.npmjs.org/utility-types/-/utility-types-3.11.0.tgz. Extracting by manifest.
+1221 silly tarball no local data for typescript@https://registry.npmjs.org/typescript/-/typescript-7.0.2.tgz. Extracting by manifest.
+1222 silly tarball no local data for use-sync-external-store@https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.7.0.tgz. Extracting by manifest.
+1223 silly tarball no local data for tunnel-rat@https://registry.npmjs.org/tunnel-rat/-/tunnel-rat-0.1.2.tgz. Extracting by manifest.
+1224 silly tarball no local data for undici-types@https://registry.npmjs.org/undici-types/-/undici-types-8.9.0.tgz. Extracting by manifest.
+1225 silly tarball no local data for troika-three-text@https://registry.npmjs.org/troika-three-text/-/troika-three-text-0.52.5.tgz. Extracting by manifest.
+1226 silly tarball no local data for three-stdlib@https://registry.npmjs.org/three-stdlib/-/three-stdlib-2.36.1.tgz. Extracting by manifest.
+1227 silly tarball no local data for three-mesh-bvh@https://registry.npmjs.org/three-mesh-bvh/-/three-mesh-bvh-0.8.3.tgz. Extracting by manifest.
+1228 silly tarball no local data for stats-gl@https://registry.npmjs.org/stats-gl/-/stats-gl-2.4.2.tgz. Extracting by manifest.
+1229 silly tarball no local data for suspend-react@https://registry.npmjs.org/suspend-react/-/suspend-react-0.1.3.tgz. Extracting by manifest.
+1230 silly tarball no local data for stats.js@https://registry.npmjs.org/stats.js/-/stats.js-0.17.0.tgz. Extracting by manifest.
+1231 silly tarball no local data for react@https://registry.npmjs.org/react/-/react-19.3.1.tgz. Extracting by manifest.
+1232 silly tarball no local data for three@https://registry.npmjs.org/three/-/three-0.187.0.tgz. Extracting by manifest.
+1233 silly tarball no local data for meshoptimizer@https://registry.npmjs.org/meshoptimizer/-/meshoptimizer-1.1.1.tgz. Extracting by manifest.
+1234 silly tarball no local data for react-dom@https://registry.npmjs.org/react-dom/-/react-dom-19.3.1.tgz. Extracting by manifest.
+1235 silly tarball no local data for maath@https://registry.npmjs.org/maath/-/maath-0.10.8.tgz. Extracting by manifest.
+1236 silly tarball no local data for meshline@https://registry.npmjs.org/meshline/-/meshline-3.3.1.tgz. Extracting by manifest.
+1237 silly tarball no local data for lucide-react@https://registry.npmjs.org/lucide-react/-/lucide-react-1.73.0.tgz. Extracting by manifest.
+1238 silly tarball no local data for hls.js@https://registry.npmjs.org/hls.js/-/hls.js-1.7.4.tgz. Extracting by manifest.
+1239 silly tarball no local data for fflate@https://registry.npmjs.org/fflate/-/fflate-0.8.3.tgz. Extracting by manifest.
+1240 silly tarball no local data for cross-env@https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz. Extracting by manifest.
+1241 silly tarball no local data for csstype@https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz. Extracting by manifest.
+1242 silly tarball no local data for glsl-noise@https://registry.npmjs.org/glsl-noise/-/glsl-noise-0.0.0.tgz. Extracting by manifest.
+1243 silly tarball no local data for camera-controls@https://registry.npmjs.org/camera-controls/-/camera-controls-3.1.2.tgz. Extracting by manifest.
+1244 silly tarball no local data for postcss@https://registry.npmjs.org/postcss/-/postcss-8.5.33.tgz. Extracting by manifest.
+1245 silly tarball no local data for detect-gpu@https://registry.npmjs.org/detect-gpu/-/detect-gpu-5.0.70.tgz. Extracting by manifest.
+1246 silly tarball no local data for @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-2.0.0-beta.2.tgz. Extracting by manifest.
+1247 silly tarball no local data for @napi-rs/wasm-runtime@https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.2.6.tgz. Extracting by manifest.
+1248 silly tarball no local data for @types/react-reconciler@https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.28.9.tgz. Extracting by manifest.
+1249 silly tarball no local data for @use-gesture/core@https://registry.npmjs.org/@use-gesture/core/-/core-10.3.1.tgz. Extracting by manifest.
+1250 silly tarball no local data for scheduler@https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz. Extracting by manifest.
+1251 silly tarball no local data for zustand@https://registry.npmjs.org/zustand/-/zustand-4.5.7.tgz. Extracting by manifest.
+1252 silly tarball no local data for react-use-measure@https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.7.tgz. Extracting by manifest.
+1253 silly tarball no local data for its-fine@https://registry.npmjs.org/its-fine/-/its-fine-2.1.1.tgz. Extracting by manifest.
+1254 silly tarball no local data for ieee754@https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz. Extracting by manifest.
+1255 silly tarball no local data for buffer@https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz. Extracting by manifest.
+1256 silly tarball no local data for base64-js@https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz. Extracting by manifest.
+1257 silly tarball no local data for @types/webxr@https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz. Extracting by manifest.
+1258 silly tarball no local data for promise-worker-transferable@https://registry.npmjs.org/promise-worker-transferable/-/promise-worker-transferable-1.0.4.tgz. Extracting by manifest.
+1259 silly tarball no local data for fflate@https://registry.npmjs.org/fflate/-/fflate-0.6.11.tgz. Extracting by manifest.
+1260 silly tarball no local data for @types/webxr@https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz. Extracting by manifest.
+1261 silly tarball no local data for three@https://registry.npmjs.org/three/-/three-0.170.0.tgz. Extracting by manifest.
+1262 silly tarball no local data for scheduler@https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz. Extracting by manifest.
+1263 silly tarball no local data for which@https://registry.npmjs.org/which/-/which-2.0.2.tgz. Extracting by manifest.
+1264 silly tarball no local data for path-key@https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz. Extracting by manifest.
+1265 silly tarball no local data for cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz. Extracting by manifest.
+1266 silly tarball no local data for shebang-command@https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz. Extracting by manifest.
+1267 silly tarball no local data for webgl-constants@https://registry.npmjs.org/webgl-constants/-/webgl-constants-1.1.1.tgz. Extracting by manifest.
+1268 http fetch GET 200 https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz 173ms (cache miss)
+1269 http fetch GET 200 https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.1.1.tgz 180ms (cache miss)
+1270 http fetch GET 200 https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz 199ms (cache miss)
+1271 http fetch GET 200 https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-2.2.0.tgz 200ms (cache miss)
+1272 http fetch GET 200 https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz 220ms (cache miss)
+1273 http fetch GET 200 https://registry.npmjs.org/@oxc-project/types/-/types-0.156.0.tgz 370ms (cache miss)
+1274 http fetch GET 200 https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz 386ms (cache miss)
+1275 http fetch GET 200 https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz 427ms (cache miss)
+1276 http fetch GET 200 https://registry.npmjs.org/@emnapi/core/-/core-2.0.0-beta.2.tgz 442ms (cache miss)
+1277 http fetch GET 200 https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-6.3.0.tgz 549ms (cache miss)
+1278 http fetch GET 200 https://registry.npmjs.org/@use-gesture/react/-/react-10.3.1.tgz 662ms (cache miss)
+1279 http fetch GET 200 https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.4.tgz 670ms (cache miss)
+1280 http fetch GET 200 https://registry.npmjs.org/rolldown/-/rolldown-1.2.19.tgz 797ms (cache miss)
+1281 http fetch GET 200 https://registry.npmjs.org/@tweenjs/tween.js/-/tween.js-23.1.3.tgz 822ms (cache miss)
+1282 http fetch GET 200 https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz 951ms (cache miss)
+1283 http fetch GET 200 https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.7.0.tgz 975ms (cache miss)
+1284 http fetch GET 200 https://registry.npmjs.org/utility-types/-/utility-types-3.11.0.tgz 977ms (cache miss)
+1285 http fetch GET 200 https://registry.npmjs.org/suspend-react/-/suspend-react-0.1.3.tgz 979ms (cache miss)
+1286 http fetch GET 200 https://registry.npmjs.org/stats.js/-/stats.js-0.17.0.tgz 985ms (cache miss)
+1287 http fetch GET 200 https://registry.npmjs.org/tunnel-rat/-/tunnel-rat-0.1.2.tgz 1008ms (cache miss)
+1288 http fetch GET 200 https://registry.npmjs.org/stats-gl/-/stats-gl-2.4.2.tgz 1043ms (cache miss)
+1289 http fetch GET 200 https://registry.npmjs.org/zustand/-/zustand-5.1.0.tgz 1138ms (cache miss)
+1290 http fetch GET 200 https://registry.npmjs.org/undici-types/-/undici-types-8.9.0.tgz 1207ms (cache miss)
+1291 http fetch GET 200 https://registry.npmjs.org/meshline/-/meshline-3.3.1.tgz 1243ms (cache miss)
+1292 http fetch GET 200 https://registry.npmjs.org/meshoptimizer/-/meshoptimizer-1.1.1.tgz 1272ms (cache miss)
+1293 http fetch GET 200 https://registry.npmjs.org/react/-/react-19.3.1.tgz 1390ms (cache miss)
+1294 http fetch GET 200 https://registry.npmjs.org/@types/node/-/node-26.6.6.tgz 1402ms (cache miss)
+1295 http fetch GET 200 https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz 1473ms (cache miss)
+1296 http fetch GET 200 https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz 1524ms (cache miss)
+1297 http fetch GET 200 https://registry.npmjs.org/glsl-noise/-/glsl-noise-0.0.0.tgz 1531ms (cache miss)
+1298 http fetch GET 200 https://registry.npmjs.org/troika-three-text/-/troika-three-text-0.52.5.tgz 1605ms (cache miss)
+1299 http fetch GET 200 https://registry.npmjs.org/camera-controls/-/camera-controls-3.1.2.tgz 1648ms (cache miss)
+1300 http fetch GET 200 https://registry.npmjs.org/@react-three/fiber/-/fiber-9.8.2.tgz 1704ms (cache miss)
+1301 http fetch GET 200 https://registry.npmjs.org/vite/-/vite-8.3.8.tgz 1756ms (cache miss)
+1302 http fetch GET 200 https://registry.npmjs.org/@emnapi/runtime/-/runtime-2.0.0-beta.2.tgz 1829ms (cache miss)
+1303 http fetch GET 200 https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.28.9.tgz 1920ms (cache miss)
+1304 http fetch GET 200 https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz 2120ms (cache miss)
+1305 http fetch GET 200 https://registry.npmjs.org/postcss/-/postcss-8.5.33.tgz 2173ms (cache miss)
+1306 http fetch GET 200 https://registry.npmjs.org/detect-gpu/-/detect-gpu-5.0.70.tgz 2201ms (cache miss)
+1307 http fetch GET 200 https://registry.npmjs.org/@monogrid/gainmap-js/-/gainmap-js-3.7.3.tgz 2281ms (cache miss)
+1308 http fetch GET 200 https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.7.tgz 2326ms (cache miss)
+1309 http fetch GET 200 https://registry.npmjs.org/maath/-/maath-0.10.8.tgz 2391ms (cache miss)
+1310 http fetch GET 200 https://registry.npmjs.org/fflate/-/fflate-0.8.3.tgz 2415ms (cache miss)
+1311 http fetch GET 200 https://registry.npmjs.org/its-fine/-/its-fine-2.1.1.tgz 2454ms (cache miss)
+1312 http fetch GET 200 https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz 2524ms (cache miss)
+1313 http fetch GET 200 https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.2.6.tgz 2541ms (cache miss)
+1314 http fetch GET 200 https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz 2555ms (cache miss)
+1315 http fetch GET 200 https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz 2564ms (cache miss)
+1316 http fetch GET 200 https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz 2587ms (cache miss)
+1317 http fetch GET 200 https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz 2606ms (cache miss)
+1318 http fetch GET 200 https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz 2612ms (cache miss)
+1319 http fetch GET 200 https://registry.npmjs.org/promise-worker-transferable/-/promise-worker-transferable-1.0.4.tgz 2627ms (cache miss)
+1320 http fetch GET 200 https://registry.npmjs.org/which/-/which-2.0.2.tgz 2714ms (cache miss)
+1321 http fetch GET 200 https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz 2765ms (cache miss)
+1322 http fetch GET 200 https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz 2829ms (cache miss)
+1323 http fetch GET 200 https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz 3003ms (cache miss)
+1324 http fetch GET 200 https://registry.npmjs.org/three-mesh-bvh/-/three-mesh-bvh-0.8.3.tgz 3021ms (cache miss)
+1325 http fetch GET 200 https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.14.tgz 3213ms (cache miss)
+1326 http fetch GET 200 https://registry.npmjs.org/@use-gesture/core/-/core-10.3.1.tgz 3272ms (cache miss)
+1327 http fetch GET 200 https://registry.npmjs.org/fflate/-/fflate-0.6.11.tgz 3282ms (cache miss)
+1328 http fetch GET 200 https://registry.npmjs.org/zustand/-/zustand-4.5.7.tgz 3294ms (cache miss)
+1329 http fetch GET 200 https://registry.npmjs.org/react-dom/-/react-dom-19.3.1.tgz 3334ms (cache miss)
+1330 http fetch GET 200 https://registry.npmjs.org/webgl-constants/-/webgl-constants-1.1.1.tgz 3381ms (cache miss)
+1331 http fetch GET 200 https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.12.0.tgz 3602ms (cache miss)
+1332 http fetch GET 200 https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz 3643ms (cache miss)
+1333 http fetch GET 200 https://registry.npmjs.org/@react-three/drei/-/drei-10.7.9.tgz 4071ms (cache miss)
+1334 http fetch GET 200 https://registry.npmjs.org/typescript/-/typescript-7.0.2.tgz 4659ms (cache miss)
+1335 http fetch GET 200 https://registry.npmjs.org/@mediapipe/tasks-vision/-/tasks-vision-0.10.17.tgz 4685ms (cache miss)
+1336 http fetch GET 200 https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.2.19.tgz 6923ms (cache miss)
+1337 http fetch GET 200 https://registry.npmjs.org/@types/three/-/three-0.187.0.tgz 7107ms (cache miss)
+1338 http fetch GET 200 https://registry.npmjs.org/@typescript/typescript-win32-x64/-/typescript-win32-x64-7.0.2.tgz 7168ms (cache miss)
+1339 http fetch GET 200 https://registry.npmjs.org/three-stdlib/-/three-stdlib-2.36.1.tgz 8017ms (cache miss)
+1340 http fetch GET 200 https://registry.npmjs.org/hls.js/-/hls.js-1.7.4.tgz 8299ms (cache miss)
+1341 http fetch GET 200 https://registry.npmjs.org/three/-/three-0.170.0.tgz 8653ms (cache miss)
+1342 http fetch GET 200 https://registry.npmjs.org/three/-/three-0.187.0.tgz 8814ms (cache miss)
+1343 http fetch GET 200 https://registry.npmjs.org/lucide-react/-/lucide-react-1.73.0.tgz 15867ms (cache miss)
+1344 silly ADD
+1345 silly ADD node_modules/tslib
+1346 silly ADD node_modules/fdir
+1347 silly ADD
+1348 silly ADD node_modules/tslib
+1349 silly ADD
+1350 silly ADD node_modules/tslib
+1351 silly ADD node_modules/@rolldown/binding-win32-x64-msvc
+1352 silly ADD
+1353 silly ADD
+1354 silly ADD node_modules/tslib
+1355 silly ADD node_modules/@napi-rs/wasm-runtime
+1356 silly ADD node_modules/@emnapi/runtime
+1357 silly ADD
+1358 silly ADD
+1359 silly ADD
+1360 silly ADD
+1361 silly ADD
+1362 silly ADD
+1363 silly ADD
+1364 silly ADD
+1365 silly ADD
+1366 silly ADD
+1367 silly ADD
+1368 silly ADD
+1369 silly ADD
+1370 silly ADD node_modules/@oxc-project/types
+1371 silly ADD node_modules/lightningcss-win32-x64-msvc
+1372 silly ADD
+1373 silly ADD
+1374 silly ADD
+1375 silly ADD
+1376 silly ADD
+1377 silly ADD
+1378 silly ADD
+1379 silly ADD
+1380 silly ADD
+1381 silly ADD
+1382 silly ADD node_modules/tinyglobby
+1383 silly ADD node_modules/rolldown
+1384 silly ADD node_modules/picomatch
+1385 silly ADD node_modules/lightningcss
+1386 silly ADD
+1387 silly ADD node_modules/@rolldown/pluginutils
+1388 silly ADD node_modules/vite
+1389 silly ADD node_modules/vite/node_modules/nanoid
+1390 silly ADD node_modules/vite/node_modules/postcss
+1391 silly ADD node_modules/@vitejs/plugin-react
+1392 silly REMOVE node_modules/@img/colour
+1393 silly REMOVE node_modules/@img/sharp-wasm32
+1394 silly REMOVE node_modules/webgl-constants
+1395 silly CHANGE node_modules/@typescript/typescript-sunos-x64
+1396 silly CHANGE node_modules/@typescript/typescript-openbsd-arm64
+1397 silly REMOVE node_modules/@use-gesture/core
+1398 silly CHANGE node_modules/@use-gesture/react
+1399 silly ADD node_modules/@use-gesture/react/node_modules/@use-gesture/core
+1400 silly CHANGE node_modules/@typescript/typescript-win32-x64
+1401 silly CHANGE node_modules/@typescript/typescript-win32-arm64
+1402 silly CHANGE node_modules/@typescript/typescript-openbsd-x64
+1403 silly CHANGE node_modules/@typescript/typescript-netbsd-x64
+1404 silly CHANGE node_modules/@typescript/typescript-netbsd-arm64
+1405 silly CHANGE node_modules/@typescript/typescript-linux-x64
+1406 silly CHANGE node_modules/@typescript/typescript-linux-s390x
+1407 silly CHANGE node_modules/@typescript/typescript-linux-ppc64
+1408 silly CHANGE node_modules/@typescript/typescript-linux-riscv64
+1409 silly CHANGE node_modules/@typescript/typescript-linux-mips64el
+1410 silly CHANGE node_modules/@typescript/typescript-linux-arm
+1411 silly CHANGE node_modules/@typescript/typescript-linux-arm64
+1412 silly CHANGE node_modules/@typescript/typescript-aix-ppc64
+1413 silly CHANGE node_modules/@typescript/typescript-linux-loong64
+1414 silly CHANGE node_modules/@typescript/typescript-freebsd-x64
+1415 silly CHANGE node_modules/@typescript/typescript-freebsd-arm64
+1416 silly REMOVE node_modules/@types/react-reconciler
+1417 silly CHANGE node_modules/@typescript/typescript-darwin-x64
+1418 silly CHANGE node_modules/@typescript/typescript-darwin-arm64
+1419 silly CHANGE node_modules/@types/three
+1420 silly ADD node_modules/@types/three/node_modules/@types/webxr
+1421 silly CHANGE node_modules/@types/react-dom
+1422 silly CHANGE node_modules/@types/node
+1423 silly CHANGE node_modules/@types/react
+1424 silly REMOVE node_modules/@swc/helpers
+1425 silly CHANGE node_modules/@react-three/fiber
+1426 silly ADD node_modules/@react-three/fiber/node_modules/@types/react-reconciler
+1427 silly ADD node_modules/@react-three/fiber/node_modules/ieee754
+1428 silly ADD node_modules/@react-three/fiber/node_modules/scheduler
+1429 silly ADD node_modules/@react-three/fiber/node_modules/react-use-measure
+1430 silly ADD node_modules/@react-three/fiber/node_modules/its-fine
+1431 silly ADD node_modules/@react-three/fiber/node_modules/buffer
+1432 silly ADD node_modules/@react-three/fiber/node_modules/base64-js
+1433 silly CHANGE node_modules/@react-three/drei
+1434 silly CHANGE node_modules/@tweenjs/tween.js
+1435 silly REMOVE node_modules/@next/swc-linux-x64-gnu
+1436 silly REMOVE node_modules/@next/swc-win32-x64-msvc
+1437 silly REMOVE node_modules/@next/swc-win32-arm64-msvc
+1438 silly REMOVE node_modules/@next/swc-linux-arm64-musl
+1439 silly REMOVE node_modules/@next/swc-linux-x64-musl
+1440 silly REMOVE node_modules/@next/swc-linux-arm64-gnu
+1441 silly REMOVE node_modules/@next/swc-darwin-arm64
+1442 silly CHANGE node_modules/@monogrid/gainmap-js
+1443 silly ADD node_modules/@monogrid/gainmap-js/node_modules/promise-worker-transferable
+1444 silly REMOVE node_modules/@next/swc-darwin-x64
+1445 silly REMOVE node_modules/@next/env
+1446 silly CHANGE node_modules/@mediapipe/tasks-vision
+1447 silly REMOVE node_modules/@img/sharp-win32-x64
+1448 silly REMOVE node_modules/@img/sharp-win32-ia32
+1449 silly REMOVE node_modules/@img/sharp-linuxmusl-x64
+1450 silly REMOVE node_modules/@img/sharp-win32-arm64
+1451 silly REMOVE node_modules/@img/sharp-webcontainers-wasm32
+1452 silly REMOVE node_modules/@img/sharp-linuxmusl-arm64
+1453 silly REMOVE node_modules/@img/sharp-linux-s390x
+1454 silly REMOVE node_modules/@img/sharp-linux-x64
+1455 silly REMOVE node_modules/@img/sharp-linux-ppc64
+1456 silly REMOVE node_modules/@img/sharp-linux-riscv64
+1457 silly REMOVE node_modules/@img/sharp-linux-arm64
+1458 silly REMOVE node_modules/@img/sharp-libvips-linux-arm64
+1459 silly REMOVE node_modules/@img/sharp-libvips-linuxmusl-arm64
+1460 silly REMOVE node_modules/@img/sharp-libvips-linuxmusl-x64
+1461 silly REMOVE node_modules/@img/sharp-libvips-linux-x64
+1462 silly REMOVE node_modules/@img/sharp-libvips-linux-s390x
+1463 silly REMOVE node_modules/@img/sharp-linux-arm
+1464 silly REMOVE node_modules/@img/sharp-libvips-linux-riscv64
+1465 silly REMOVE node_modules/@img/sharp-libvips-darwin-x64
+1466 silly REMOVE node_modules/@img/sharp-libvips-linux-arm
+1467 silly REMOVE node_modules/@img/sharp-libvips-linux-ppc64
+1468 silly REMOVE node_modules/@img/sharp-libvips-darwin-arm64
+1469 silly REMOVE node_modules/@img/sharp-freebsd-wasm32
+1470 silly CHANGE node_modules/@dimforge/rapier3d-compat
+1471 silly CHANGE node_modules/@babel/runtime
+1472 silly REMOVE node_modules/@img/sharp-darwin-x64
+1473 silly REMOVE node_modules/@emnapi/runtime
+1474 silly REMOVE node_modules/@img/sharp-darwin-arm64
+1475 silly REMOVE node_modules/sharp
+1476 silly CHANGE node_modules/zustand
+1477 silly REMOVE node_modules/tslib
+1478 silly REMOVE node_modules/which
+1479 silly CHANGE node_modules/utility-types
+1480 silly CHANGE node_modules/use-sync-external-store
+1481 silly CHANGE node_modules/typescript
+1482 silly CHANGE node_modules/tunnel-rat
+1483 silly CHANGE node_modules/tunnel-rat/node_modules/zustand
+1484 silly CHANGE node_modules/undici-types
+1485 silly CHANGE node_modules/three-stdlib
+1486 silly ADD node_modules/three-stdlib/node_modules/@types/webxr
+1487 silly CHANGE node_modules/three-stdlib/node_modules/fflate
+1488 silly CHANGE node_modules/troika-three-text
+1489 silly ADD node_modules/troika-three-text/node_modules/bidi-js
+1490 silly CHANGE node_modules/three-mesh-bvh
+1491 silly CHANGE node_modules/stats-gl
+1492 silly CHANGE node_modules/stats-gl/node_modules/three
+1493 silly REMOVE node_modules/semver
+1494 silly CHANGE node_modules/stats.js
+1495 silly CHANGE node_modules/suspend-react
+1496 silly CHANGE node_modules/three
+1497 silly REMOVE node_modules/styled-jsx
+1498 silly REMOVE node_modules/shebang-command
+1499 silly CHANGE node_modules/react
+1500 silly REMOVE node_modules/scheduler
+1501 silly CHANGE node_modules/react-dom
+1502 silly ADD node_modules/react-dom/node_modules/scheduler
+1503 silly REMOVE node_modules/react-use-measure
+1504 silly REMOVE node_modules/promise-worker-transferable
+1505 silly REMOVE node_modules/path-key
+1506 silly REMOVE node_modules/postcss
+1507 silly REMOVE node_modules/next
+1508 silly REMOVE node_modules/nanoid
+1509 silly CHANGE node_modules/maath
+1510 silly CHANGE node_modules/meshline
+1511 silly CHANGE node_modules/meshoptimizer
+1512 silly CHANGE node_modules/lucide-react
+1513 silly REMOVE node_modules/its-fine
+1514 silly REMOVE node_modules/ieee754
+1515 silly REMOVE node_modules/bidi-js
+1516 silly CHANGE node_modules/hls.js
+1517 silly CHANGE node_modules/fflate
+1518 silly REMOVE node_modules/cross-spawn
+1519 silly CHANGE node_modules/glsl-noise
+1520 silly CHANGE node_modules/detect-gpu
+1521 silly ADD node_modules/detect-gpu/node_modules/webgl-constants
+1522 silly CHANGE node_modules/cross-env
+1523 silly ADD node_modules/cross-env/node_modules/which
+1524 silly ADD node_modules/cross-env/node_modules/shebang-command
+1525 silly ADD node_modules/cross-env/node_modules/path-key
+1526 silly ADD node_modules/cross-env/node_modules/cross-spawn
+1527 silly CHANGE node_modules/csstype
+1528 silly REMOVE node_modules/client-only
+1529 silly REMOVE node_modules/caniuse-lite
+1530 silly REMOVE node_modules/base64-js
+1531 silly CHANGE node_modules/camera-controls
+1532 silly REMOVE node_modules/baseline-browser-mapping
+1533 silly REMOVE node_modules/buffer
+1534 verbose cwd C:\Users\User\Documents\Codex\2026-11-14\https-github-com-akramovfozil-terramind-ai\web
+1535 verbose os Windows_NT 10.0.19045
+1536 verbose node v22.23.1
+1537 verbose npm  v10.9.8
+1538 verbose exit 0
+1539 info ok

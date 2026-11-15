@@ -2,13 +2,13 @@
 
 There is no fixed candidate list. A search runs in three stages:
 
-1. Mars: the 25 km radius circle is measured on real USGS MOLA at 463 m.
+1. Mars: the requested 1..100 km radius circle is measured on real USGS MOLA at 463 m.
 2. Screening: every land window on Earth (global ETOPO index, ~28 km lattice,
-   see terramind.global_index) is scored against the Mars circle with the
+   see terramind.global_index) is scored against a matching-radius Mars context with the
    rotation-invariant shape descriptor plus slope / relief / TRI overlap.
    The best distinct places (at least MIN_SEPARATION_KM apart) go on.
 3. Precise match: for each of them a larger Copernicus GLO-30 area is measured
-   at 463 m and the 25 km circle is slid across it (+-REFINE_SHIFT_KM) to the
+   at 463 m and the requested circle is slid across it (up to +-REFINE_SHIFT_KM) to the
    centre that best overlays the Mars landform. The circle at that refined
    centre is then fetched and scored with the full method.
 
@@ -46,10 +46,11 @@ MARS_PRESETS = [
     {"id": "valles", "name": "Valles Marineris", "lat": -12.0, "lon": -70.0},
 ]
 RADIUS_KM = 25
+MIN_RADIUS_KM = 1
+MAX_RADIUS_KM = 100
 SHAPE_WEIGHT = 0.5
 SCREEN_CANDIDATES = 12
 MIN_SEPARATION_KM = 150
-REFINE_RADIUS_KM = 45
 REFINE_SHIFT_KM = 20
 COARSE_STEP_PX = 6
 FINE_STEP_PX = 2
@@ -60,13 +61,15 @@ MAX_REFINE_PASSES = 3
 # other broken. Detrended roughness (terrain.roughness) is scored separately for that reason.
 ROUGHNESS_WEIGHT = 0.3
 ROUGHNESS_EDGES = np.arange(0.0, 50.0 + 1e-9, 0.25)
-SCOPE = ("Global search over Earth's land (56 S - 80 N) on a ~28 km lattice of 25 km circles; "
-         "the best places are re-measured on Copernicus GLO-30 and their centres refined at 463 m.")
+SCOPE = ("Global search over Earth's land (56 S - 80 N) on a ~28 km lattice. "
+         "The fixed-radius ETOPO index only selects a shortlist from regional context; "
+         "reported scores compare the requested radius on Mars and Copernicus GLO-30 at 463 m. "
+         "This is not an exhaustive search at the requested radius.")
 REVIEW = {
     "status": "automated_quality_screened_unreviewed",
     "human_approved": False,
     "cli_approval_gate": "unchanged",
-    "adaptation": "Exploratory API uses a circular 25 km radius ROI and automatic quality filters. The CLI retains its separate human approval gate and configured square windows.",
+    "adaptation": "Exploratory API uses the requested circular 1..100 km radius ROI and automatic quality filters with explicit sample support. The CLI retains its separate human approval gate and configured square windows.",
 }
 
 
@@ -102,6 +105,25 @@ def _water_fraction(dem: np.ndarray, inside: np.ndarray) -> float:
     return float(flat[inside].mean())
 
 
+def _sample_limits(inside: np.ndarray) -> tuple[int, int]:
+    """Count available support, not fabricated high-resolution pixels.
+
+    A 1 km ROI can contain only four complete 3x3 neighbourhoods at 463 m.
+    Require all four; larger ROIs require 80% of geometrically available
+    metric cells, capped by the existing 2500-sample screening threshold.
+    Elevation nodata remains limited to 10% independently of these counts.
+    """
+    interior = np.zeros_like(inside)
+    interior[1:-1, 1:-1] = True
+    cells = int(inside.sum())
+    supported = int((inside & interior).sum())
+    return min(2500, max(4, math.ceil(cells * 0.9))), min(2500, max(4, math.ceil(supported * 0.8)))
+
+
+def _refinement_radius(radius_km: float) -> float:
+    return min(MAX_RADIUS_KM, radius_km + REFINE_SHIFT_KM)
+
+
 class SearchService:
     def __init__(self, provider: Callable | None = None, index=None, index_loader: Callable | None = None,
                  settings: Settings | None = None, max_workers: int = 1,
@@ -134,7 +156,7 @@ class SearchService:
     def index_status(self) -> dict:
         try:
             idx = self.index()
-            return {"ready": True, "windows": len(idx), "meta": {k: idx.meta.get(k) for k in ("version", "built_at", "lat_range", "lat_step_deg", "pixel_m")}}
+            return {"ready": True, "windows": len(idx), "meta": {k: idx.meta.get(k) for k in ("version", "built_at", "lat_range", "lat_step_deg", "pixel_m", "radius_km")}}
         except Exception as exc:
             return {"ready": False, "reason": str(exc)[:400]}
 
@@ -143,23 +165,28 @@ class SearchService:
         return {
             "mars_presets": deepcopy(MARS_PRESETS),
             "earth_candidates": [],
-            "radius_km": {"default": RADIUS_KM, "allowed": [RADIUS_KM]},
+            "radius_km": {"default": RADIUS_KM, "min": MIN_RADIUS_KM, "max": MAX_RADIUS_KM, "step": None},
             "grid_m": self.settings.grid_m,
             "coverage": {"kind": "global_land_search", "global_search": True, "index": status, "description": SCOPE},
-            "quality_thresholds": {"min_valid_pixels": 2500, "max_nodata_fraction": 0.10, "max_water_fraction": MAX_WATER_FRACTION},
+            "quality_thresholds": {"min_valid_pixels": 4, "standard_valid_pixels": 2500,
+                                   "sample_policy": "Radius-adaptive: 90% of ROI elevation cells; 80% of available 3x3 metric support, minimum 4, capped at 2500. Small samples are explicitly flagged.",
+                                   "max_nodata_fraction": 0.10, "max_water_fraction": MAX_WATER_FRACTION},
             "review": deepcopy(REVIEW),
             "sources": {"mars": "USGS MGS MOLA DEM", "earth_screening": "NOAA ETOPO 2022 60 arc-second",
                         "earth": "Copernicus DEM GLO-30 DSM (includes surface features)"},
             "method": self._method(),
         }
 
-    def _method(self) -> dict:
+    def _method(self, radius_km: float = RADIUS_KM, screen_radius_km: float = RADIUS_KM) -> dict:
         return {
             "grid_m": self.settings.grid_m,
-            "roi_shape": "circle", "radius_km": RADIUS_KM,
+            "roi_shape": "circle", "radius_km": radius_km,
             "projection": "Body-specific local azimuthal equidistant (AEQD)",
             "search": {"coverage": SCOPE, "screen_candidates": self.screen_candidates, "min_separation_km": MIN_SEPARATION_KM,
-                       "refine_shift_km": REFINE_SHIFT_KM, "screen_pixel_m": global_index.SCREEN_PIXEL_M},
+                       "refine_shift_km": max(0, _refinement_radius(radius_km) - radius_km),
+                       "screen_pixel_m": global_index.SCREEN_PIXEL_M, "screen_radius_km": screen_radius_km,
+                       "screening_role": "regional_context_shortlist_only", "score_radius_km": radius_km,
+                       "exhaustive_at_requested_radius": False},
             "metrics": {"shape": "Best Pearson correlation of relief maps, Mars rotated every 15 degrees and mirrored",
                         "slope_deg": "Horn (1981) 3x3 slope in degrees", "relief_m": "Elevation minus circular ROI median, metres",
                         "tri_m": "Mean absolute elevation difference to eight neighbours, metres",
@@ -178,8 +205,9 @@ class SearchService:
 
     # ------------------------------------------------------------------ jobs
     def submit(self, lat: float, lon: float, radius_km: float = RADIUS_KM) -> dict:
-        if not all(math.isfinite(v) for v in (lat, lon, radius_km)) or not -85 <= lat <= 85 or not -180 <= lon <= 180 or radius_km != RADIUS_KM:
-            raise ValueError("Latitude must be -85..85, longitude -180..180, and radius_km must be 25")
+        if (not all(isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v) for v in (lat, lon, radius_km))
+                or not -85 <= lat <= 85 or not -180 <= lon <= 180 or not MIN_RADIUS_KM <= radius_km <= MAX_RADIUS_KM):
+            raise ValueError("Latitude must be -85..85, longitude -180..180, and radius_km must be a finite number from 1 to 100")
         with self._lock:
             pending = sum(j["status"] in ("queued", "running") for j in self._jobs.values())
             if pending >= self._max_pending:
@@ -232,7 +260,8 @@ class SearchService:
         x = (np.arange(width) + 0.5 - width / 2) * pixel
         y = (height / 2 - np.arange(height) - 0.5) * pixel
         inside = y[:, None] ** 2 + x[None, :] ** 2 <= (radius_km * 1000) ** 2
-        quality = check_quality(dem[inside], 2500, 0.10, name)
+        min_elevation, min_metrics = _sample_limits(inside)
+        quality = check_quality(dem[inside], min_elevation, 0.10, name)
         if body == "earth":
             water = _water_fraction(dem, inside)
             if water > MAX_WATER_FRACTION:
@@ -244,9 +273,18 @@ class SearchService:
         for key, values in metrics.items():
             values[~inside] = np.nan
             valid = int(np.isfinite(values).sum())
-            if valid < 2500:
-                raise QualityError(f"{name}: {key} has {valid} valid metric pixels; minimum is 2500")
-        quality.update({"passed": True, "roi_shape": "circle", "outside_roi_pixels": int(dem.size - inside.sum()), "metric_valid_pixels": {m: int(np.isfinite(v).sum()) for m, v in metrics.items()}})
+            if valid < min_metrics:
+                raise QualityError(f"{name}: {key} has {valid} valid metric pixels; minimum is {min_metrics} for radius {radius_km:g} km at {pixel:g} m. The available DEM cannot support this comparison; no extra pixels were invented.")
+        metric_counts = {m: int(np.isfinite(v).sum()) for m, v in metrics.items()}
+        sparse = min(metric_counts.values()) < 2500
+        note = (f"Radius {radius_km:g} km, measured {pixel:g} m grid: {quality['valid_pixels']} valid elevation cells; "
+                f"at least {min(metric_counts.values())} valid metric cells. No increase in source resolution.")
+        if sparse:
+            note += " Sparse sampling: shape and histogram scores can be unstable and do not resolve fine terrain features."
+        quality.update({"passed": True, "roi_shape": "circle", "outside_roi_pixels": int(dem.size - inside.sum()),
+                        "metric_valid_pixels": metric_counts, "min_valid_pixels": min_elevation,
+                        "min_valid_metric_pixels": min_metrics, "analysis_grid_m": pixel,
+                        "sparse_sampling": sparse, "resolution_note": note})
         provenance = deepcopy(raw.get("provenance") or {})
         if not provenance.get("source") or not provenance.get("dataset"):
             raise QualityError(f"{name}: DEM source provenance is missing")
@@ -276,21 +314,35 @@ class SearchService:
         inside = (c[None, :] ** 2 + c[:, None] ** 2 <= radius_px ** 2) & np.isfinite(coarse)
         return global_index.describe_window(coarse, inside)
 
-    def _fetch_area(self, lat: float, lon: float) -> dict:
-        return self.provider("earth", lat, lon, REFINE_RADIUS_KM, grid_m=self.settings.grid_m)
+    def _fetch_area(self, lat: float, lon: float, radius_km: float) -> dict:
+        return self.provider("earth", lat, lon, _refinement_radius(radius_km), grid_m=self.settings.grid_m)
 
     def _refine(self, target: dict, matcher: PatternMatcher, lat: float, lon: float, name: str, raw: dict | None = None) -> dict:
         """Slide the circle over a larger real DEM and return the best centre (lat, lon) and its score."""
-        raw = raw if raw is not None else self._fetch_area(lat, lon)
+        raw = raw if raw is not None else self._fetch_area(lat, lon, target["radius_km"])
         big = np.array(raw["dem"], dtype="float32", copy=True)
+        if big.ndim != 2:
+            raise QualityError(f"{name}: refinement DEM must be two-dimensional")
         if raw.get("nodata_mask") is not None:
-            big[np.asarray(raw["nodata_mask"], dtype=bool)] = np.nan
+            mask = np.asarray(raw["nodata_mask"], dtype=bool)
+            if mask.shape != big.shape:
+                raise QualityError(f"{name}: refinement nodata mask does not match DEM")
+            big[mask] = np.nan
         big[~np.isfinite(big)] = np.nan
         pixel = float(raw["pixel_size_m"])
+        if not math.isfinite(pixel) or not math.isclose(pixel, target["pixel_size_m"], rel_tol=1e-6):
+            raise QualityError(f"{name}: refinement DEM must use the common {target['pixel_size_m']:g} m grid")
         n = target["dem"].shape[0]
         if big.shape[0] < n or big.shape[1] < n:
             raise QualityError(f"{name}: refinement window is smaller than the analysis circle")
         inside = target["inside"]
+        _, min_metrics = _sample_limits(inside)
+        # Match the support of a separately fetched final grid: its outer
+        # raster row/column has no full 3x3 neighbourhood. This matters greatly
+        # for a 4x4 (1 km) ROI and avoids refining on unreported extra samples.
+        metric_inside = inside.copy()
+        metric_inside[[0, -1], :] = False
+        metric_inside[:, [0, -1]] = False
         slope = terrain.slope_deg(big, pixel)
         tri = terrain.tri(big)
         rough = terrain.roughness(big)
@@ -306,13 +358,16 @@ class SearchService:
             sub = big[r0:r0 + n, c0:c0 + n]
             value = -1.0
             vals = sub[inside]
-            if np.isfinite(vals).mean() >= 0.9 and (tri[r0:r0 + n, c0:c0 + n][inside] < 0.01).mean() <= MAX_WATER_FRACTION:
+            local_tri = tri[r0:r0 + n, c0:c0 + n]
+            water = np.count_nonzero((local_tri < 0.01) & metric_inside) / int(inside.sum())
+            if np.isfinite(vals).mean() >= 0.9 and water <= MAX_WATER_FRACTION:
                 circle = np.where(inside, sub, np.nan)
-                metrics = {"slope_deg": np.where(inside, slope[r0:r0 + n, c0:c0 + n], np.nan),
+                metrics = {"slope_deg": np.where(metric_inside, slope[r0:r0 + n, c0:c0 + n], np.nan),
                            "relief_m": circle - np.nanmedian(circle),
-                           "tri_m": np.where(inside, tri[r0:r0 + n, c0:c0 + n], np.nan),
-                           "roughness_m": np.where(inside, rough[r0:r0 + n, c0:c0 + n], np.nan)}
-                value = self._score(target, matcher, circle, metrics)["overall"][primary]
+                           "tri_m": np.where(metric_inside, local_tri, np.nan),
+                           "roughness_m": np.where(metric_inside, rough[r0:r0 + n, c0:c0 + n], np.nan)}
+                if all(np.isfinite(values).sum() >= min_metrics for values in metrics.values()):
+                    value = self._score(target, matcher, circle, metrics)["overall"][primary]
             cache[(oy, ox)] = value
             return value
 
@@ -334,7 +389,9 @@ class SearchService:
         new_lon, new_lat = to_geo.transform(x_m, y_m)
         return {"lat": round(float(new_lat), 5), "lon": round(float(new_lon), 5),
                 "shift_km": round(math.hypot(x_m, y_m) / 1000, 2), "positions_tested": len(cache),
-                "refine_score": round(evaluate(*best) * 100, 4)}
+                "refine_score": round(evaluate(*best) * 100, 4), "radius_km": target["radius_km"],
+                "available_shift_km": round(reach * pixel / 1000, 3),
+                "note": "Centre refinement is limited by the 100 km maximum DEM acquisition radius." if target["radius_km"] > MAX_RADIUS_KM - REFINE_SHIFT_KM else None}
 
     def _site(self, job_id: str, site_id: str, name: str, prepared: dict) -> dict:
         with self._lock:
@@ -354,11 +411,18 @@ class SearchService:
             self._update(job_id, progress=8, message="Screening every land window on Earth", target=target_site)
 
             index = self.index()
-            screen = index.screen(self._screen_target(target), self.settings.weights[self._primary()], SHAPE_WEIGHT)
+            screen_radius = float(index.meta.get("radius_km", RADIUS_KM))
+            if not math.isfinite(screen_radius) or not MIN_RADIUS_KM <= screen_radius <= MAX_RADIUS_KM:
+                raise QualityError("The screening index has an unsupported context radius")
+            # The stored index cannot be reinterpreted as another spatial scale.
+            # A separate equal-radius Mars context is used ONLY for shortlisting.
+            context = target if math.isclose(radius_km, screen_radius, abs_tol=1e-9) else self._prepare("mars", lat, lon, screen_radius, "Mars screening context")
+            screen = index.screen(self._screen_target(context), self.settings.weights[self._primary()], SHAPE_WEIGHT)
             picks = global_index.pick_spread(index.lat, index.lon, screen, self.screen_candidates, MIN_SEPARATION_KM)
             if not picks:
                 raise QualityError("The global index returned no land windows to compare")
-            screened = [{"lat": float(index.lat[i]), "lon": float(index.lon[i]), "screen_score": round(float(screen[i]) * 100, 2)} for i in picks]
+            screened = [{"lat": float(index.lat[i]), "lon": float(index.lon[i]), "screen_score": round(float(screen[i]) * 100, 2),
+                         "radius_km": screen_radius, "role": "regional_context_shortlist_only"} for i in picks]
             self._update(job_id, progress=12, screened_windows=len(index), shortlisted=deepcopy(screened),
                          message=f"Screened {len(index):,} Earth windows; measuring the best {len(screened)} at 463 m")
 
@@ -371,7 +435,8 @@ class SearchService:
                 refined = self._refine(target, matcher, cand["lat"], cand["lon"], label)
                 first_shift, passes = refined["shift_km"], 1
                 # The best centre sat on the edge of the searched area: search again around it.
-                while refined["shift_km"] >= 0.75 * REFINE_SHIFT_KM and passes < MAX_REFINE_PASSES:
+                available_shift = refined["available_shift_km"]
+                while available_shift > 0 and refined["shift_km"] >= 0.75 * available_shift and passes < MAX_REFINE_PASSES:
                     again = self._refine(target, matcher, refined["lat"], refined["lon"], label)
                     passes += 1
                     if again["refine_score"] <= refined["refine_score"]:
@@ -443,7 +508,7 @@ class SearchService:
             best = ranked[0]
             ms = best["metric_scores"]
             explanation = {"type": "computed", "engine": "deterministic_metric_summary", "llm_used": False,
-                           "text": (f"The best match found anywhere on Earth's land is at {best['lat']:.4f}, {best['lon']:.4f} "
+                           "text": (f"The best match among re-measured shortlisted Earth places is at {best['lat']:.4f}, {best['lon']:.4f}, using radius {radius_km:g} km, "
                                     f"with {best['score']:.1f}/100. The Mars relief map overlays it with correlation "
                                     f"{best['match']['correlation']:.2f} (rotated {best['match']['rotation_deg']} degrees"
                                     f"{', mirrored' if best['match']['mirrored'] else ''}); slope overlap {ms['slope_deg']:.1f}, "
@@ -452,11 +517,15 @@ class SearchService:
             result = {"target": target_site, "candidates": ranked, "excluded_candidates": excluded,
                       "coverage": {"kind": "global_land_search", "global_search": True, "screened_windows": len(index),
                                    "shortlisted": len(screened), "evaluated_count": len(ranked), "excluded_count": len(excluded),
-                                   "catalog_count": len(screened), "description": SCOPE},
-                      "method": self._method(), "review": deepcopy(REVIEW), "rank_stability": stability,
+                                   "catalog_count": len(screened), "description": SCOPE,
+                                   "screen_radius_km": screen_radius, "score_radius_km": radius_km,
+                                   "screening_role": "regional_context_shortlist_only", "exhaustive_at_requested_radius": False},
+                      "method": self._method(radius_km, screen_radius), "review": deepcopy(REVIEW), "rank_stability": stability,
                       "explanation": explanation, "generated_at": _now(),
                       "caveats": [SCOPE,
-                                  "Screening uses ETOPO 2022 at ~1.85 km; a place the screen ranks low is not re-measured.",
+                                  f"Screening uses {screen_radius:g} km regional context on ETOPO 2022 at ~1.85 km, only to select places; final scores use the requested {radius_km:g} km circle. A place the context screen ranks low is not re-measured.",
+                                  target["quality"]["resolution_note"],
+                                  "At radii above 80 km, centre refinement is reduced to keep every DEM acquisition within 100 km; at 100 km the shortlisted centres are scored without shifting.",
                                   "MOLA interpolates between orbit tracks; some roughness is unresolved at 463 m.",
                                   "Copernicus GLO-30 is a digital surface model; vegetation and buildings may affect elevation.",
                                   "Exploratory results have not passed human scientific review."]}

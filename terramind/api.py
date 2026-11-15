@@ -12,14 +12,14 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
-from terramind.search_service import SearchBusyError, SearchService, TerrainNotReadyError
+from terramind.search_service import MAX_RADIUS_KM, MIN_RADIUS_KM, RADIUS_KM, SearchBusyError, SearchService, TerrainNotReadyError
 
 
 class SearchRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False, strict=True)
     lat: float = Field(ge=-85, le=85)
     lon: float = Field(ge=-180, le=180)
-    radius_km: float = Field(default=25, ge=25, le=25)
+    radius_km: float = Field(default=RADIUS_KM, ge=MIN_RADIUS_KM, le=MAX_RADIUS_KM)
 
 
 def create_app(service: SearchService | None = None, serve_frontend: bool = True) -> FastAPI:

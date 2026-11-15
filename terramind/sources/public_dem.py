@@ -346,7 +346,7 @@ def fetch_roi(body, lat, lon, radius_km=25, grid_m=463, *, cache_dir=None):
                 raise MissingInputError(f"Cached DEM checksum mismatch at {dem_path}; reacquire this window before analysis")
             with rasterio.open(dem_path) as src:
                 dem = src.read(1).astype("float32")
-            check_quality(dem, 2500, 0.1, f"Cached {body} DEM")
+            check_quality(dem, min(2500, max(4, math.ceil(dem.size * 0.9))), 0.1, f"Cached {body} DEM")
         else:
             try:
                 native, native_transform, native_crs, provenance = _mars_window(grid) if body == "mars" else _earth_window(grid)
@@ -358,7 +358,10 @@ def fetch_roi(body, lat, lon, radius_km=25, grid_m=463, *, cache_dir=None):
                       src_transform=native_transform, src_crs=native_crs, src_nodata=np.nan,
                       dst_transform=grid.transform, dst_crs=grid.crs, dst_nodata=np.nan,
                       resampling=method, num_threads=2)
-            quality = check_quality(dem, 2500, 0.1, f"Real {body} DEM")
+            # Acquisition checks coverage at the requested resolution. Small
+            # windows are not rejected merely for having fewer than 2500 cells;
+            # circular ROI and 3x3 metric support are checked by SearchService.
+            quality = check_quality(dem, min(2500, max(4, math.ceil(dem.size * 0.9))), 0.1, f"Real {body} DEM")
             folder.mkdir(parents=True, exist_ok=True)
             token = uuid.uuid4().hex
             native_temporary = folder / f"native.{token}.partial.tif"

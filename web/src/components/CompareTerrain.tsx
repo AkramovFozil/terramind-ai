@@ -1,3 +1,5 @@
+import {useUiCopy} from '../ui-copy';
+import {useI18n} from '../i18n';
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {Canvas,useThree,type ThreeEvent} from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
@@ -111,18 +113,20 @@ function Panel({id,title,subtitle,data,layer,range,exaggeration,align,unit,floor
 
 function flatShare(d:TerrainData,deg:number){let n=0,k=0;for(let i=0;i<d.elevations.length;i++){const s=d.layers.slope_deg[i];if(!d.roi_mask[i]||s===null||!Number.isFinite(s))continue;n++;if(s<deg)k++}return n?100*k/n:null}
 const pct=(v:number|null)=>v===null?'—':`${v.toFixed(0)} %`;
-const fmt=(v:number|null|undefined,d=1)=>v===null||v===undefined||!Number.isFinite(v)?'—':v.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});
-const signed=(v:number|null,d=1)=>v===null||!Number.isFinite(v)?'—':`${v>0?'+':''}${fmt(v,d)}`;
+
 
 export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='MARS',leftSub,rightSub}:{marsUrl:string;earthUrl:string;match?:Match;score?:number;leftTitle?:string;leftSub?:string;rightSub?:string}){
-  const leftName=leftTitle==='MARS'?'Mars':leftTitle.charAt(0)+leftTitle.slice(1).toLowerCase();
+  const c=useUiCopy(); const {t,locale}=useI18n();
+  const fmt=(v:number|null|undefined,d=1)=>v===null||v===undefined||!Number.isFinite(v)?'—':v.toLocaleString(locale,{maximumFractionDigits:d,minimumFractionDigits:d});
+  const signed=(v:number|null,d=1)=>v===null||!Number.isFinite(v)?'—':`${v>0?'+':''}${fmt(v,d)}`;
+  const leftName=leftTitle==='MARS'?c('Mars'):['OY','MOON','ЛУНА'].includes(leftTitle.toUpperCase())?c('Oy'):leftTitle;
   const [mars,setMars]=useState<TerrainData|null>(null),[earth,setEarth]=useState<TerrainData|null>(null),[error,setError]=useState('');
   const [layer,setLayer]=useState<Layer>('relief'),[exaggeration,setExaggeration]=useState(5),[aligned,setAligned]=useState(true);
   const [probe,setProbe]=useState<Probe|null>(null);
   const rigs=useRef<Record<string,Rig>>({}),driver=useRef<string|null>(null);
   useEffect(()=>{
     const controller=new AbortController();setMars(null);setEarth(null);setError('');
-    const load=(url:string)=>fetch(url,{signal:controller.signal}).then(r=>{if(!r.ok)throw new Error('Relyef ma’lumotini olishda xato.');return r.json() as Promise<TerrainData>}).then(d=>{if(!d.measured_dem||!d.layers)throw new Error('O‘lchangan DEM qatlamlari topilmadi. Serverni yangilang.');return d});
+    const load=(url:string)=>fetch(url,{signal:controller.signal}).then(r=>{if(!r.ok)throw new Error(c("Relyef ma’lumotini olishda xato."));return r.json() as Promise<TerrainData>}).then(d=>{if(!d.measured_dem||!d.layers)throw new Error(c("O‘lchangan DEM qatlamlari topilmadi. Serverni yangilang."));return d});
     Promise.all([load(marsUrl),load(earthUrl)]).then(([m,e])=>{setMars(m);setEarth(e)}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});
     return()=>controller.abort();
   },[marsUrl,earthUrl]);
@@ -133,8 +137,8 @@ export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='
   const onProbe=useCallback((p:Probe|null)=>setProbe(p),[]);
   const resetView=()=>{for(const rig of Object.values(rigs.current)){rig.camera.position.set(70,62,88);rig.controls?.target.set(0,0,0);rig.controls?.update();rig.invalidate()}};
   const topView=()=>{for(const rig of Object.values(rigs.current)){rig.camera.position.set(0,150,.01);rig.controls?.target.set(0,0,0);rig.controls?.update();rig.invalidate()}};
-  if(error)return <div className="terrain-loading error-message">{error}</div>;
-  if(!mars||!earth)return <div className="terrain-loading"><span className="science-spinner"/>Ikkala sayyoraning o‘lchangan relyefi yuklanmoqda…</div>;
+  if(error)return <div className="terrain-loading error-message">{c(error)}</div>;
+  if(!mars||!earth)return <div className="terrain-loading"><span className="science-spinner"/>{c("Ikkala sayyoraning o‘lchangan relyefi yuklanmoqda…")}</div>;
   const unit=SIZE/(Math.max(mars.width,mars.height)*mars.pixel_size_m);
   const ms=probe?sampleAt(mars,NO_ALIGN,probe,unit):null,es=probe?sampleAt(earth,earthAlign,probe,unit):null;
   const floor=Math.min(mars.roi_min_elevation_m-mars.median_elevation_m,earth.roi_min_elevation_m-earth.median_elevation_m)*unit*exaggeration-2;
@@ -144,28 +148,28 @@ export default function CompareTerrain({marsUrl,earthUrl,match,score,leftTitle='
   const diff=(a:number|null|undefined,b:number|null|undefined)=>a===null||a===undefined||b===null||b===undefined?null:b-a;
   return <div className="compare-view">
     <div className="compare-toolbar">
-      <div className="compare-layers" role="group" aria-label="Ko‘rsatiladigan qatlam">{LAYERS.map(l=><button key={l.id} aria-pressed={layer===l.id} title={l.hint} onClick={()=>setLayer(l.id)}>{l.name}</button>)}</div>
-      <div className="compare-legend" title={info.hint}><span>{fmt(range[0],layer==='relief'?0:1)}{info.unit}</span><i style={{background:gradient}}/><span>{fmt(range[1],layer==='relief'?0:1)}{info.unit}</span><em>ikkala sayyora uchun bitta shkala</em></div>
-      <label className="compare-option"><input type="checkbox" checked={aligned} onChange={e=>setAligned(e.target.checked)} disabled={!match}/>Yerni {leftName}ga moslab burish{match?` (${match.rotation_deg}°${match.mirrored?', ko‘zgu':''})`:''}</label>
-      <label className="compare-option">Balandlik masshtabi <select value={exaggeration} onChange={e=>setExaggeration(Number(e.target.value))}><option value={1}>1× — haqiqiy nisbat</option><option value={3}>3× — bo‘rttirilgan</option><option value={5}>5× — bo‘rttirilgan</option><option value={10}>10× — bo‘rttirilgan</option></select></label>
-      <button className="compare-view-button" onClick={topView}>Tepadan</button><button className="compare-view-button" onClick={resetView}>3D</button>
+      <div className="compare-layers" role="group" aria-label={c("Ko‘rsatiladigan qatlam")}>{LAYERS.map(l=><button key={l.id} aria-pressed={layer===l.id} title={c(l.hint)} onClick={()=>setLayer(l.id)}>{c(l.name)}</button>)}</div>
+      <div className="compare-legend" title={c(info.hint)}><span>{fmt(range[0],layer==='relief'?0:1)}{info.unit}</span><i style={{background:gradient}}/><span>{fmt(range[1],layer==='relief'?0:1)}{info.unit}</span><em>{c("ikkala sayyora uchun bitta shkala")}</em></div>
+      <label className="compare-option"><input type="checkbox" checked={aligned} onChange={e=>setAligned(e.target.checked)} disabled={!match}/>{t({ru:'Совместить рельефы',en:`Align Earth with ${leftName}`,uz:`Yerni ${leftName}ga moslab burish`})}{match?` (${match.rotation_deg}°${match.mirrored?c(", ko‘zgu"):''})`:''}</label>
+      <label className="compare-option">{c("Balandlik masshtabi")}<select value={exaggeration} onChange={e=>setExaggeration(Number(e.target.value))}><option value={1}>{c("1× — haqiqiy nisbat")}</option><option value={3}>{c("3× — bo‘rttirilgan")}</option><option value={5}>{c("5× — bo‘rttirilgan")}</option><option value={10}>{c("10× — bo‘rttirilgan")}</option></select></label>
+      <button className="compare-view-button" onClick={topView}>{c("Tepadan")}</button><button className="compare-view-button" onClick={resetView}>3D</button>
     </div>
     <div className="compare-panels">
-      <Panel id="mars" title={leftTitle} subtitle={leftSub??`${fmt(mars.center.lat,3)}°, ${fmt(mars.center.lon,3)}° · MOLA 463 m`} data={mars} layer={layer} range={range} exaggeration={exaggeration} align={NO_ALIGN} unit={unit} floor={floor} probe={probe} sample={ms} onProbe={onProbe} rigs={rigs} driver={driver}/>
-      <Panel id="earth" title="YER" subtitle={`${rightSub??`${fmt(earth.center.lat,3)}°, ${fmt(earth.center.lon,3)}° · Copernicus 463 m`}${score===undefined?'':` · ${fmt(score)}/100`}`} data={earth} layer={layer} range={range} exaggeration={exaggeration} align={earthAlign} unit={unit} floor={floor} probe={probe} sample={es} onProbe={onProbe} rigs={rigs} driver={driver}/>
+      <Panel id="mars" title={leftName.toLocaleUpperCase(locale)} subtitle={leftSub??`${fmt(mars.center.lat,3)}°, ${fmt(mars.center.lon,3)}° · MOLA 463 m`} data={mars} layer={layer} range={range} exaggeration={exaggeration} align={NO_ALIGN} unit={unit} floor={floor} probe={probe} sample={ms} onProbe={onProbe} rigs={rigs} driver={driver}/>
+      <Panel id="earth" title={c('Yer').toLocaleUpperCase(locale)} subtitle={`${rightSub??`${fmt(earth.center.lat,3)}°, ${fmt(earth.center.lon,3)}° · Copernicus 463 m`}${score===undefined?'':` · ${fmt(score)}/100`}`} data={earth} layer={layer} range={range} exaggeration={exaggeration} align={earthAlign} unit={unit} floor={floor} probe={probe} sample={es} onProbe={onProbe} rigs={rigs} driver={driver}/>
     </div>
     <div className="compare-readout">
-      <table><thead><tr><th>{probe?'Kursor ostidagi nuqta':'Butun doira (25 km)'}</th><th>{probe?'Balandlik':'Balandlik oralig‘i'}</th><th>{probe?'Relyef':'Relyef amplitudasi'}</th><th>Qiyalik{probe?'':' · mediana / p95'}</th><th>Notekislik{probe?'':' · mediana / p95'}</th>{!probe&&<th title="Qiyalik < 5° — tekis, < 15° — ehtiyot, ≥ 15° — xavfli. O‘lchangan balandlikdan oddiy qo‘nish skriningi, missiya bahosi emas.">Qo‘nish uchun tekis · &lt;5° / &lt;15°</th>}</tr></thead>
+      <table><thead><tr><th>{probe?c("Kursor ostidagi nuqta"):t({ru:`Весь участок (${mars.radius_km} км)`,en:`Whole region (${mars.radius_km} km)`,uz:`Butun doira (${mars.radius_km} km)`})}</th><th>{probe?c("Balandlik"):c("Balandlik oralig‘i")}</th><th>{probe?c("Relyef"):c("Relyef amplitudasi")}</th><th>{c('Qiyalik')}{probe?'':c(" · mediana / p95")}</th><th>{c('Notekislik')}{probe?'':c(" · mediana / p95")}</th>{!probe&&<th title={c("Qiyalik < 5° — tekis, < 15° — ehtiyot, ≥ 15° — xavfli. O‘lchangan balandlikdan oddiy qo‘nish skriningi, missiya bahosi emas.")}>{c('Qo‘nish uchun tekis ·')} &lt;5° / &lt;15°</th>}</tr></thead>
         <tbody>{probe?<>
           <tr className="row-mars"><td><i/>{leftName}</td><td>{fmt(ms?.elevation,0)} m</td><td>{signed(ms?.relief??null,0)} m</td><td>{fmt(ms?.slope,2)}°</td><td>{fmt(ms?.roughness,2)} m</td></tr>
-          <tr className="row-earth"><td><i/>Yer</td><td>{fmt(es?.elevation,0)} m</td><td>{signed(es?.relief??null,0)} m</td><td>{fmt(es?.slope,2)}°</td><td>{fmt(es?.roughness,2)} m</td></tr>
-          <tr className="row-diff"><td>Farq (Yer − {leftName})</td><td>—</td><td>{signed(diff(ms?.relief,es?.relief),0)} m</td><td>{signed(diff(ms?.slope,es?.slope),2)}°</td><td>{signed(diff(ms?.roughness,es?.roughness),2)} m</td></tr>
+          <tr className="row-earth"><td><i/>{c("Yer")}</td><td>{fmt(es?.elevation,0)} m</td><td>{signed(es?.relief??null,0)} m</td><td>{fmt(es?.slope,2)}°</td><td>{fmt(es?.roughness,2)} m</td></tr>
+          <tr className="row-diff"><td>{t({ru:`Разница (Земля − ${leftName})`,en:`Difference (Earth − ${leftName})`,uz:`Farq (Yer − ${leftName})`})}</td><td>—</td><td>{signed(diff(ms?.relief,es?.relief),0)} m</td><td>{signed(diff(ms?.slope,es?.slope),2)}°</td><td>{signed(diff(ms?.roughness,es?.roughness),2)} m</td></tr>
         </>:<>
           <tr className="row-mars"><td><i/>{leftName}</td><td>{fmt(mars.roi_min_elevation_m,0)} … {fmt(mars.roi_max_elevation_m,0)} m</td><td>{fmt(mars.roi_max_elevation_m-mars.roi_min_elevation_m,0)} m</td><td>{fmt(stat(mars,'slope_deg').median,2)}° / {fmt(stat(mars,'slope_deg').p95,2)}°</td><td>{fmt(stat(mars,'roughness_m').median,2)} / {fmt(stat(mars,'roughness_m').p95,2)} m</td><td className="landing-cell"><span className="lbar" style={{width:`${flatShare(mars,5)??0}%`}}/>{pct(flatShare(mars,5))} / {pct(flatShare(mars,15))}</td></tr>
-          <tr className="row-earth"><td><i/>Yer</td><td>{fmt(earth.roi_min_elevation_m,0)} … {fmt(earth.roi_max_elevation_m,0)} m</td><td>{fmt(earth.roi_max_elevation_m-earth.roi_min_elevation_m,0)} m</td><td>{fmt(stat(earth,'slope_deg').median,2)}° / {fmt(stat(earth,'slope_deg').p95,2)}°</td><td>{fmt(stat(earth,'roughness_m').median,2)} / {fmt(stat(earth,'roughness_m').p95,2)} m</td><td className="landing-cell"><span className="lbar" style={{width:`${flatShare(earth,5)??0}%`}}/>{pct(flatShare(earth,5))} / {pct(flatShare(earth,15))}</td></tr>
-          <tr className="row-diff"><td>Farq (Yer − {leftName})</td><td>—</td><td>{signed((earth.roi_max_elevation_m-earth.roi_min_elevation_m)-(mars.roi_max_elevation_m-mars.roi_min_elevation_m),0)} m</td><td>{signed(diff(stat(mars,'slope_deg').median,stat(earth,'slope_deg').median),2)}°</td><td>{signed(diff(stat(mars,'roughness_m').median,stat(earth,'roughness_m').median),2)} m</td><td>{signed(diff(flatShare(mars,5),flatShare(earth,5)),0)} / {signed(diff(flatShare(mars,15),flatShare(earth,15)),0)} %</td></tr>
+          <tr className="row-earth"><td><i/>{c("Yer")}</td><td>{fmt(earth.roi_min_elevation_m,0)} … {fmt(earth.roi_max_elevation_m,0)} m</td><td>{fmt(earth.roi_max_elevation_m-earth.roi_min_elevation_m,0)} m</td><td>{fmt(stat(earth,'slope_deg').median,2)}° / {fmt(stat(earth,'slope_deg').p95,2)}°</td><td>{fmt(stat(earth,'roughness_m').median,2)} / {fmt(stat(earth,'roughness_m').p95,2)} m</td><td className="landing-cell"><span className="lbar" style={{width:`${flatShare(earth,5)??0}%`}}/>{pct(flatShare(earth,5))} / {pct(flatShare(earth,15))}</td></tr>
+          <tr className="row-diff"><td>{t({ru:`Разница (Земля − ${leftName})`,en:`Difference (Earth − ${leftName})`,uz:`Farq (Yer − ${leftName})`})}</td><td>—</td><td>{signed((earth.roi_max_elevation_m-earth.roi_min_elevation_m)-(mars.roi_max_elevation_m-mars.roi_min_elevation_m),0)} m</td><td>{signed(diff(stat(mars,'slope_deg').median,stat(earth,'slope_deg').median),2)}°</td><td>{signed(diff(stat(mars,'roughness_m').median,stat(earth,'roughness_m').median),2)} m</td><td>{signed(diff(flatShare(mars,5),flatShare(earth,5)),0)} / {signed(diff(flatShare(mars,15),flatShare(earth,15)),0)} %</td></tr>
         </>}</tbody></table>
-      <p>{probe?'Oq belgi ikkala sayyorada bir xil (moslashtirilgan) nuqtani ko‘rsatadi.':'Sichqonchani relyef ustiga olib boring: ikkala sayyoradagi mos nuqtaning aniq qiymatlari chiqadi.'} Kameralar sinxron. Qiymatlar 463 m katakdagi haqiqiy DEM o‘lchovlari; ranglar tanlangan qatlamni ko‘rsatadi.</p>
+      <p>{probe?c("Oq belgi ikkala sayyorada bir xil (moslashtirilgan) nuqtani ko‘rsatadi."):c("Sichqonchani relyef ustiga olib boring: ikkala sayyoradagi mos nuqtaning aniq qiymatlari chiqadi.")}{' '}{t({ru:`Камеры синхронизированы. Измерения DEM на сетке ${mars.pixel_size_m} м; цвет обозначает выбранный слой.`,en:`Cameras are synchronized. Measured DEM on a ${mars.pixel_size_m} m grid; colour indicates the selected layer.`,uz:`Kameralar sinxron. Qiymatlar ${mars.pixel_size_m} m katakdagi haqiqiy DEM o‘lchovlari; ranglar tanlangan qatlamni ko‘rsatadi.`})}</p>
     </div>
   </div>;
 }

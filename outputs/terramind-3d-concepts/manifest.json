@@ -1,0 +1,96 @@
+{
+  "tool": "built-in image_gen",
+  "type": "Illustrative UI design concepts, not calculated scientific outputs",
+  "images": [
+    {
+      "id": "01",
+      "title": "Cinematic Orbit",
+      "file": "01-cinematic-orbit.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2440459,
+      "sha256": "627d504fc930050515e2c2486b4708ba2234bd732c6945e892ae3acba7d982bc"
+    },
+    {
+      "id": "02",
+      "title": "White Atlas",
+      "file": "02-white-atlas.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2525291,
+      "sha256": "009105da485e2c11aab0dac1effb8313eac2679a2daa564b96ef40e9fe425fe0"
+    },
+    {
+      "id": "03",
+      "title": "Mission Control",
+      "file": "03-mission-control.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2201208,
+      "sha256": "42a3927eaccab29a2a947bcdc2350eee42f484f94d460a81d8ab5b61d3b78a93"
+    },
+    {
+      "id": "04",
+      "title": "Mars Immersion",
+      "file": "04-mars-immersion.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2756850,
+      "sha256": "92d4fc8a97c8aebf8dd260ea44f657b4045e15cc3a498f0574db594f64b79d9f"
+    },
+    {
+      "id": "05",
+      "title": "Terrain Lab",
+      "file": "05-terrain-lab.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2517520,
+      "sha256": "67e97b31ed280f7855faa0a556bd8f03622aaffa171d63280d2eeffd89f5c1ca"
+    },
+    {
+      "id": "06",
+      "title": "Dual World Explorer",
+      "file": "06-dual-world-explorer.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2780265,
+      "sha256": "8c9724bc4671436cea9edd7af586445e8df060635933d107e32c2529aeaa77ac"
+    },
+    {
+      "id": "07",
+      "title": "Desert Editorial",
+      "file": "07-desert-editorial.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2739440,
+      "sha256": "be293f4ff5450e2c682c9514ca0d0c405a0208049956493cb342189c02322b85"
+    },
+    {
+      "id": "08",
+      "title": "Holographic Topography",
+      "file": "08-holographic-topography.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2343623,
+      "sha256": "a3647d4bbb51a120b05803b78484e23d3ebdbac9f93763919d5151f71da523f6"
+    },
+    {
+      "id": "09",
+      "title": "Glass Observatory",
+      "file": "09-glass-observatory.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2931969,
+      "sha256": "a41a3337bbb70f32a45530bd8881abd2c1c0d0584ef1316d60945ed0731ad3cc"
+    },
+    {
+      "id": "10",
+      "title": "Research Report",
+      "file": "10-research-report.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2148494,
+      "sha256": "67cd702d989a2a0d390be2092b0b43b809a00b34238b4a4d5861e594cb0be69b"
+    }
+  ]
+}
