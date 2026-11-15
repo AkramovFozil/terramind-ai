@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TerraMind AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"></span>
+    <div>
+      <div class="brand-name">TerraMind AI</div>
+      <div class="brand-tag">Earth analogs for Mars landing sites and Moon bases, from NASA elevation data</div>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-page="explorer">Analog Finder</button>
+    <button class="tab" data-page="matrix">Matrix</button>
+    <button class="tab" data-page="sites">Sites</button>
+    <button class="tab" data-page="ask">Ask AI</button>
+    <button class="tab" data-page="method">Method</button>
+    <a class="tab" href="http://127.0.0.1:8000/" target="_blank" rel="noopener" title="Global Explorer (3D): python -m uvicorn terramind.api:app --port 8000">Global 3D ↗</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ANALOG FINDER -->
+  <section id="explorer" class="page active">
+    <aside class="side">
+      <label class="lbl" for="searchSel">Search</label>
+      <select id="searchSel"></select>
+      <p class="hint" id="searchHint"></p>
+      <div class="stats" id="stats"></div>
+      <div class="legend" id="legend"></div>
+      <div id="known"></div>
+      <h3 class="h3">Top leads <span class="muted small">— check imagery, then accept or reject</span></h3>
+      <ol class="leads" id="leads"></ol>
+      <p class="hint">Leads are computed by TerraMind's algorithm, not by AI. A lead becomes an analog only after human review.</p>
+    </aside>
+    <div class="mapwrap">
+      <div id="map" aria-label="Map of analog search results"></div>
+      <label class="layer-toggle"><input type="checkbox" id="showCells" checked> similarity layer</label>
+    </div>
+  </section>
+
+  <!-- MATRIX -->
+  <section id="matrix" class="page">
+    <div class="wrap">
+      <h2>Reference sites × Earth sites</h2>
+      <p class="muted">Overall similarity of slope, local relief and roughness distributions (0 = no overlap, 1 = identical), weight set A. Every approved site is shown. Click a cell for the per-metric detail.</p>
+      <div id="matrixTable"></div>
+      <div id="matrixDetail" class="detail"></div>
+    </div>
+  </section>
+
+  <!-- SITES -->
+  <section id="sites" class="page">
+    <div class="wrap">
+      <h2>Sites and review status</h2>
+      <p class="muted">Every window is reviewed on its quick-look and approved before any score is computed. The parameter hash freezes the center, window, grid and dataset.</p>
+      <div class="cards" id="siteCards"></div>
+    </div>
+  </section>
+
+  <!-- ASK AI -->
+  <section id="ask" class="page">
+    <div class="wrap narrow">
+      <h2>Ask TerraMind</h2>
+      <p class="muted">The AI explains TerraMind's computed results and can start an Analog Finder search. It never invents scores: every number in its answer is checked against the results.</p>
+      <div class="chips" id="chips"></div>
+      <form id="askForm" class="askform">
+        <textarea id="q" rows="3" maxlength="500" placeholder="e.g. Find places in western Uzbekistan that look like Meridiani Planum"></textarea>
+        <button type="submit" id="askBtn">Ask</button>
+      </form>
+      <div id="answer" class="answer" hidden></div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method" class="page">
+    <div class="wrap narrow prose">
+      <h2>How TerraMind works</h2>
+      <ol>
+        <li><b>Reference sites</b> on Mars (Gale crater floor — Curiosity; Meridiani Planum — Opportunity) and the Moon (Mons Mouton Plateau — an Artemis III candidate region).</li>
+        <li>Every site gets a <b>25 × 25 km window</b> in its own local azimuthal equidistant projection: Mars sphere R = 3,396,190 m, Moon sphere R = 1,737,400 m, Earth WGS84.</li>
+        <li>All DEMs are brought to one <b>463 m grid</b>. Three metrics: slope (Horn), local relief (elevation − window median), roughness (TRI).</li>
+        <li>Each metric's distribution is compared with <b>histogram intersection</b> on fixed bins; the overall score is a weighted mean (weight sets A and B are both reported).</li>
+        <li>A person reviews every window's quick-look and <b>approves it before any score exists</b>. Changing a window afterwards blocks scoring.</li>
+        <li>The <b>Analog Finder</b> slides the same window across a region of Earth (NASA SRTM) and ranks every position. Water and nodata are excluded. Leads go to human review.</li>
+        <li>The <b>AI</b> only explains the computed numbers and can trigger a search; a grounding check flags any number not in the results.</li>
+      </ol>
+      <h3>Limits</h3>
+      <ul>
+        <li>Shape only, at 463 m: nothing about rock type, minerals, climate, radiation or habitability.</li>
+        <li>One window per site; another window can score differently.</li>
+        <li>MOLA near the equator is partly interpolated between orbit tracks; SRTM dates from February 2000.</li>
+        <li>Meridiani was added after the first score; this and every other decision is logged in the repository.</li>
+      </ul>
+      <h3>Data</h3>
+      <ul>
+        <li>Mars: MGS MOLA DEM 463 m — USGS Astrogeology / NASA PDS.</li>
+        <li>Moon: LRO LOLA south pole DEM 80 m — NASA GSFC PGDA (Barker et al. 2023).</li>
+        <li>Earth: NASA SRTM GL1 / GL3 v003 — NASA LP DAAC via OpenTopography.</li>
+        <li>Map imagery: Esri World Imagery, OpenStreetMap, NASA GIBS Blue Marble — for human review only, not scored.</li>
+      </ul>
+      <h3>AI use</h3>
+      <p>Explanations are generated by a large language model through OpenRouter. Code was written with AI coding assistants. Scores, rankings and maps are computed by TerraMind's open-source algorithm.</p>
+      <p><a href="https://github.com/AkramovFozil/terramind-ai" target="_blank" rel="noopener">Source code, decision log and results on GitHub</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  TerraMind AI · NASA Space Apps Challenge 2026 · Team from OXUS University, Tashkent · Not affiliated with or endorsed by NASA.
+</footer>
+
+<div id="lightbox" class="lightbox" hidden><img alt=""></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

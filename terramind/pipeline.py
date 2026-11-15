@@ -63,9 +63,12 @@ def prepare(settings: Settings, site_id: str, api_key: str | None = None, sessio
     out = settings.processed_dir(site.id)
     dem30 = grid30 = None
 
-    if site.body == "mars":
+    if site.body in ("mars", "moon"):
         src = resolve_dem_path(settings, site)
-        dem, src_info = read_to_grid(src, grid, "mars", Resampling.bilinear, f"{site.id} MOLA", settings.root)
+        # MOLA (463 m) is resampled bilinearly; finer DEMs such as LOLA 80 m are averaged, like SRTM.
+        native = DATASETS[site.dataset]["native_resolution_m"]
+        resampling = Resampling.average if native < settings.grid_m / 2 else Resampling.bilinear
+        dem, src_info = read_to_grid(src, grid, site.body, resampling, f"{site.id} {site.dataset}", settings.root)
     else:
         src = srtm_cache_path(settings, site)
         downloaded = not src.exists()
@@ -228,3 +231,80 @@ def _write_csv(path: Path, per_metric: dict, overall: dict) -> None:
 def ranking_stability(scores_a: dict, scores_b: dict) -> float:
     """Spearman rho between the A and B rankings of >= 3 candidates (Phase 2 entry point)."""
     return rank_stability(scores_a, scores_b)
+
+
+def matrix_sites(settings: Settings) -> tuple[list[Site], list[Site]]:
+    """The declared matrix: every enabled Mars reference x every enabled Earth site."""
+    refs = [s for s in settings.sites.values() if s.enabled and s.body in ("mars", "moon") and s.role == "reference"]
+    earth = [s for s in settings.sites.values() if s.enabled and s.body == "earth"]
+    if not refs or not earth:
+        raise ConfigError("The matrix needs at least one enabled Mars or Moon reference and one enabled Earth site.")
+    return refs, earth
+
+
+def matrix(settings: Settings) -> dict:
+    """Score every enabled Mars reference against every enabled Earth site.
+
+    All enabled sites must be approved first: no cell can be left out of the report.
+    """
+    refs, earth = matrix_sites(settings)
+    from terramind.gate import site_state
+
+    not_ready = [f"{s.id} ({site_state(settings, s)})" for s in refs + earth if site_state(settings, s) != "approved"]
+    if not_ready:
+        from terramind.config import GateError
+
+        raise GateError(
+            "Refusing to build the matrix: every enabled site must be approved, so that no result is left out.\n"
+            "  Not approved: " + ", ".join(not_ready) + "\n"
+            "  Prepare, review and approve them, or set enabled: false in config/sites.yaml."
+        )
+
+    cells = {}
+    for ref in refs:
+        for site in earth:
+            res = score(settings, ref.id, site.id)
+            cells[f"{ref.id}__{site.id}"] = {
+                "reference": ref.id,
+                "earth_site": site.id,
+                "role": site.role,
+                "overall": {k: v["score"] for k, v in res["overall"].items()},
+                "per_metric": {m: r["score"] for m, r in res["per_metric"].items()},
+            }
+
+    stability = {}
+    weight_sets = list(settings.weights)
+    for ref in refs:
+        if len(earth) < 3 or len(weight_sets) < 2:
+            stability[ref.id] = {"spearman_rho": None, "reason": "needs at least 3 Earth sites and 2 weight sets"}
+            continue
+        a, b = weight_sets[0], weight_sets[1]
+        sa = {s.id: cells[f"{ref.id}__{s.id}"]["overall"][a] for s in earth}
+        sb = {s.id: cells[f"{ref.id}__{s.id}"]["overall"][b] for s in earth}
+        stability[ref.id] = {"weights": [a, b], "spearman_rho": round(rank_stability(sa, sb), 4), "n_sites": len(earth)}
+
+    result = {
+        "references": [{"id": r.id, "name": r.name} for r in refs],
+        "earth_sites": [{"id": s.id, "name": s.name, "role": s.role} for s in earth],
+        "cells": cells,
+        "rank_stability": stability,
+        "note": "Every enabled site was approved before this matrix was built; all cells are reported.",
+        "generated_at": _now(),
+        "terramind_version": __version__,
+    }
+
+    out = settings.root / "results" / "matrix"
+    out.mkdir(parents=True, exist_ok=True)
+    with open(out / "matrix.json", "w", encoding="utf-8") as fh:
+        json.dump(result, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+    with open(out / "matrix.csv", "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["earth_site", "role"] + [f"{r.id}_{ws}" for r in refs for ws in weight_sets])
+        for s in earth:
+            w.writerow([s.id, s.role] + [cells[f"{r.id}__{s.id}"]["overall"][ws] for r in refs for ws in weight_sets])
+    from terramind.quicklook import matrix_figure
+
+    matrix_figure(out / "matrix.png", refs, earth, cells, weight_sets[0])
+    result["files"] = [str((out / f).relative_to(settings.root)) for f in ("matrix.json", "matrix.csv", "matrix.png")]
+    return result

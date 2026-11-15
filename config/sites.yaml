@@ -24,6 +24,35 @@ sites:
       - data/raw/mars/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif
       - data/raw/mars/gale_mola_463m.tif
 
+  meridiani:
+    name: Meridiani Planum (Opportunity landing site)
+    body: mars
+    role: reference
+    lat: -1.9462    # Eagle crater, where Opportunity landed (1.9462 S, 354.4734 E)
+    lon: -5.5266    # = 354.4734 E in the -180..180 convention of the MOLA mosaic
+    enabled: true
+    dataset: MOLA_MEGDR_463m
+    note: >-
+      Added 2026-11-14 as a second Mars reference: one of the flattest landing
+      plains on Mars. Declared before any Meridiani score was computed.
+    dem_paths:
+      - data/raw/mars/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif
+
+  mouton:
+    name: Mons Mouton Plateau (Moon, Artemis III candidate region)
+    body: moon
+    role: reference
+    lat: -84.7906   # IM-2 Athena landing point on the plateau (84.7906 S, 29.1957 E), 6 March 2025
+    lon: 29.1957
+    enabled: true
+    dataset: LOLA_SPOLE_80M
+    note: >-
+      One of NASA's nine Artemis III candidate landing regions (Oct 2024), near the
+      lunar south pole. Window centered on the IM-2 Athena landing point. Added
+      2026-11-14 when the team's challenge (Moon base and Mars analogs) was confirmed.
+    dem_paths:
+      - data/raw/moon/LDEM_80S_80MPP_ADJ.TIF
+
   ustyurt:
     name: Ustyurt Plateau
     body: earth
@@ -53,7 +82,7 @@ sites:
     role: validation
     lat: -24.0848
     lon: -69.9151
-    enabled: false   # Phase 2
+    enabled: true    # Phase 2: known Mars analog, scored with the same settings
     dataset: SRTMGL1
 
   mdrs:
@@ -62,5 +91,5 @@ sites:
     role: validation
     lat: 38.4062
     lon: -110.7894
-    enabled: false   # Phase 2
+    enabled: true    # Phase 2: known Mars analog, scored with the same settings
     dataset: SRTMGL1

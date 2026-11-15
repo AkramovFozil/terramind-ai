@@ -31,7 +31,7 @@ class ConfigError(TerraMindError):
     exit_code = 5
 
 
-BODIES = ("earth", "mars")
+BODIES = ("earth", "mars", "moon")
 ROLES = ("reference", "candidate", "validation")
 
 # Provenance for every dataset the pipeline can read.
@@ -44,6 +44,16 @@ DATASETS: dict[str, dict] = {
         "download_url": "https://planetarymaps.usgs.gov/mosaic/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif",
         "native_resolution_m": 463.0835744,
         "notes": "Simple Cylindrical, Mars sphere R = 3,396,190 m, longitude -180..180, metres.",
+    },
+    "LOLA_SPOLE_80M": {
+        "body": "moon",
+        "name": "LRO LOLA south pole DEM, 80 m (80 S to pole)",
+        "provider": "NASA Goddard Planetary Geodesy Data Archive (Barker et al. 2023)",
+        "source_url": "https://pgda.gsfc.nasa.gov/products/90",
+        "download_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+        "doi": "10.60903/gsfcpgda-lola-spole",
+        "native_resolution_m": 80.0,
+        "notes": "Cloud-optimised GeoTIFF, south polar stereographic, heights in metres, MOON_ME (DE421). ~181 MB.",
     },
     "SRTMGL1": {
         "body": "earth",

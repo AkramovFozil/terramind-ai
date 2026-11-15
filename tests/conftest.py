@@ -73,3 +73,30 @@ def synthetic_srtm(project: Path) -> Path:
     ) as dst:
         dst.write(z, 1)
     return path
+
+
+MOON_SPS = "+proj=stere +lat_0=-90 +lon_0=0 +k=1 +x_0=0 +y_0=0 +R=1737400 +units=m +no_defs"
+
+
+@pytest.fixture
+def synthetic_lola(project: Path) -> Path:
+    """LOLA-like Moon raster (south polar stereographic, 80 m, metres) around Mons Mouton."""
+    from pyproj import Transformer
+
+    from terramind.config import load_settings
+
+    s = load_settings(project)
+    site = s.site("mouton")
+    to_sps = Transformer.from_crs("+proj=longlat +R=1737400 +no_defs", MOON_SPS, always_xy=True)
+    x, y = to_sps.transform(site.lon, site.lat)
+    half, px = 40_000.0, 80.0
+    n = int(2 * half / px)
+    z = (1500 + _terrain((n, n), 3, 1200.0, 12)).astype("float32")
+    path = project / site.dem_paths[0]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with rasterio.open(
+        path, "w", driver="GTiff", width=n, height=n, count=1, dtype="float32", crs=MOON_SPS,
+        transform=from_origin(x - half, y + half, px, px), nodata=-3.4e38,
+    ) as dst:
+        dst.write(z, 1)
+    return path

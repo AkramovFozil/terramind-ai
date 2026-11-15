@@ -3,6 +3,8 @@
 
 # input data (large, downloaded locally)
 data/raw/
+data/global/
+data/public_dem/
 
 # generated outputs
 data/processed/

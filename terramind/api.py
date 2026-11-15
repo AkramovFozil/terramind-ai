@@ -70,6 +70,10 @@ def create_app(service: SearchService | None = None, serve_frontend: bool = True
         except TerrainNotReadyError as exc:
             raise HTTPException(status_code=409, detail=str(exc)) from None
 
+    from terramind.assistant import make_router
+
+    app.include_router(make_router())
+
     frontend = Path(os.environ.get("TERRAMIND_WEB_DIST", str(Path(__file__).resolve().parents[1] / "web" / "dist")))
     if serve_frontend and (frontend / "index.html").exists():
         app.mount("/", StaticFiles(directory=frontend, html=True), name="frontend")

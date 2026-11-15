@@ -29,5 +29,8 @@ terramind = "terramind.cli:main"
 [tool.setuptools.packages.find]
 include = ["terramind*"]
 
+[tool.setuptools.package-data]
+terramind = ["web/*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

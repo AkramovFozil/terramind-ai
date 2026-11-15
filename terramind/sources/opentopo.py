@@ -28,8 +28,9 @@ def fetch_srtm(
     api_key: str | None,
     session=None,
     timeout: float = 180.0,
+    demtype: str = "SRTMGL1",
 ) -> Path:
-    """Download SRTMGL1 for (west, south, east, north) to `dest`. Reuses `dest` if it exists."""
+    """Download a DEM (default SRTMGL1) for (west, south, east, north) to `dest`. Reuses `dest` if it exists."""
     if dest.exists():
         return dest
     if not api_key:
@@ -39,7 +40,7 @@ def fetch_srtm(
         )
     west, south, east, north = bounds
     params = {
-        "demtype": "SRTMGL1",
+        "demtype": demtype,
         "south": f"{south:.6f}",
         "north": f"{north:.6f}",
         "west": f"{west:.6f}",

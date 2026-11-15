@@ -21,3 +21,4 @@
 @media(max-width:900px){.compare-panel{height:44svh;min-height:230px}.compare-legend em{display:none}.compare-legend i{width:90px}.compare-readout{overflow-x:auto}.compare-view-button:first-of-type{margin-left:0}.compare-tag span{display:none}.compare-toolbar{gap:9px;padding:9px 12px}}
 @media(max-width:480px){.compare-panels{grid-template-columns:1fr}.compare-panel{height:34svh}}
 .metric-bars>div:nth-child(4) .metric-track i{background:#c9a36a}.metric-bars>div:nth-child(5) .metric-track i{background:#7d8f7a}
+.landing-cell{position:relative;white-space:nowrap}.landing-cell .lbar{position:absolute;left:0;bottom:2px;height:3px;background:#9fdc7c;border-radius:2px;max-width:100%;opacity:.8;display:block}

@@ -12,10 +12,12 @@ from rasterio.crs import CRS as RioCRS
 from terramind.config import ConfigError
 
 MARS_RADIUS_M = 3_396_190.0
+MOON_RADIUS_M = 1_737_400.0
 EARTH_SEMI_MAJOR_M = 6_378_137.0
 
 MARS_GEOGRAPHIC = f"+proj=longlat +R={MARS_RADIUS_M:.0f} +no_defs"
 EARTH_GEOGRAPHIC = "EPSG:4326"
+MOON_GEOGRAPHIC = f"+proj=longlat +R={MOON_RADIUS_M:.0f} +no_defs"
 
 
 def local_crs_string(body: str, lat: float, lon: float) -> str:
@@ -24,6 +26,8 @@ def local_crs_string(body: str, lat: float, lon: float) -> str:
         return f"+proj=aeqd +lat_0={lat} +lon_0={lon} +datum=WGS84 +units=m +no_defs"
     if body == "mars":
         return f"+proj=aeqd +lat_0={lat} +lon_0={lon} +R={MARS_RADIUS_M:.0f} +units=m +no_defs"
+    if body == "moon":
+        return f"+proj=aeqd +lat_0={lat} +lon_0={lon} +R={MOON_RADIUS_M:.0f} +units=m +no_defs"
     raise ConfigError(f"Unknown body {body!r}")
 
 
@@ -36,6 +40,8 @@ def geographic_crs_string(body: str) -> str:
         return EARTH_GEOGRAPHIC
     if body == "mars":
         return MARS_GEOGRAPHIC
+    if body == "moon":
+        return MOON_GEOGRAPHIC
     raise ConfigError(f"Unknown body {body!r}")
 
 
@@ -44,6 +50,8 @@ def geod(body: str) -> Geod:
         return Geod(ellps="WGS84")
     if body == "mars":
         return Geod(a=MARS_RADIUS_M, f=0.0)
+    if body == "moon":
+        return Geod(a=MOON_RADIUS_M, f=0.0)
     raise ConfigError(f"Unknown body {body!r}")
 
 
@@ -63,5 +71,7 @@ def check_body_crs(crs, body: str, label: str = "input") -> None:
     a = semi_major_axis_m(crs)
     if body == "mars" and abs(a - MARS_RADIUS_M) > 2_000:
         raise ConfigError(f"{label}: CRS radius {a:,.0f} m is not Mars ({MARS_RADIUS_M:,.0f} m)")
+    if body == "moon" and abs(a - MOON_RADIUS_M) > 2_000:
+        raise ConfigError(f"{label}: CRS radius {a:,.0f} m is not the Moon ({MOON_RADIUS_M:,.0f} m)")
     if body == "earth" and abs(a - EARTH_SEMI_MAJOR_M) > 1_000:
         raise ConfigError(f"{label}: CRS semi-major axis {a:,.0f} m is not Earth (WGS84)")
