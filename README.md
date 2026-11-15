@@ -45,11 +45,13 @@ The AI decides which tool to call; the algorithm computes every score. Keys (`OP
 
 ## Global Explorer (3D web app)
 
-The Global Explorer (React + Three.js, `web/`, FastAPI `terramind/api.py`) does not pick from a fixed list of Earth sites. For any Mars point it searches all of Earth's land:
+The Global Explorer (React + Three.js, `web/`, FastAPI `terramind/api.py`) selects Earth candidates using a global land index, then evaluates the requested region around each candidate. The interface defaults to Russian; the header switches between **RU / EN / UZ** and remembers the choice across pages.
 
-1. **Mars** — the 25 km radius circle is read from USGS MOLA on the 463 m grid.
+1. **Mars** — choose a radius from **1 to 100 km**, including decimal values (default 25 km). The actual requested circle is read from USGS MOLA on the 463 m grid; changing radius changes acquisition, masks, refinement, final scores and terrain exports.
 2. **Global screening** — a one-time index of every land window on Earth (56° S – 80° N, centres every ~28 km), built from NOAA ETOPO 2022 60″, stores slope / relief / TRI histograms and a rotation- and mirror-invariant *shape descriptor* (ring × sector means, Fourier harmonics; harmonic 0 keeps its sign, so a crater and a dome are opposites). The 12 best places at least 150 km apart go on.
-3. **Precise match** — for each place a 90 × 90 km Copernicus GLO-30 area is measured at 463 m and the 25 km circle is slid ±20 km to the centre where the Mars landform overlays best. That circle is then scored in full.
+3. **Precise match** — each candidate is measured from Copernicus GLO-30 at 463 m. The requested circle is moved within the available buffer (up to ±20 km) and scored against the same-radius Mars circle. At 100 km radius, acquisition reaches its supported limit, so candidate centres are evaluated without shifting.
+
+The global index uses **25 km regional context only to choose a shortlist**, including when the requested radius is different. It is not an exhaustive search at every requested scale: a local analog rejected by this context screen is not remeasured. Final similarity scores always use the requested radius. Small regions expose sample counts and a sparse-data warning; a 1 km region can have only four complete 3×3 metric samples on the 463 m grid. A high score with so few samples is not a strong analog confirmation.
 
 **Score** = 50 % *shape* (best Pearson correlation of the relief maps, Mars rotated every 15° and mirrored) + 50 % *distribution*, where distribution = 70 % histogram overlap of slope, relief and TRI + 30 % overlap of *detrended roughness*. Shape is what separates a crater floor from a volcano; histograms alone cannot. Detrended roughness (RMS residual from the best-fit 3 × 3 plane) is scored separately because TRI rises on any slope, even a smooth one.
 Open water (sea, lakes: exactly flat in Copernicus) over 10 % of the circle is rejected.
@@ -68,7 +70,9 @@ python scripts/search_demo.py 18.38 77.58    # optional: one search from the com
 
 Large data goes to `$TERRAMIND_DATA_DIR`, or `data/` in the project root (git-ignored).
 
-The Global Explorer is exploratory: its circles are 25 km in **radius** and its score adds a shape term, so its numbers are not the same scale as the reviewed pipeline below (25 km square windows, histogram overlap only). Both use the same slope / relief / TRI code.
+The Global Explorer is exploratory: its circles use the selected **radius** and its score adds a shape term, so its numbers are not the same scale as the reviewed pipeline below (25 km square windows, histogram overlap only). Both use the same slope / relief / TRI code.
+
+Measured terrain also offers a full-screen mission view: an AI-assisted TerraMind rocket concept can land, launch and fly around the selected location. Drag to orbit and scroll to zoom. The scene retains the **AI-generated** label; vehicle motion and sub-grid visual detail are illustrative, not flight dynamics or a landing-safety assessment.
 
 ## Quick start (from a fresh clone)
 

@@ -1,6 +1,7 @@
 import { Component, Suspense, lazy, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { ArrowDown, ArrowUpRight, Check, ChevronDown, Compass, Focus, Globe2, Info, Layers3, Maximize2, Mountain, Pause, Play, RotateCcw, Sparkles, Sun, Sunrise, View, X } from 'lucide-react';
 import type { CameraPreset, Lighting, Quality, ViewMode, World } from './components/scene-types';
+import AiGeneratedBadge from './components/AiGeneratedBadge';
 
 const TerrainScene = lazy(() => import('./components/TerrainScene'));
 const PlanetScene = lazy(() => import('./components/PlanetScene'));
@@ -68,7 +69,7 @@ export default function App() {
         </Suspense>
       </SceneErrorBoundary>
     </div>
-    <div className="scene-shade" aria-hidden="true"/>
+    <div className="scene-shade" aria-hidden="true"/><AiGeneratedBadge className="studio-ai-label"/>
     <div className="grain" aria-hidden="true"/>
     {!ready&&<div className="loading-scene" role="status"><span className="loading-orbit"/><span>PREPARING YOUR EXPEDITION</span><p>Building light, atmosphere & terrain</p></div>}
 

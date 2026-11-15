@@ -158,7 +158,8 @@ def test_open_water_is_rejected(project):
 
 @pytest.mark.parametrize("payload", [
     {"lat": 86, "lon": 0}, {"lat": 0, "lon": 181},
-    {"lat": 0, "lon": 0, "radius_km": 5}, {"lat": 0, "lon": 0, "radius_km": 100},
+    {"lat": 0, "lon": 0, "radius_km": 0.99}, {"lat": 0, "lon": 0, "radius_km": 100.01},
+    {"lat": 0, "lon": 0, "radius_km": "10"}, {"lat": 0, "lon": 0, "radius_km": True},
     {"lat": "0", "lon": 0}, {"lat": True, "lon": 0},
     {"lat": 0, "lon": 0, "invented": 1},
 ])
@@ -244,7 +245,7 @@ def test_unknown_job_and_catalog_coverage(project):
         assert catalog["coverage"]["global_search"] is True
         assert catalog["coverage"]["index"]["ready"] is True
         assert catalog["earth_candidates"] == []
-        assert catalog["radius_km"]["allowed"] == [25]
+        assert catalog["radius_km"] == {"default": 25, "min": 1, "max": 100, "step": None}
 
 
 def test_background_fetch_keeps_api_responsive_and_queue_bounded(project):
