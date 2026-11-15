@@ -1,6 +1,6 @@
 # TerraMind AI
 
-https://zerohacker557.github.io/nasahacktahon-abubakr/
+[https://zerohacker557.github.io/nasahacktahon-abubakr/](https://terramind-ai-one.vercel.app/)
 
 **Understand Earth. Explore Beyond.**
 
