@@ -480,18 +480,18 @@ def make_router() -> APIRouter:
         from terramind import moon_explore
 
         try:
-            return moon_explore.pick(_settings(), x, y)
-        except TerraMindError as exc:
-            raise _http(exc, 422) from None
+            return {"ok": True, **moon_explore.pick(_settings(), x, y)}
+        except TerraMindError as exc:  # outside the LOLA coverage: a normal answer for the map, not an error
+            return {"ok": False, "message": str(exc)}
 
     @router.get("/moon/locate")
     def moon_locate(lat: float = Query(ge=-90, le=-60), lon: float = Query(ge=-180, le=360)):
         from terramind import moon_explore
 
         try:
-            return moon_explore.locate(_settings(), lat, lon)
-        except TerraMindError as exc:
-            raise _http(exc, 422) from None
+            return {"ok": True, **moon_explore.locate(_settings(), lat, lon)}
+        except TerraMindError as exc:  # outside the LOLA coverage: a normal answer for the map, not an error
+            return {"ok": False, "message": str(exc)}
 
     @router.get("/moon/terrain")
     def moon_terrain(lat: float = Query(ge=-90, le=-60), lon: float = Query(ge=-180, le=360)):

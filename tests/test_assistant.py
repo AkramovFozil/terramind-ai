@@ -114,7 +114,10 @@ def test_moon_exploration_point(moon_project, monkeypatch):
     loc = client.get("/api/tm/moon/locate", params={"lat": -84.7906, "lon": 29.1957}).json()
     p = client.get("/api/tm/moon/pick", params={"x": loc["marker"]["x"], "y": loc["marker"]["y"]}).json()
     assert abs(p["lat"] + 84.7906) < 0.01 and abs(p["lon"] - 29.1957) < 0.05
-    assert client.get("/api/tm/moon/pick", params={"x": 0.001, "y": 0.001}).status_code == 422
+    edge = client.get("/api/tm/moon/pick", params={"x": 0.001, "y": 0.001})
+    assert edge.status_code == 200 and edge.json()["ok"] is False and edge.json()["message"]
+    far = client.get("/api/tm/moon/locate", params={"lat": -67.4, "lon": 25.9})
+    assert far.status_code == 200 and far.json()["ok"] is False
     t = client.get("/api/tm/moon/terrain", params={"lat": p["lat"], "lon": p["lon"]}).json()
     assert t["body"] == "moon" and "landing" in t
     r = client.get("/api/tm/moon/search", params={"lat": p["lat"], "lon": p["lon"], "region": "testland"}).json()

@@ -45,7 +45,7 @@ def pick(settings: Settings, fx: float, fy: float) -> dict:
     x = b.left + fx * (b.right - b.left)
     y = b.top - fy * (b.top - b.bottom)
     if not (b.left + half <= x <= b.right - half and b.bottom + half <= y <= b.top - half):
-        raise ConfigError("A 25 km window there would fall off the LOLA map. Pick a point further inside.")
+        raise ConfigError("Bu nuqtada 25 km oyna LOLA xaritasidan chiqib ketadi. Biroz ichkariroq joyni tanlang.")
     lon, lat = to_geo.transform(x, y)
     return {"lat": round(float(lat), 4), "lon": round(float(lon), 4), **_marker(settings, b, x, y)}
 
@@ -55,7 +55,7 @@ def locate(settings: Settings, lat: float, lon: float) -> dict:
     x, y = to_src.transform(lon, lat)
     half = settings.window_km * 500.0
     if not (b.left + half <= x <= b.right - half and b.bottom + half <= y <= b.top - half):
-        raise ConfigError("LOLA 80 m data here covers only the south pole (about 80° S to the pole). Pick a point there.")
+        raise ConfigError("Bu joy uchun relyef ma’lumoti yo‘q: LOLA 80 m faqat janubiy qutbni (80°J – 90°J, Artemis bazalari hududi) qamraydi. Joy tanlash uchun «Janubiy qutb · LOLA» ko‘rinishiga o‘ting.")
     return {"lat": lat, "lon": lon, **_marker(settings, b, x, y)}
 
 
