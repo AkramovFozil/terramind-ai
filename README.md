@@ -1,5 +1,7 @@
 # TerraMind AI
 
+https://zerohacker557.github.io/nasahacktahon-abubakr/
+
 **Understand Earth. Explore Beyond.**
 
 TerraMind AI finds places on Earth whose terrain resembles a chosen site on Mars or the Moon, using NASA open elevation data (MOLA, LOLA, SRTM), and explains every score.
